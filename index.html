@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;kotlin&quot;,&quot;java&quot;]">
+  <body class="index" data-languages="[&quot;objc&quot;,&quot;Swift&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -211,8 +211,8 @@
     <div class="toc-wrapper">
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
-              <a href="#" data-language-name="kotlin">kotlin</a>
-              <a href="#" data-language-name="java">java</a>
+              <a href="#" data-language-name="objc">objc</a>
+              <a href="#" data-language-name="Swift">Swift</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -287,7 +287,7 @@
         <h1 id='welcome'>Welcome</h1>
 <p>Welcome to the AB Tasty for app, <strong>librarybyapi</strong> documentation !</p>
 
-<p>The librarybyapi project is an Android library that helps you to make server side tests on your android app.</p>
+<p>The librarybyapi project is an iOS library that helps you to make server side tests on your iOS app.</p>
 
 <p>You can use this library to access AB Tasty endpoints, which can generate a unique visitor ID, allocate a visitor to a test, and push visits and conversions events in order to help you analyze the outcomes of your campaigns.</p>
 
@@ -296,14 +296,7 @@
 <blockquote>
 <p>Be sure that your app compile with at least the minSdkVersion 16 in the build.gradle file of your app module :</p>
 </blockquote>
-<pre class="highlight gradle tab-gradle"><code><span class="n">android</span> <span class="o">{</span>
-
-    <span class="n">compileSdkVersion</span> <span class="mi">27</span>
-    <span class="n">defaultConfig</span> <span class="o">{</span>
-
-        <span class="n">minSdkVersion</span> <span class="mi">16</span>
-        <span class="o">...</span>
-    <span class="o">}</span>
+<pre class="highlight plaintext"><code>pod 'ABTastySdk', :http =&gt; 'http://sdk.abtasty.com/ios/ABTastySdk.zip'
 </code></pre>
 <blockquote>
 <p>Be sure that your app has the permission to use internet in your the Manifest file of your app :</p>
@@ -1237,8 +1230,8 @@ Replace <code>xxxxxx</code> with the id of your campaign and <code>bbbbbb</code>
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="kotlin">kotlin</a>
-                <a href="#" data-language-name="java">java</a>
+                <a href="#" data-language-name="objc">objc</a>
+                <a href="#" data-language-name="Swift">Swift</a>
           </div>
       </div>
     </div>
