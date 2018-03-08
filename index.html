@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>librarybyapi documentation</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;kotlin&quot;,&quot;java&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -211,10 +211,8 @@
     <div class="toc-wrapper">
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
+              <a href="#" data-language-name="kotlin">kotlin</a>
+              <a href="#" data-language-name="java">java</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -222,284 +220,1025 @@
         <ul class="search-results"></ul>
       <div id="toc" class="toc-list-h1">
           <li>
-            <a href="#introduction" class="toc-h1 toc-link" data-title="introduction">Introduction</a>
+            <a href="#welcome" class="toc-h1 toc-link" data-title="welcome">Welcome</a>
           </li>
           <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="authentication">Authentication</a>
+            <a href="#app-prerequisites" class="toc-h1 toc-link" data-title="app-prerequisites">App prerequisites</a>
           </li>
           <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="kittens">Kittens</a>
+            <a href="#getting-started" class="toc-h1 toc-link" data-title="getting-started">Getting started</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="get-all-kittens">Get All Kittens</a>
+                    <a href="#add-the-repository" class="toc-h2 toc-link" data-title="add-the-repository">Add the repository</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="get-a-specific-kitten">Get a Specific Kitten</a>
+                    <a href="#add-the-dependency" class="toc-h2 toc-link" data-title="add-the-dependency">Add the dependency</a>
                   </li>
                   <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="delete-a-specific-kitten">Delete a Specific Kitten</a>
+                    <a href="#initialize-and-start-the-library" class="toc-h2 toc-link" data-title="initialize-and-start-the-library">Initialize and start the library</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="errors">Errors</a>
+            <a href="#starting-campaigns" class="toc-h1 toc-link" data-title="starting-campaigns">Starting campaigns</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#library-initialization" class="toc-h2 toc-link" data-title="library-initialization">Library Initialization</a>
+                  </li>
+                  <li>
+                    <a href="#allocate-variations" class="toc-h2 toc-link" data-title="allocate-variations">Allocate variations</a>
+                  </li>
+                  <li>
+                    <a href="#activate-campaign" class="toc-h2 toc-link" data-title="activate-campaign">Activate Campaign</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#sending-events" class="toc-h1 toc-link" data-title="sending-events">Sending events</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#abtracker" class="toc-h2 toc-link" data-title="abtracker">ABTracker</a>
+                  </li>
+                  <li>
+                    <a href="#campaign-activation-tracking" class="toc-h2 toc-link" data-title="campaign-activation-tracking">Campaign Activation Tracking</a>
+                  </li>
+                  <li>
+                    <a href="#action-tracking" class="toc-h2 toc-link" data-title="action-tracking">Action Tracking</a>
+                  </li>
+                  <li>
+                    <a href="#custom-tracking" class="toc-h2 toc-link" data-title="custom-tracking">Custom Tracking</a>
+                  </li>
+                  <li>
+                    <a href="#transaction-tracking" class="toc-h2 toc-link" data-title="transaction-tracking">Transaction tracking</a>
+                  </li>
+                  <li>
+                    <a href="#visit-tracking" class="toc-h2 toc-link" data-title="visit-tracking">Visit tracking</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#reference" class="toc-h1 toc-link" data-title="reference">Reference</a>
           </li>
       </div>
-        <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
-        </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the AB Tasty for app, librarybyapi documentation !</p>
+        <h1 id='welcome'>Welcome</h1>
+<p>Welcome to the AB Tasty for app, <strong>librarybyapi</strong> documentation !</p>
 
-<p>The librarybyapi project is an iOS library that helps you to make server side tests on your iOS App.</p>
+<p>The librarybyapi project is an Android library that helps you to make server side tests on your android app.</p>
 
 <p>You can use this library to access AB Tasty endpoints, which can generate a unique visitor ID, allocate a visitor to a test, and push visits and conversions events in order to help you analyze the outcomes of your campaigns.</p>
 
-<p>May you have any question about this documentation, feel free to reach out to us.</p>
-<h1 id='authentication'>Authentication</h1>
+<p>May you have any question about this documentation, feel free to <a href="mailto:contact@abtastycom">reach out to us</a>.</p>
+<h1 id='app-prerequisites'>App prerequisites</h1>
 <blockquote>
-<p>To authorize, use this code:</p>
+<p>Be sure that your app compile with at least the minSdkVersion 16 in the build.gradle file of your app module :</p>
 </blockquote>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<pre class="highlight gradle tab-gradle"><code><span class="n">android</span> <span class="o">{</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+    <span class="n">compileSdkVersion</span> <span class="mi">27</span>
+    <span class="n">defaultConfig</span> <span class="o">{</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
+        <span class="n">minSdkVersion</span> <span class="mi">16</span>
+        <span class="o">...</span>
+    <span class="o">}</span>
 </code></pre>
 <blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
+<p>Be sure that your app has the permission to use internet in your the Manifest file of your app :</p>
 </blockquote>
+<pre class="highlight xml tab-xml"><code>    <span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">"android.permission.INTERNET"</span> <span class="nt">/&gt;</span>
+</code></pre>
+<ul>
+<li><p>Your app must be a native app written in Kotlin or Java code</p></li>
+<li><p>Your app must be compatible with the minimum sdk version 16 (Android 4.1)</p></li>
+<li><p>Your app must have the permissions to use the internet </p></li>
+</ul>
+<h1 id='getting-started'>Getting started</h1>
+<p>Follow these steps in order to compile and start the AB Tasty libraybyapi</p>
+<h3 id='add-the-repository'>Add the repository</h3>
+<blockquote>
+<p>Add a repository in the <strong>main build.gradle</strong> file of your Android project:</p>
+</blockquote>
+<pre class="highlight gradle tab-gradle"><code><span class="k">allprojects</span> <span class="o">{</span>
+    <span class="k">repositories</span> <span class="o">{</span>
+        <span class="n">maven</span> <span class="o">{</span>
+            <span class="n">url</span> <span class="s2">"s3://sdk.abtasty.com/android/"</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<p>First you need to add the following repository in the <strong>main build.gradle of your project</strong> in order for gradle to find the library to build with.</p>
 
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
+<p><code>s3://sdk.abtasty.com/android/</code></p>
 
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+<p><br></p>
+<h3 id='add-the-dependency'>Add the dependency</h3>
+<blockquote>
+<p>Add the following library dependency in the <strong>build.gradle</strong> file of your <strong>app module</strong>:</p>
+</blockquote>
+<pre class="highlight gradle tab-gradle"><code><span class="k">dependencies</span> <span class="o">{</span>
+    <span class="n">implementation</span> <span class="s1">'com.abtasty:librarybyapi:b0.0.9'</span>
+<span class="o">}</span>
+</code></pre>
+<p>Then add the following library dependency in the <strong>build.gradle</strong> file of your <strong>app module</strong></p>
 
-<p><code>Authorization: meowmeowmeow</code></p>
+<p><code>com.abtasty:librarybyapi:x.x.x</code></p>
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+Replace <code>x.x.x</code> with the desired version.
 </aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<p><br>
+<aside class="warning">
+Warning : As the librarybyapi is really light in terms of methods it also depends on other libraries and then in certain circumstances you may need 
+to enable the multidex option if your app dex file reach the limitation of 65k methods. Follow this link : <a href="https://developer.android.com/studio/build/multidex.html">Multidex</a>
+</aside></p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
-</code></pre>
+<p><br></p>
+<h3 id='initialize-and-start-the-library'>Initialize and start the library</h3>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Call the function <em>initialize</em> and its inner function <em>start</em> from the class <em>ABTasty</em> to init and start the library</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
-</tr>
-</tbody></table>
+<pre class="highlight kotlin tab-kotlin"><code><span class="kd">class</span> <span class="nc">MyActivity</span> <span class="p">:</span> <span class="n">Activity</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
+        <span class="n">ABTasty</span><span class="p">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">applicationContext</span><span class="p">,</span> <span class="n">AB_TASTY_KEY</span><span class="p">).</span><span class="n">start</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">ABTasty</span><span class="o">.</span><span class="na">Companion</span><span class="o">.</span><span class="na">initialize</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">AB_TASTY_KEY</span><span class="o">).</span><span class="na">start</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<p>Finally you just have to call the function <code>initialize</code> and its inner function <code>start</code> located in the <code>ABTasty</code> class. Put it at the most appropriate moment depending on your application to init and start the library.</p>
+
+<p><code>fun initialize(context: Context, token: String) : ABInitializer</code> </p>
+
+<p><em>@See: Initalization section for more details</em></p>
+
+<aside class="notice">
+Replace <code>AB_TASTY_KEY</code> with the key provided by AB Tasty.
+</aside>
+
+<p><br><br></p>
 
 <aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+Congratulations !!
+<br><br>
+You should know be able to use the AB Tasty librarybyapi :)
 </aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<h1 id='starting-campaigns'>Starting campaigns</h1>
+<p>This section of the documentation aims to help you to start a new campaign in your app using the ABTasty android librarybyapi.</p>
+<h2 id='library-initialization'>Library Initialization</h2>
+<p>The first thing you need to do is initializing the library. To do this, you just have to call the function <code>initialize</code> in the <code>ABTasty</code> class located in the package <code>com.abtasty.librarybyapi.main</code>.
+For each new user, at the very first initialization, the library is going to ask for a new visitor id to our servers and save it in a database.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<p><br></p>
+<h3 id='initialize'>Initialize</h3><pre class="highlight kotlin tab-kotlin"><code><span class="kd">class</span> <span class="nc">MyActivity</span> <span class="p">:</span> <span class="n">Activity</span><span class="p">()</span> <span class="p">{</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+        <span class="n">ABTasty</span><span class="p">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">applicationContext</span><span class="p">,</span> <span class="n">AB_TASTY_KEY</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+
+        <span class="n">ABTasty</span><span class="o">.</span><span class="na">Companion</span><span class="o">.</span><span class="na">initialize</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">AB_TASTY_KEY</span><span class="o">).</span><span class="na">start</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
+<p><code>fun initialize(context: Context, token: String) : ABInitializer</code> </p>
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
+<p>This function is the main library initializer.</p>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>context</td>
+<td>Context</td>
+<td>Application context of your application.</td>
+</tr>
+<tr>
+<td>token</td>
+<td>String</td>
+<td>Access key provided by AB Tasty</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<p><br></p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -X DELETE
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
-</tr>
-</tbody></table>
-<h1 id='errors'>Errors</h1>
 <aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
+This function returns an `ABInitializer` builder object in which you can pass some of the following initial configurations methods. Then call `start` to build and start the library with the given config.
 </aside>
 
-<p>The Kittn API uses the following error codes:</p>
+<p><br></p>
+<h3 id='initialize-with-campaign-ids'>Initialize with campaign Ids</h3><pre class="highlight kotlin tab-kotlin"><code><span class="kd">class</span> <span class="nc">MyActivity</span> <span class="p">:</span> <span class="n">Activity</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
+
+        <span class="kd">val</span> <span class="py">campaigns</span> <span class="p">=</span> <span class="n">ArrayList</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;(</span><span class="n">arrayOf</span><span class="p">(</span><span class="s">"111111"</span><span class="p">,</span> <span class="s">"222222"</span><span class="p">).</span><span class="n">asList</span><span class="p">())</span>
+
+        <span class="n">ABTasty</span><span class="p">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">applicationContext</span><span class="p">,</span> <span class="n">AB_TASTY_KEY</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">withCampaignIds</span><span class="p">(</span><span class="n">campaigns</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+
+        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">campaigns</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="s">"111111"</span><span class="o">,</span> <span class="s">"222222"</span><span class="o">));</span>
+
+        <span class="n">ABTasty</span><span class="o">.</span><span class="na">Companion</span><span class="o">.</span><span class="na">initialize</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">AB_TASTY_KEY</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">withCampaignIds</span><span class="o">(</span><span class="n">campaigns</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">start</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<p><code>fun withCampaignIds(campaignIds: ArrayList&lt;String&gt;) : ABInitializer</code></p>
+
+<p>This method allows you to set campaigns ids to preload so the library is going to allocate all the campaigns variations at initialization time. Then all these campaigns will be available when the sdk is ready.</p>
 
 <table><thead>
 <tr>
-<th>Error Code</th>
-<th>Meaning</th>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+<td>campaignIds</td>
+<td>ArrayList<String></td>
+<td>ArrayList<String> of ids of the desired campaigns.</td>
 </tr>
 </tbody></table>
+
+<p><br></p>
+<h3 id='initialize-with-tracking-data'>Initialize with tracking data</h3><pre class="highlight kotlin tab-kotlin"><code><span class="kd">class</span> <span class="nc">MyActivity</span> <span class="p">:</span> <span class="n">Activity</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
+
+        <span class="n">ABTasty</span><span class="p">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">applicationContext</span><span class="p">,</span> <span class="n">AB_TASTY_KEY</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">withTrackingData</span><span class="p">(</span><span class="n">ABTracker</span><span class="p">.</span><span class="n">Builder</span><span class="p">().</span><span class="n">setDeviceType</span><span class="p">(</span><span class="n">DeviceType</span><span class="p">.</span><span class="n">MOBILE_PHONE</span><span class="p">).</span><span class="n">build</span><span class="p">())</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+
+        <span class="n">ABTasty</span><span class="o">.</span><span class="na">Companion</span><span class="o">.</span><span class="na">initialize</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">AB_TASTY_KEY</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">withTrackingData</span><span class="o">(</span><span class="k">new</span> <span class="n">ABTracker</span><span class="o">.</span><span class="na">Builder</span><span class="o">().</span><span class="na">setDeviceType</span><span class="o">(</span><span class="n">DeviceType</span><span class="o">.</span><span class="na">MOBILE_PHONE</span><span class="o">).</span><span class="na">build</span><span class="o">())</span>
+                <span class="o">.</span><span class="na">start</span><span class="o">();</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<p><code>fun withTrackingData(tracker : ABTracker) : ABInitializer</code></p>
+
+<p>This method allows you to set default common tracking data that you want to share between all your events.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>tracker</td>
+<td>ABTracker</td>
+<td>Tracker with default common data</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+<h3 id='initialize-with-ready'>Initialize with ready</h3><pre class="highlight kotlin tab-kotlin"><code><span class="kd">class</span> <span class="nc">MyActivity</span> <span class="p">:</span> <span class="n">Activity</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
+
+        <span class="n">ABTasty</span><span class="p">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">applicationContext</span><span class="p">,</span> <span class="n">AB_TASTY_KEY</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">withWhenReady</span> <span class="p">{</span>
+                    <span class="n">System</span><span class="p">.</span><span class="k">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"&gt; READY"</span><span class="p">)</span>
+                <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+
+        <span class="n">ABTasty</span><span class="o">.</span><span class="na">Companion</span><span class="o">.</span><span class="na">initialize</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">AB_TASTY_KEY</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">withWhenReady</span><span class="o">(</span><span class="k">new</span> <span class="n">Function0</span><span class="o">&lt;</span><span class="n">Unit</span><span class="o">&gt;()</span> <span class="o">{</span>
+                    <span class="nd">@Override</span>
+                    <span class="kd">public</span> <span class="n">Unit</span> <span class="nf">invoke</span><span class="o">()</span> <span class="o">{</span>
+                        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&gt; READY"</span><span class="o">);</span>
+                        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+                    <span class="o">}</span>
+                <span class="o">})</span>
+                <span class="o">.</span><span class="na">start</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<p><code>withWhenReady(lambda: () -&gt; Unit) : ABInitializer</code></p>
+
+<p>As the sdk is asynchronous and run in parallel, this method allows you to set a lambda which is going to be executed when the library is ready.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>lambda</td>
+<td>lambda</td>
+<td>Lambda that is going to be invoked when the library has finished to initialize itself.</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+<h3 id='initialize-with-logs'>Initialize with logs</h3><pre class="highlight kotlin tab-kotlin"><code><span class="kd">class</span> <span class="nc">MyActivity</span> <span class="p">:</span> <span class="n">Activity</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
+
+        <span class="n">ABTasty</span><span class="p">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">applicationContext</span><span class="p">,</span> <span class="n">AB_TASTY_KEY</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">withLogMode</span><span class="p">(</span><span class="n">LogMode</span><span class="p">.</span><span class="n">ALL</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+
+        <span class="n">ABTasty</span><span class="o">.</span><span class="na">Companion</span><span class="o">.</span><span class="na">initialize</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">AB_TASTY_KEY</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">withLogMode</span><span class="o">(</span><span class="n">LogMode</span><span class="o">.</span><span class="na">ALL</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">start</span><span class="o">();</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<p><code>fun withLogMode(mode : LogMode) : ABInitializer</code></p>
+
+<p>This method aims to enable the logs from the library. </p>
+
+<p>It can be one of the following (NONE by default) : </p>
+
+<ul>
+<li>ALL</li>
+<li>NONE</li>
+<li>VERBOSE</li>
+<li>ERROR</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>mode</td>
+<td>LogMode(Enum)</td>
+<td>The log mode enum to enable</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+<h3 id='initialize-with-onerror'>Initialize with onError</h3><pre class="highlight kotlin tab-kotlin"><code><span class="kd">class</span> <span class="nc">MyActivity</span> <span class="p">:</span> <span class="n">Activity</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
+
+        <span class="n">ABTasty</span><span class="p">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">applicationContext</span><span class="p">,</span> <span class="n">AB_TASTY_KEY</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">withOnError</span> <span class="p">{</span> <span class="n">tag</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="n">String</span> <span class="p">-&gt;</span>
+                    <span class="n">System</span><span class="p">.</span><span class="k">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"&gt; ERROR : $tag - $message"</span><span class="p">)</span>
+                <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+
+        <span class="n">ABTasty</span><span class="o">.</span><span class="na">Companion</span><span class="o">.</span><span class="na">initialize</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">AB_TASTY_KEY</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">withOnError</span><span class="o">(</span><span class="k">new</span> <span class="n">Function2</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">,</span> <span class="n">Unit</span><span class="o">&gt;()</span> <span class="o">{</span>
+                    <span class="nd">@Override</span>
+                    <span class="kd">public</span> <span class="n">Unit</span> <span class="nf">invoke</span><span class="o">(</span><span class="n">String</span> <span class="n">tag</span><span class="o">,</span> <span class="n">String</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&gt; ERROR : "</span> <span class="o">+</span> <span class="n">tag</span> <span class="o">+</span> <span class="s">" - "</span> <span class="o">+</span> <span class="n">message</span><span class="o">);</span>
+                        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+                    <span class="o">}</span>
+                <span class="o">})</span>
+                <span class="o">.</span><span class="na">start</span><span class="o">();</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<p><code>fun withOnError(lambda: (tag:String, message:String) -&gt; Unit) : ABInitializer</code></p>
+
+<p>This method allows you to set a lambda which is going to be executed if an error occurs with the tag and the message as a parameters.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>lambda</td>
+<td>lambda</td>
+<td>Lambda that is going to be invoked if an error occurs associated with a tag and an error message.</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+<h3 id='start'>Start</h3><pre class="highlight kotlin tab-kotlin"><code><span class="kd">class</span> <span class="nc">MyActivity</span> <span class="p">:</span> <span class="n">Activity</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
+
+        <span class="kd">val</span> <span class="py">campaigns</span> <span class="p">=</span> <span class="n">ArrayList</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;(</span><span class="n">arrayOf</span><span class="p">(</span><span class="s">"111111"</span><span class="p">,</span> <span class="s">"222222"</span><span class="p">).</span><span class="n">asList</span><span class="p">())</span>
+
+        <span class="n">ABTasty</span><span class="p">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">applicationContext</span><span class="p">,</span> <span class="n">AB_TASTY_KEY</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">withCampaignIds</span><span class="p">(</span><span class="n">campaigns</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">withWhenReady</span> <span class="p">{</span>
+                    <span class="n">System</span><span class="p">.</span><span class="k">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"&gt; READY"</span><span class="p">)</span>
+                <span class="p">}</span>
+                <span class="p">.</span><span class="n">withTrackingData</span><span class="p">(</span><span class="n">ABTracker</span><span class="p">.</span><span class="n">Builder</span><span class="p">().</span><span class="n">setDeviceType</span><span class="p">(</span><span class="n">DeviceType</span><span class="p">.</span><span class="n">MOBILE_PHONE</span><span class="p">).</span><span class="n">build</span><span class="p">())</span>
+                <span class="p">.</span><span class="n">withLogMode</span><span class="p">(</span><span class="n">LogMode</span><span class="p">.</span><span class="n">ALL</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">withOnError</span> <span class="p">{</span> <span class="n">tag</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="n">String</span> <span class="p">-&gt;</span>
+                    <span class="n">System</span><span class="p">.</span><span class="k">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"&gt; ERROR : $tag - $message"</span><span class="p">)</span>
+                <span class="p">}</span>
+                <span class="p">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+
+        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">campaigns</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="s">"111111"</span><span class="o">,</span> <span class="s">"222222"</span><span class="o">));</span>
+
+        <span class="n">ABTasty</span><span class="o">.</span><span class="na">Companion</span><span class="o">.</span><span class="na">initialize</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">AB_TASTY_KEY</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">withCampaignIds</span><span class="o">(</span><span class="n">campaigns</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">withWhenReady</span><span class="o">(</span><span class="k">new</span> <span class="n">Function0</span><span class="o">&lt;</span><span class="n">Unit</span><span class="o">&gt;()</span> <span class="o">{</span>
+                    <span class="nd">@Override</span>
+                    <span class="kd">public</span> <span class="n">Unit</span> <span class="nf">invoke</span><span class="o">()</span> <span class="o">{</span>
+                        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&gt; READY"</span><span class="o">);</span>
+                        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+                    <span class="o">}</span>
+                <span class="o">})</span>
+                <span class="o">.</span><span class="na">withTrackingData</span><span class="o">(</span><span class="k">new</span> <span class="n">ABTracker</span><span class="o">.</span><span class="na">Builder</span><span class="o">().</span><span class="na">setDeviceType</span><span class="o">(</span><span class="n">DeviceType</span><span class="o">.</span><span class="na">MOBILE_PHONE</span><span class="o">).</span><span class="na">build</span><span class="o">())</span>
+                <span class="o">.</span><span class="na">withLogMode</span><span class="o">(</span><span class="n">LogMode</span><span class="o">.</span><span class="na">ALL</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">withOnError</span><span class="o">(</span><span class="k">new</span> <span class="n">Function2</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">,</span> <span class="n">Unit</span><span class="o">&gt;()</span> <span class="o">{</span>
+                    <span class="nd">@Override</span>
+                    <span class="kd">public</span> <span class="n">Unit</span> <span class="nf">invoke</span><span class="o">(</span><span class="n">String</span> <span class="n">tag</span><span class="o">,</span> <span class="n">String</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&gt; ERROR : "</span> <span class="o">+</span> <span class="n">tag</span> <span class="o">+</span> <span class="s">" - "</span> <span class="o">+</span> <span class="n">message</span><span class="o">);</span>
+                        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+                    <span class="o">}</span>
+                <span class="o">})</span>
+                <span class="o">.</span><span class="na">start</span><span class="o">();</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<p><code>fun start()</code></p>
+
+<p>The <code>start</code> method finally build the <code>ABInitializer</code> config and start the initialization of the library. </p>
+<h2 id='allocate-variations'>Allocate variations</h2><pre class="highlight kotlin tab-kotlin"><code> <span class="n">ABTasty</span><span class="p">.</span><span class="n">getVariationIdForCampaign</span><span class="p">(</span><span class="s">"xxxxxx"</span><span class="p">,</span> <span class="p">{</span>
+        <span class="k">when</span> <span class="p">(</span><span class="n">it</span><span class="p">)</span> <span class="p">{</span>
+            <span class="s">"aaaaaa"</span> <span class="p">-&gt;</span> <span class="n">System</span><span class="p">.</span><span class="k">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="err">'</span><span class="n">Variation</span> <span class="n">A</span><span class="err">'</span><span class="p">)</span>
+            <span class="s">"bbbbbb"</span> <span class="p">-&gt;</span> <span class="n">System</span><span class="p">.</span><span class="k">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="err">'</span><span class="n">Variation</span> <span class="n">B</span><span class="err">'</span><span class="p">)</span>
+            <span class="o">..</span><span class="p">.</span>
+        <span class="p">}</span>
+    <span class="p">})</span>
+</code></pre><pre class="highlight java tab-java"><code>    <span class="n">ABTasty</span><span class="o">.</span><span class="na">Companion</span><span class="o">.</span><span class="na">getVariationIdForCampaign</span><span class="o">(</span><span class="s">"xxxxxx"</span><span class="o">,</span> <span class="k">new</span> <span class="n">Function1</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Unit</span><span class="o">&gt;()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="n">Unit</span> <span class="nf">invoke</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">switch</span> <span class="o">(</span><span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="k">case</span> <span class="s">"aaaaaa"</span> <span class="o">:</span> <span class="o">{</span>
+                        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Variation A"</span><span class="o">);</span>
+                    <span class="o">}</span> <span class="k">break</span><span class="o">;</span>
+                    <span class="k">case</span> <span class="s">"bbbbbb"</span> <span class="o">:</span> <span class="o">{</span>
+                        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Variation B"</span><span class="o">);</span>
+                    <span class="o">}</span> <span class="k">break</span><span class="o">;</span>
+                <span class="o">}</span>
+                <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+</code></pre>
+<p>Once the library is initialized you need to allocate a variation id to your campaign. For this, the library contains a method named
+<code>getVariationIdForCampaign</code> in the class <code>ABTasty</code> located in the package <code>com.abtasty.librarybyapi.main</code></p>
+
+<p><code>fun getVariationIdForCampaign(campaignId: String, lambda: (variationId: String?) -&gt; Unit)</code></p>
+
+<p>It takesthe id of your campaign and a lambda as parameters which is going to be invoked when a variation is allocated to this campaign.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>campaignId</td>
+<td>String</td>
+<td>id of the campaign</td>
+</tr>
+<tr>
+<td>lambda</td>
+<td>lambda : (variationId: String?) -&gt; Unit</td>
+<td>code to be invoked when a variation is selected for this campaign. The selected variation will be given as a parameter.</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+Replace <code>xxxxxx</code> with the id of your campaign and, <code>aaaaaa</code> and <code>bbbbbb</code> with all the possible variations id of your campaign.
+</aside>
+<h2 id='activate-campaign'>Activate Campaign</h2>
+<p>Once you got a variation allocated for a campaign you need to activate it. This way it tells to AB Tasty that the current user got this variation for this campaign so it wont change and always get the same.</p>
+
+<p>The allocation can change if you call <code>getVariationIdForCampaign</code> several times until you send a <code>ABCampaignActivationTracker</code> to activate it.</p>
+
+<p><em>@See <code>ABCampaignActivationTracker</code> in the <a href="#activate">tracking section</a></em></p>
+<h1 id='sending-events'>Sending events</h1>
+<p>The library also provides some functions to send events to ABTasty, for exemple to send objectives about a specific campaigns.</p>
+
+<p>To do this you have to call the method <code>sendTrackingEvent</code> passing the right tracker as a parameter.</p>
+
+<p>All the possible trackers are listed below.</p>
+
+<p>Each tracker contains a <code>Builder</code> class that facilitates its build.</p>
+
+<p><br></p>
+<h2 id='abtracker'>ABTracker</h2>
+<p>ABTracker is the generic tracker that contains common data and from which all others trackers inherit.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>device_type</td>
+<td>DeviceType</td>
+<td>Device used by the visitor to view the test. The devices currently supported  are: <code>&quot;DESKTOP&quot;</code>, <code>&quot;MOBILE&quot;</code>, <code>&quot;TABLET&quot;</code>, <code>&quot;CAMERA&quot;</code>, <code>&quot;TV&quot;</code>, <code>&quot;GAMES_CONSOLE&quot;</code>, <code>&quot;PAYMENT_TERMINAL&quot;</code>, <code>&quot;WRISTWATCH&quot;</code>, and <code>&quot;OTHER&quot;</code>. <strong>required</strong></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>Long</td>
+<td>timestamp of the event <strong>required</strong></td>
+</tr>
+<tr>
+<td>origin</td>
+<td>String</td>
+<td>interface or page from where the event has been created <strong>required</strong></td>
+</tr>
+<tr>
+<td>geoPoint</td>
+<td>DoubleArray</td>
+<td> Current latitude / longitude of the device for geolocation [-90:90][-180:180] <strong>optional</strong></td>
+</tr>
+<tr>
+<td>ip</td>
+<td>String</td>
+<td>current ip of the device <strong>optional</strong></td>
+</tr>
+<tr>
+<td>deviceResolution</td>
+<td>IntArray</td>
+<td>current screen resolution of the device <strong>optional</strong> (<strong>required</strong> for ABActionTracking Touch)</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+Common data can be automatically set from the tracker passed in the `ABInitializer` returned from the `initialize function`, or from another shared ABTracker instance.
+</aside>
+
+<aside class="warning">
+We strongly recommend to set the `timestamp` parameter everytime you post asynchronous events in order to ensure the data consistency.
+</aside>
+
+<aside class="notice">
+Parameters : device_type, timestamp, deviceResolution can be automatically determined if not set.
+</aside>
+
+<p><br></p>
+
+<p><a name="activate"></a></p>
+<h2 id='campaign-activation-tracking'>Campaign Activation Tracking</h2><pre class="highlight kotlin tab-kotlin"><code><span class="kd">val</span> <span class="py">tracker</span> <span class="p">=</span> <span class="n">ABCampaignActivationTracker</span><span class="p">.</span><span class="n">Builder</span><span class="p">()</span>
+                <span class="p">.</span><span class="n">setCampaignId</span><span class="p">(</span><span class="s">"xxxxxx"</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">setVariationId</span><span class="p">(</span><span class="s">"bbbbbbb"</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">setOrigin</span><span class="p">(</span><span class="s">"LoginActivity"</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">setDeviceType</span><span class="p">(</span><span class="n">DeviceType</span><span class="p">.</span><span class="n">MOBILE_PHONE</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">setTimestamp</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="n">currentTimeMillis</span><span class="p">()</span> <span class="p">/</span> <span class="m">1000</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">build</span><span class="p">()</span>
+        <span class="n">ABTasty</span><span class="p">.</span><span class="n">sendTrackingEvent</span><span class="p">(</span><span class="n">tracker</span><span class="p">)</span>
+</code></pre><pre class="highlight java tab-java"><code>    <span class="n">ABCampaignActivationTracker</span> <span class="n">activation</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ABCampaignActivationTracker</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
+                        <span class="o">.</span><span class="na">setCampaignId</span><span class="o">(</span><span class="s">"xxxxxx"</span><span class="o">)</span>
+                        <span class="o">.</span><span class="na">setVariationId</span><span class="o">(</span><span class="s">"bbbbbb"</span><span class="o">)</span>
+                        <span class="o">.</span><span class="na">setOrigin</span><span class="o">(</span><span class="s">"LoginActivity"</span><span class="o">)</span>
+                        <span class="o">.</span><span class="na">setDeviceType</span><span class="o">(</span><span class="n">DeviceType</span><span class="o">.</span><span class="na">MOBILE_PHONE</span><span class="o">)</span>
+                        <span class="o">.</span><span class="na">setTimestamp</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">()</span> <span class="o">/</span> <span class="mi">1000</span><span class="o">)</span>
+                        <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+                <span class="n">ABTasty</span><span class="o">.</span><span class="na">Companion</span><span class="o">.</span><span class="na">sendTrackingEvent</span><span class="o">(</span><span class="n">activation</span><span class="o">);</span>
+</code></pre>
+<p>This tracker activate a campaign and its variation.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>campaign_id</td>
+<td>String</td>
+<td>campaign id to activate <strong>required</strong></td>
+</tr>
+<tr>
+<td>variation_id</td>
+<td>String</td>
+<td>variation id of the campaign to activate <strong>required</strong></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+Replace <code>xxxxxx</code> with the id of your campaign and <code>bbbbbb</code> with the selected variations id of your campaign.
+</aside>
+
+<p><br></p>
+<h2 id='action-tracking'>Action Tracking</h2><pre class="highlight kotlin tab-kotlin"><code><span class="kd">val</span> <span class="py">tracker</span> <span class="p">=</span> <span class="n">ABActionTracker</span><span class="p">.</span><span class="n">Builder</span><span class="p">()</span>
+                <span class="p">.</span><span class="n">setActionType</span><span class="p">(</span><span class="n">ABActionTracker</span><span class="p">.</span><span class="n">ActionType</span><span class="p">.</span><span class="n">TOUCH</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">setName</span><span class="p">(</span><span class="s">"nb_fingers_touch"</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">setValue</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">setOrigin</span><span class="p">(</span><span class="s">"PictureActivity"</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">setDeviceResolution</span><span class="p">(</span><span class="n">intArrayOf</span><span class="p">(</span><span class="m">1080</span><span class="p">,</span> <span class="m">1920</span><span class="p">))</span>
+                <span class="p">.</span><span class="n">setTouchPosition</span><span class="p">(</span><span class="n">intArrayOf</span><span class="p">(</span><span class="m">347</span><span class="p">,</span> <span class="m">887</span><span class="p">))</span>
+                <span class="p">.</span><span class="n">setDeviceType</span><span class="p">(</span><span class="n">DeviceType</span><span class="p">.</span><span class="n">MOBILE_PHONE</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">build</span><span class="p">()</span>
+        <span class="n">ABTasty</span><span class="p">.</span><span class="n">sendTrackingEvent</span><span class="p">(</span><span class="n">tracker</span><span class="p">)</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">ABActionTracker</span> <span class="n">tracker</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ABActionTracker</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">setActionType</span><span class="o">(</span><span class="n">ABActionTracker</span><span class="o">.</span><span class="na">ActionType</span><span class="o">.</span><span class="na">TOUCH</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">"nb_fingers_touch"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="mi">2</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">setOrigin</span><span class="o">(</span><span class="s">"PictureActivity"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">setDeviceResolution</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span> <span class="mi">1080</span><span class="o">,</span> <span class="mi">1920</span><span class="o">})</span>
+                <span class="o">.</span><span class="na">setTouchPosition</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span><span class="mi">347</span><span class="o">,</span> <span class="mi">887</span><span class="o">})</span>
+                <span class="o">.</span><span class="na">setDeviceType</span><span class="o">(</span><span class="n">DeviceType</span><span class="o">.</span><span class="na">MOBILE_PHONE</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+        <span class="n">ABTasty</span><span class="o">.</span><span class="na">Companion</span><span class="o">.</span><span class="na">sendTrackingEvent</span><span class="o">(</span><span class="n">tracker</span><span class="o">);</span>
+</code></pre>
+<p>This tracker send a click or a touch event</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Label of the click tracking/touch as displayed in the reporting. <strong>required</strong></td>
+</tr>
+<tr>
+<td>type</td>
+<td>ActionType</td>
+<td>Type of event CLICK or TOUCH <strong>required</strong></td>
+</tr>
+<tr>
+<td>value_string</td>
+<td>String</td>
+<td>String value attached to the action tracking event. <strong>optional</strong></td>
+</tr>
+<tr>
+<td>value_interger</td>
+<td>Integer</td>
+<td>Integer value attached to the action tracking event.<strong>optionl</strong></td>
+</tr>
+<tr>
+<td>position</td>
+<td>IntArray</td>
+<td>Object that contains the position x/y where the touch occured in the mobile page. <strong>required for TOUCH</strong></td>
+</tr>
+<tr>
+<td>resolution</td>
+<td>IntArray</td>
+<td>Object that contains the resolution in w/h of the screen where the touch occured. <strong>required for TOUCH</strong></td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+<h2 id='custom-tracking'>Custom Tracking</h2><pre class="highlight kotlin tab-kotlin"><code><span class="kd">val</span> <span class="py">tracker</span> <span class="p">=</span> <span class="n">ABCustomEventTracker</span><span class="p">.</span><span class="n">Builder</span><span class="p">()</span>
+                <span class="p">.</span><span class="n">setName</span><span class="p">(</span><span class="s">"nb_connection"</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">setValue</span><span class="p">(</span><span class="s">"3"</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">setDeviceType</span><span class="p">(</span><span class="n">DeviceType</span><span class="p">.</span><span class="n">MOBILE_PHONE</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">setOrigin</span><span class="p">(</span><span class="s">"LoginActivity"</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">build</span><span class="p">()</span>
+        <span class="n">ABTasty</span><span class="p">.</span><span class="n">sendTrackingEvent</span><span class="p">(</span><span class="n">tracker</span><span class="p">)</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">ABCustomEventTracker</span> <span class="n">tracker</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ABCustomEventTracker</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">"nb_connection"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="s">"3"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">setDeviceType</span><span class="o">(</span><span class="n">DeviceType</span><span class="o">.</span><span class="na">MOBILE_PHONE</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">setOrigin</span><span class="o">(</span><span class="s">"LoginActivity"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+        <span class="n">ABTasty</span><span class="o">.</span><span class="na">Companion</span><span class="o">.</span><span class="na">sendTrackingEvent</span><span class="o">(</span><span class="n">tracker</span><span class="o">);</span>
+</code></pre>
+<p>This tracker send a custom event and lets you track events that are specific to your business.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Label of the click tracking/touch as displayed in the reporting. <strong>required</strong></td>
+</tr>
+<tr>
+<td>type</td>
+<td>ActionType</td>
+<td>Type of event CLICK or TOUCH <strong>required</strong></td>
+</tr>
+<tr>
+<td>value_string</td>
+<td>String</td>
+<td>String value attached to the action tracking event. <strong>optional</strong></td>
+</tr>
+<tr>
+<td>value_interger</td>
+<td>Integer</td>
+<td>Integer value attached to the action tracking event.<strong>optionl</strong></td>
+</tr>
+<tr>
+<td>position</td>
+<td>IntArray</td>
+<td>Object that contains the position x/y where the touch occured in the mobile page. <strong>required for TOUCH</strong></td>
+</tr>
+<tr>
+<td>resolution</td>
+<td>IntArray</td>
+<td>Object that contains the resolution in w/h of the screen where the touch occured. <strong>required for TOUCH</strong></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Label of the click tracked as displayed in the reporting. <strong>required</strong></td>
+</tr>
+<tr>
+<td>value_string</td>
+<td>string</td>
+<td>String value attached to the action tracking event. <strong>optional</strong></td>
+</tr>
+<tr>
+<td>value_integer</td>
+<td>int</td>
+<td>Integer value attached to the action tracking event. <strong>optional</strong></td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+<h2 id='transaction-tracking'>Transaction tracking</h2><pre class="highlight kotlin tab-kotlin"><code><span class="kd">val</span> <span class="py">item</span> <span class="p">=</span> <span class="n">ABTransactionTracker</span><span class="p">.</span><span class="n">Item</span><span class="p">.</span><span class="n">Builder</span><span class="p">()</span>
+                <span class="p">.</span><span class="n">setName</span><span class="p">(</span><span class="s">"Android home"</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">setPrice</span><span class="p">(</span><span class="m">100</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">build</span><span class="p">()</span>
+
+<span class="kd">val</span> <span class="py">tracker</span> <span class="p">=</span> <span class="n">ABTransactionTracker</span><span class="p">.</span><span class="n">Builder</span><span class="p">()</span>
+                <span class="p">.</span><span class="n">setName</span><span class="p">(</span><span class="s">"purchase"</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">setTransactionId</span><span class="p">(</span><span class="s">"#587837983"</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">setRevenue</span><span class="p">(</span><span class="m">10000</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">setShipping</span><span class="p">(</span><span class="m">1999</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">setOrigin</span><span class="p">(</span><span class="s">"Basketactivity"</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">addItem</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">setDeviceType</span><span class="p">(</span><span class="n">DeviceType</span><span class="p">.</span><span class="n">MOBILE_PHONE</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">build</span><span class="p">()</span>
+        <span class="n">ABTasty</span><span class="p">.</span><span class="n">sendTrackingEvent</span><span class="p">(</span><span class="n">tracker</span><span class="p">)</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">Item</span> <span class="n">item</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ABTransactionTracker</span><span class="o">.</span><span class="na">Item</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">"Android home"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">setPrice</span><span class="o">(</span><span class="mi">100</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+
+        <span class="n">ABTransactionTracker</span> <span class="n">tracker</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ABTransactionTracker</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">"purchase"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">setTransactionId</span><span class="o">(</span><span class="s">"#587837983"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">setRevenue</span><span class="o">(</span><span class="mi">10000</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">setShipping</span><span class="o">(</span><span class="mi">1999</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">setOrigin</span><span class="o">(</span><span class="s">"Basketactivity"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">addItem</span><span class="o">(</span><span class="n">item</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">setDeviceType</span><span class="o">(</span><span class="n">DeviceType</span><span class="o">.</span><span class="na">MOBILE_PHONE</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+        <span class="n">ABTasty</span><span class="o">.</span><span class="na">Companion</span><span class="o">.</span><span class="na">sendTrackingEvent</span><span class="o">(</span><span class="n">tracker</span><span class="o">);</span>
+</code></pre>
+<p>The <code>ABTransactionTracker</code> lets you track any purchase on your mobile app.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Label of the Transaction as displayed in the reporting.<strong>required</strong></td>
+</tr>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>Unique identifier of the transaction.<strong>required</strong></td>
+</tr>
+<tr>
+<td>revenue</td>
+<td>int</td>
+<td>Total amount of money spend by the visitor expressed in cents. <strong>required</strong></td>
+</tr>
+<tr>
+<td>shipping</td>
+<td>int</td>
+<td>Shipping cost - expressed in cents.<strong>required</strong></td>
+</tr>
+<tr>
+<td>tax_total</td>
+<td>int</td>
+<td>Total tax expressed in cents. <strong>optional</strong></td>
+</tr>
+<tr>
+<td>payment_method</td>
+<td>string</td>
+<td> Means of payment. <strong>optional</strong></td>
+</tr>
+<tr>
+<td>items_count</td>
+<td>int</td>
+<td>Total number of products purchased on the mobile app. <strong>optional</strong></td>
+</tr>
+<tr>
+<td>currency</td>
+<td>object</td>
+<td>Money used for the payment. <strong>optional</strong></td>
+</tr>
+<tr>
+<td>currency.name</td>
+<td>string</td>
+<td>Name of the money used for the payment. <strong>required</strong></td>
+</tr>
+<tr>
+<td>currency.rate</td>
+<td>float</td>
+<td>Change rate between USD in cents (used as a reference) and the money used for the payment. <strong>required</strong></td>
+</tr>
+<tr>
+<td>items</td>
+<td>object</td>
+<td>Products purchased on the web site/mobile app. <strong>optional</strong></td>
+</tr>
+<tr>
+<td>items.name</td>
+<td>string</td>
+<td>Label of the product.  <strong>required</strong></td>
+</tr>
+<tr>
+<td>items.price</td>
+<td>int</td>
+<td>Price of the item expressed in cents.<strong>required</strong></td>
+</tr>
+<tr>
+<td>items.sku</td>
+<td>string</td>
+<td>Identifier of the item. <strong>optional</strong></td>
+</tr>
+<tr>
+<td>items.category</td>
+<td>string</td>
+<td>Category of product the item belongs to.</td>
+</tr>
+<tr>
+<td>items.quantity</td>
+<td>int</td>
+<td>Number of identical products purchased at the same time on the mobile app. <strong>optional</strong></td>
+</tr>
+<tr>
+<td>items.tax_amount</td>
+<td>int</td>
+<td>Tax amount applied to the item. <strong>optional</strong></td>
+</tr>
+<tr>
+<td>items.tax_rate</td>
+<td>float</td>
+<td>Percentage of tax applied to the item. <strong>optional</strong></td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+<h2 id='visit-tracking'>Visit tracking</h2><pre class="highlight kotlin tab-kotlin"><code><span class="kd">val</span> <span class="py">tracker</span> <span class="p">=</span> <span class="n">ABVisitTracker</span><span class="p">.</span><span class="n">Builder</span><span class="p">()</span>
+                <span class="p">.</span><span class="n">setOrigin</span><span class="p">(</span><span class="s">"VisitActivity"</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">setDeviceType</span><span class="p">(</span><span class="n">DeviceType</span><span class="p">.</span><span class="n">TABLET</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">setIp</span><span class="p">(</span><span class="s">"192.168.0.1"</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">build</span><span class="p">()</span>
+        <span class="n">ABTasty</span><span class="p">.</span><span class="n">sendTrackingEvent</span><span class="p">(</span><span class="n">tracker</span><span class="p">)</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">ABVisitTracker</span> <span class="n">tracker</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ABVisitTracker</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">setOrigin</span><span class="o">(</span><span class="s">"VisitActivity"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">setDeviceType</span><span class="o">(</span><span class="n">DeviceType</span><span class="o">.</span><span class="na">TABLET</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">setIp</span><span class="o">(</span><span class="s">"192.168.0.1"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+        <span class="n">ABTasty</span><span class="o">.</span><span class="na">Companion</span><span class="o">.</span><span class="na">sendTrackingEvent</span><span class="o">(</span><span class="n">tracker</span><span class="o">);</span>
+</code></pre>
+<p>The <code>ABVisitTracker</code> lets you track any visit occurring on a mobile app.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Device_type</td>
+<td>string</td>
+<td>Device used by the visitor to view the test. The devices currently supported  are: <code>&quot;DESKTOP&quot;</code>, <code>&quot;MOBILE&quot;</code>, <code>&quot;TABLET&quot;</code>, <code>&quot;CAMERA&quot;</code>, <code>&quot;TV&quot;</code>, <code>&quot;GAMES_CONSOLE&quot;</code>, <code>&quot;PAYMENT_TERMINAL&quot;</code>, <code>&quot;WRISTWATCH&quot;</code>, and <code>&quot;OTHER&quot;</code>. <strong>required</strong></td>
+</tr>
+<tr>
+<td>origin</td>
+<td>string</td>
+<td>Original page where the event occurred (can be a URI or a screen name). <strong>required</strong></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>string</td>
+<td>Date and time when the event occurred, expressed using the <a href="https://en.wikipedia.org/wiki/ISO_8601#Date_et_heure">iso8601 standards</a>. <strong>optional</strong></td>
+</tr>
+<tr>
+<td>ip</td>
+<td>string</td>
+<td>IP address of the visitor&#39;s device to determine the geolocation.</td>
+</tr>
+<tr>
+<td>geolocation</td>
+<td>object</td>
+<td>optional</td>
+</tr>
+<tr>
+<td>geolocation.lat</td>
+<td>float</td>
+<td>Latitude between 0 and 90. <strong>optional</strong></td>
+</tr>
+<tr>
+<td>geolocation.long</td>
+<td>float</td>
+<td>Longitude between -180 and 180. <strong>optional</strong></td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+<h1 id='reference'>Reference</h1>
+<p><a href="http://sdk.abtasty.com/android/ref/abtastysdk/index.html">Reference</a></p>
 
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
+                <a href="#" data-language-name="kotlin">kotlin</a>
+                <a href="#" data-language-name="java">java</a>
           </div>
       </div>
     </div>
