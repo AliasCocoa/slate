@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;objective_c&quot;,&quot;Swift&quot;]">
+  <body class="index" data-languages="[&quot;objective_c&quot;,&quot;Swift&quot;,&quot;Ruby&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -213,6 +213,7 @@
         <div class="lang-selector">
               <a href="#" data-language-name="objective_c">objective_c</a>
               <a href="#" data-language-name="Swift">Swift</a>
+              <a href="#" data-language-name="Ruby">Ruby</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -229,7 +230,7 @@
             <a href="#getting-started" class="toc-h1 toc-link" data-title="getting-started">Getting started</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#add-the-repository" class="toc-h2 toc-link" data-title="add-the-repository">Add the repository</a>
+                    <a href="#install-framework-via-pod" class="toc-h2 toc-link" data-title="install-framework-via-pod">install FrameWork via Pod</a>
                   </li>
                   <li>
                     <a href="#add-the-dependency" class="toc-h2 toc-link" data-title="add-the-dependency">Add the dependency</a>
@@ -294,39 +295,21 @@
 <p>May you have any question about this documentation, feel free to <a href="mailto:contact@abtastycom">reach out to us</a>.</p>
 <h1 id='app-prerequisites'>App prerequisites</h1>
 <blockquote>
-<p>Be sure that your app compile with at least the minSdkVersion 16 in the build.gradle file of your app module :</p>
+<p>Application minimum System Version required is 8.0</p>
 </blockquote>
-<pre class="highlight objective_c tab-objective_c"><code></code></pre>
-<blockquote>
-<p>Be sure that your app has the permission to use internet in your the Manifest file of your app :</p>
-</blockquote>
-<pre class="highlight objective_c tab-objective_c"><code>    <span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="n">android</span><span class="o">:</span><span class="n">name</span><span class="o">=</span><span class="s">"android.permission.INTERNET"</span> <span class="o">/&gt;</span>
-</code></pre>
+
 <ul>
-<li><p>Your app must be a native app written in Kotlin or Java code</p></li>
-<li><p>Your app must be compatible with the minimum sdk version 16 (Android 4.1)</p></li>
-<li><p>Your app must have the permissions to use the internet </p></li>
+<li><p>Your app must be a native app written in Swift or Objective C code</p></li>
+<li><p>Your app must be compatible with the minimum sdk version ios 8.0</p></li>
 </ul>
 <h1 id='getting-started'>Getting started</h1>
-<p>Follow these steps in order to compile and start the AB Tasty libraybyapi</p>
-<h3 id='add-the-repository'>Add the repository</h3>
+<p>Follow these steps in order to compile and start.</p>
+<h3 id='install-framework-via-pod'>install FrameWork via Pod</h3>
 <blockquote>
 <p>Add a repository in the <strong>main build.gradle</strong> file of your Android project:</p>
 </blockquote>
-<pre class="highlight objective_c tab-objective_c"><code><span class="n">allprojects</span> <span class="p">{</span>
-    <span class="n">repositories</span> <span class="p">{</span>
-        <span class="n">maven</span> <span class="p">{</span>
-            <span class="n">url</span> <span class="s">"s3://sdk.abtasty.com/android/"</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre><pre class="highlight plaintext"><code>allprojects {
-    repositories {
-        maven {
-            url "s3://sdk.abtasty.com/android/"
-        }
-    }
-}
+<pre class="highlight plaintext"><code>pod 'ABTastySdk', :http =&gt; 'http://sdk.abtasty.com/ios/ABTastySdk.zip'
+
 </code></pre>
 <p>First you need to add the following repository in the <strong>main build.gradle of your project</strong> in order for gradle to find the library to build with.</p>
 
@@ -1238,6 +1221,7 @@ Replace <code>xxxxxx</code> with the id of your campaign and <code>bbbbbb</code>
           <div class="lang-selector">
                 <a href="#" data-language-name="objective_c">objective_c</a>
                 <a href="#" data-language-name="Swift">Swift</a>
+                <a href="#" data-language-name="Ruby">Ruby</a>
           </div>
       </div>
     </div>
