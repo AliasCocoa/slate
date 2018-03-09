@@ -310,6 +310,7 @@ ABTastySdk support minimum ios 8.0+
 <li><p><a href='https://guides.cocoapods.org/using/getting-started.html#installation'>Install CocoaPods.</a></p></li>
 <li><p>Open Terminal and navigate to the directory that contains your project then enter the folowing command: <code>pod init</code> </p></li>
 <li><p>Open your Podfile and add the ABTAstySdk pod</p></li>
+<li><p>Run <code>pod install</code> from your Xcode project&#39;s base directory</p></li>
 </ol>
 <pre class="highlight plaintext"><code> target 'Your App' do
   use_frameworks!
@@ -319,10 +320,6 @@ end
 <aside class="warning">
 To use ABTAstySdk as a dynamic framework, make sure use_frameworks! is not commented out.
 </aside>
-
-<ol>
-<li>Run <code>pod install</code> from your Xcode project&#39;s base directory</li>
-</ol>
 <h3 id='manual-installation'>Manual Installation</h3><h3 id='initialize-and-start-sdk'>Initialize and start SDK</h3>
 <blockquote>
 <p>Call the function <em>initialize</em> and its inner function <em>start</em> from the class <em>ABTasty</em> to init and start the library</p>
