@@ -235,10 +235,7 @@
                     <a href="#manual-installation" class="toc-h2 toc-link" data-title="manual-installation">Manual Installation</a>
                   </li>
                   <li>
-                    <a href="#add-the-dependency" class="toc-h2 toc-link" data-title="add-the-dependency">Add the dependency</a>
-                  </li>
-                  <li>
-                    <a href="#initialize-and-start-the-library" class="toc-h2 toc-link" data-title="initialize-and-start-the-library">Initialize and start the library</a>
+                    <a href="#initialize-and-start-sdk" class="toc-h2 toc-link" data-title="initialize-and-start-sdk">Initialize and start SDK</a>
                   </li>
               </ul>
           </li>
@@ -297,34 +294,17 @@
 <p>May you have any question about this documentation, feel free to <a href="mailto:contact@abtastycom">reach out to us</a>.</p>
 <h1 id='app-prerequisites'>App prerequisites</h1>
 <ul>
-<li><p>Your app must be a native app written in Swift or Objective C code</p></li>
-<li><p>Your app must be compatible with the minimum sdk version iOS 8.0+</p></li>
+<li>Your app must be a native app written in Swift or Objective C.</li>
 </ul>
 
 <p><br>
 <aside class="warning">
-Your app must be compatible with the minimum sdk version iOS 8.0+
+* ABTastySdk support minimum ios 8.0+
 </aside>
 <br></p>
 <h1 id='getting-started'>Getting started</h1>
 <p>ABtastySDK is available through Pods and manual installation.</p>
-<h3 id='cocoapods'>Cocoapods</h3><h3 id='manual-installation'>Manual Installation</h3><h3 id='add-the-dependency'>Add the dependency</h3>
-<p>Then add the following library dependency in the <strong>build.gradle</strong> file of your <strong>app module</strong></p>
-
-<p><code>com.abtasty:librarybyapi:x.x.x</code></p>
-
-<aside class="notice">
-Replace <code>x.x.x</code> with the desired version.
-</aside>
-
-<p><br>
-<aside class="warning">
-Warning : As the librarybyapi is really light in terms of methods it also depends on other libraries and then in certain circumstances you may need 
-to enable the multidex option if your app dex file reach the limitation of 65k methods. Follow this link : <a href="https://developer.android.com/studio/build/multidex.html">Multidex</a>
-</aside></p>
-
-<p><br></p>
-<h3 id='initialize-and-start-the-library'>Initialize and start the library</h3>
+<h3 id='cocoapods'>Cocoapods</h3><h3 id='manual-installation'>Manual Installation</h3><h3 id='initialize-and-start-sdk'>Initialize and start SDK</h3>
 <blockquote>
 <p>Call the function <em>initialize</em> and its inner function <em>start</em> from the class <em>ABTasty</em> to init and start the library</p>
 </blockquote>
