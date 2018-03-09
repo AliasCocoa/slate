@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;objective_c&quot;,&quot;Swift&quot;]">
+  <body class="index" data-languages="[&quot;objective_c&quot;,&quot;Swift&quot;,&quot;Ruby&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -213,6 +213,7 @@
         <div class="lang-selector">
               <a href="#" data-language-name="objective_c">objective_c</a>
               <a href="#" data-language-name="Swift">Swift</a>
+              <a href="#" data-language-name="Ruby">Ruby</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -307,7 +308,23 @@ ABTastySdk support minimum ios 8.0+
 <h3 id='cocoapods'>Cocoapods</h3>
 <ol>
 <li><p><a href='https://guides.cocoapods.org/using/getting-started.html#installation'>Install CocoaPods.</a></p></li>
-<li><p>Open Terminal and navigate to the directory that contains your project then enter the folowing command: <code>pod init</code> </p></li>
+<li><p>Open Terminal and navigate to the directory that contains your project then enter the folowing command:
+<code>pod init</code> </p></li>
+<li><p>Open your Podfile and add the ABTAstySdk pod.</p></li>
+</ol>
+<pre class="highlight plaintext"><code> target 'Your App' do
+  use_frameworks!
+  pod 'ABTastySdk', :http =&gt; 'http://sdk.abtasty.com/ios/ABTastySdk.zip'
+end
+</code></pre>
+<aside class="warning">
+Congratulations !!
+<br><br>
+To use ABTAstySdk as a dynamic framework, make sure use_frameworks! is not commented out.
+</aside>
+
+<ol>
+<li>Run <code>pod install</code> from your Xcode project&#39;s base directory.</li>
 </ol>
 <h3 id='manual-installation'>Manual Installation</h3><h3 id='initialize-and-start-sdk'>Initialize and start SDK</h3>
 <blockquote>
@@ -1191,6 +1208,7 @@ Replace <code>xxxxxx</code> with the id of your campaign and <code>bbbbbb</code>
           <div class="lang-selector">
                 <a href="#" data-language-name="objective_c">objective_c</a>
                 <a href="#" data-language-name="Swift">Swift</a>
+                <a href="#" data-language-name="Ruby">Ruby</a>
           </div>
       </div>
     </div>
