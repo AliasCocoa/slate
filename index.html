@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;objc&quot;,&quot;Swift&quot;]">
+  <body class="index" data-languages="[&quot;objective_c&quot;,&quot;Swift&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -211,7 +211,7 @@
     <div class="toc-wrapper">
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
-              <a href="#" data-language-name="objc">objc</a>
+              <a href="#" data-language-name="objective_c">objective_c</a>
               <a href="#" data-language-name="Swift">Swift</a>
         </div>
         <div class="search">
@@ -296,11 +296,11 @@
 <blockquote>
 <p>Be sure that your app compile with at least the minSdkVersion 16 in the build.gradle file of your app module :</p>
 </blockquote>
-<pre class="highlight plaintext"><code></code></pre>
+<pre class="highlight objective_c tab-objective_c"><code></code></pre>
 <blockquote>
 <p>Be sure that your app has the permission to use internet in your the Manifest file of your app :</p>
 </blockquote>
-<pre class="highlight xml tab-xml"><code>    <span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">"android.permission.INTERNET"</span> <span class="nt">/&gt;</span>
+<pre class="highlight objective_c tab-objective_c"><code>    <span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="n">android</span><span class="o">:</span><span class="n">name</span><span class="o">=</span><span class="s">"android.permission.INTERNET"</span> <span class="o">/&gt;</span>
 </code></pre>
 <ul>
 <li><p>Your app must be a native app written in Kotlin or Java code</p></li>
@@ -313,7 +313,7 @@
 <blockquote>
 <p>Add a repository in the <strong>main build.gradle</strong> file of your Android project:</p>
 </blockquote>
-<pre class="highlight objective_c"><code><span class="n">allprojects</span> <span class="p">{</span>
+<pre class="highlight objective_c tab-objective_c"><code><span class="n">allprojects</span> <span class="p">{</span>
     <span class="n">repositories</span> <span class="p">{</span>
         <span class="n">maven</span> <span class="p">{</span>
             <span class="n">url</span> <span class="s">"s3://sdk.abtasty.com/android/"</span>
@@ -1236,7 +1236,7 @@ Replace <code>xxxxxx</code> with the id of your campaign and <code>bbbbbb</code>
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="objc">objc</a>
+                <a href="#" data-language-name="objective_c">objective_c</a>
                 <a href="#" data-language-name="Swift">Swift</a>
           </div>
       </div>
