@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;objective_c&quot;,&quot;Swift&quot;,&quot;Ruby&quot;]">
+  <body class="index" data-languages="[&quot;objective_c&quot;,&quot;Swift&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -213,7 +213,6 @@
         <div class="lang-selector">
               <a href="#" data-language-name="objective_c">objective_c</a>
               <a href="#" data-language-name="Swift">Swift</a>
-              <a href="#" data-language-name="Ruby">Ruby</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -297,36 +296,19 @@
 
 <p>May you have any question about this documentation, feel free to <a href="mailto:contact@abtastycom">reach out to us</a>.</p>
 <h1 id='app-prerequisites'>App prerequisites</h1>
-<blockquote>
-<p>iOS 8.0+</p>
-</blockquote>
-
 <ul>
 <li><p>Your app must be a native app written in Swift or Objective C code</p></li>
-<li><p>Your app must be compatible with the minimum sdk version ios 8.0</p></li>
+<li><p>Your app must be compatible with the minimum sdk version iOS 8.0+</p></li>
 </ul>
+
+<p><br>
+<aside class="warning">
+Your app must be compatible with the minimum sdk version iOS 8.0+
+</aside>
+<br></p>
 <h1 id='getting-started'>Getting started</h1>
 <p>ABtastySDK is available through Pods and manual installation.</p>
-<h3 id='cocoapods'>Cocoapods</h3>
-<blockquote>
-<p>Add a repository in the <strong>main build.gradle</strong> file of your Android project:</p>
-</blockquote>
-<pre class="highlight plaintext"><code>pod 'ABTastySdk', :http =&gt; 'http://sdk.abtasty.com/ios/ABTastySdk.zip'
-
-</code></pre>
-<p>First you need to add the following repository in the <strong>main build.gradle of your project</strong> in order for gradle to find the library to build with.</p>
-
-<p><code>s3://sdk.abtasty.com/android/</code></p>
-
-<p><br></p>
-<h3 id='manual-installation'>Manual Installation</h3><h3 id='add-the-dependency'>Add the dependency</h3>
-<blockquote>
-<p>Add the following library dependency in the <strong>build.gradle</strong> file of your <strong>app module</strong>:</p>
-</blockquote>
-<pre class="highlight gradle tab-gradle"><code><span class="k">dependencies</span> <span class="o">{</span>
-    <span class="n">implementation</span> <span class="s1">'com.abtasty:librarybyapi:b0.0.9'</span>
-<span class="o">}</span>
-</code></pre>
+<h3 id='cocoapods'>Cocoapods</h3><h3 id='manual-installation'>Manual Installation</h3><h3 id='add-the-dependency'>Add the dependency</h3>
 <p>Then add the following library dependency in the <strong>build.gradle</strong> file of your <strong>app module</strong></p>
 
 <p><code>com.abtasty:librarybyapi:x.x.x</code></p>
@@ -1224,7 +1206,6 @@ Replace <code>xxxxxx</code> with the id of your campaign and <code>bbbbbb</code>
           <div class="lang-selector">
                 <a href="#" data-language-name="objective_c">objective_c</a>
                 <a href="#" data-language-name="Swift">Swift</a>
-                <a href="#" data-language-name="Ruby">Ruby</a>
           </div>
       </div>
     </div>
