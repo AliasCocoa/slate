@@ -327,22 +327,20 @@ To use ABTAstySdk as a dynamic framework, make sure use_frameworks! is not comme
 </ol>
 <h3 id='initialize-and-start-sdk'>Initialize and start SDK</h3>
 <blockquote>
-<p>Call the function <em>initialize</em> and its inner function <em>start</em> from the class <em>ABTasty</em> to init and start the library</p>
+<p>Add the following code into your AppDelegate.m file</p>
 </blockquote>
-<pre class="highlight kotlin tab-kotlin"><code><span class="kd">class</span> <span class="nc">MyActivity</span> <span class="p">:</span> <span class="n">Activity</span><span class="p">()</span> <span class="p">{</span>
+<pre class="highlight objective_c tab-objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="nf">application</span><span class="p">:(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions</span><span class="p">:(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span> <span class="p">{</span>
 
-    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
-        <span class="k">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
-        <span class="n">ABTasty</span><span class="p">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">applicationContext</span><span class="p">,</span> <span class="n">AB_TASTY_KEY</span><span class="p">).</span><span class="n">start</span><span class="p">()</span>
-    <span class="p">}</span>
+    <span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">startABTastySdk</span><span class="p">];</span>
+    <span class="k">return</span> <span class="nb">YES</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
+</code></pre><pre class="highlight plaintext"><code>public class MyActivity extends Activity {
 
-    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">ABTasty</span><span class="o">.</span><span class="na">Companion</span><span class="o">.</span><span class="na">initialize</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">AB_TASTY_KEY</span><span class="o">).</span><span class="na">start</span><span class="o">();</span>
-    <span class="o">}</span>
-<span class="o">}</span>
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ABTasty.Companion.initialize(getApplicationContext(), AB_TASTY_KEY).start();
+    }
+}
 </code></pre>
 <p>Finally you just have to call the function <code>initialize</code> and its inner function <code>start</code> located in the <code>ABTasty</code> class. Put it at the most appropriate moment depending on your application to init and start the library.</p>
 
