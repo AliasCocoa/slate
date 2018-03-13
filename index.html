@@ -238,6 +238,9 @@
                   <li>
                     <a href="#initialization" class="toc-h2 toc-link" data-title="initialization">Initialization</a>
                   </li>
+                  <li>
+                    <a href="#initialize-with-tracking-data" class="toc-h2 toc-link" data-title="initialize-with-tracking-data">Initialize with tracking data</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -302,26 +305,19 @@ ABTastySdk support minimum ios 8.0+
 <br></p>
 <h1 id='getting-started'>Getting started</h1>
 <p>ABtastySDK is available through Pods and manual installation.</p>
-<h3 id='cocoapods'>Cocoapods</h3>
+<h3 id='cocoapods'>Cocoapods</h3><pre class="highlight ruby tab-ruby"><code> <span class="n">target</span> <span class="s1">'Your App'</span> <span class="k">do</span>
+  <span class="n">use_frameworks!</span>
+  <span class="n">pod</span> <span class="s1">'ABTastySdk'</span><span class="p">,</span> <span class="ss">:http</span> <span class="o">=&gt;</span> <span class="s1">'http://sdk.abtasty.com/ios/ABTastySdk.zip'</span>
+<span class="k">end</span>
+</code></pre>
 <ol>
 <li><p><a href='https://guides.cocoapods.org/using/getting-started.html#installation'>Install CocoaPods.</a></p></li>
 <li><p>Open Terminal and navigate to the directory that contains your project then enter the folowing command: <code>pod init</code> </p></li>
 <li><p>Open your Podfile and add the ABTAstySdk pod</p></li>
 <li><p>Run <code>pod install</code> from your Xcode project&#39;s base directory</p></li>
-<li><p>Make sure to always open the Xcode workspace instead of the project file when building your project:</p></li>
+<li><p>Make sure to always open the Xcode workspace instead of the project file when building your project</p></li>
 </ol>
 
-<pre>
-    includes:
-    - artists
-    - errors
-  </pre>
- 
-<pre class="highlight ruby tab-ruby"><code> <span class="n">target</span> <span class="s1">'Your App'</span> <span class="k">do</span>
-  <span class="n">use_frameworks!</span>
-  <span class="n">pod</span> <span class="s1">'ABTastySdk'</span><span class="p">,</span> <span class="ss">:http</span> <span class="o">=&gt;</span> <span class="s1">'http://sdk.abtasty.com/ios/ABTastySdk.zip'</span>
-<span class="k">end</span>
-</code></pre>
 <aside class="warning">
 To use ABTAstySdk as a dynamic framework, make sure use_frameworks! is not commented out.
 </aside>
@@ -332,6 +328,12 @@ To use ABTAstySdk as a dynamic framework, make sure use_frameworks! is not comme
 <li><p>After this manipulation, a popup will open, into it, don&#39;t forget to check &quot;Copy items if needed&quot;.</p></li>
 </ol>
 <h3 id='initialization'>Initialization</h3>
+<p>To run experiments with ABTasty you&#39;ll need to initialize ABTasty with AB_TASTY_KEY. ABTasty instance can both allocate, activate experiments and track events.</p>
+
+<aside class="notice">
+The <code>AB_TASTY_KEY</code> key is provided by AB Tasty.
+</aside>
+
 <blockquote>
 <p>Add the following code into your AppDelegate.m file </p>
 </blockquote>
@@ -344,28 +346,6 @@ To use ABTAstySdk as a dynamic framework, make sure use_frameworks! is not comme
         <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">startSdk</span><span class="p">(</span><span class="s">"YOUR_ACCESS_KEY"</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">true</span>
     <span class="p">}</span>
-</code></pre>
-<p>To run experiments with ABTasty you&#39;ll need to initialize ABTasty with AB_TASTY_KEY. ABTasty instance can both allocate, activate experiments and track events.</p>
-
-<aside class="notice">
-The <code>AB_TASTY_KEY</code> key is provided by AB Tasty.
-</aside>
-
-<p><br><br>
-<aside class="success">
-Congratulations !!
-<br><br>
-You should know be able to use the AB Tasty For App :)
-</aside></p>
-<h1 id='starting-campaigns'>Starting campaigns</h1>
-<p>This section of the documentation aims to help you to start a new campaign in your app using the ABTasty SDK.</p>
-<h2 id='sdk-initialization'>SDK Initialization</h2>
-<p>The first thing you need to do is initializing the SDK ABTasty. To do this, you just have to call the function <code>startABTastySdk</code> in the <code>ABTasty</code> class located in the frameWork <code>ABTastySdk.framework</code>.
-For each new user, at the very first initialization, the SDK is going to ask for a new visitor id to our servers and save it in a user Default.</p>
-
-<p><br></p>
-<h3 id='initialize'>Initialize</h3><pre class="highlight objective_c tab-objective_c"><code><span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">startABTastySdk</span><span class="p">:</span><span class="s">@"YOUR_ACCESS_KEY"</span><span class="p">];</span>
-</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">startSdk</span><span class="p">(</span><span class="s">"YOUR_ACCESS_KEY"</span><span class="p">)</span>
 </code></pre>
 <p><code>- (void)startABTastySdk:(NSString*)appId</code> </p>
 
@@ -421,6 +401,20 @@ For each new user, at the very first initialization, the SDK is going to ask for
 <td>infos tracking for default common data</td>
 </tr>
 </tbody></table>
+
+<p><br></p>
+
+<p><br><br>
+<aside class="success">
+Congratulations !!
+<br><br>
+You should know be able to use the AB Tasty For App :)
+</aside></p>
+<h1 id='starting-campaigns'>Starting campaigns</h1>
+<p>This section of the documentation aims to help you to start a new campaign in your app using the ABTasty SDK.</p>
+<h2 id='sdk-initialization'>SDK Initialization</h2>
+<p>The first thing you need to do is initializing the SDK ABTasty. To do this, you just have to call the function <code>startABTastySdk</code> in the <code>ABTasty</code> class located in the frameWork <code>ABTastySdk.framework</code>.
+For each new user, at the very first initialization, the SDK is going to ask for a new visitor id to our servers and save it in a user Default.</p>
 
 <p><br></p>
 <h2 id='activate-campaign'>Activate Campaign</h2>
