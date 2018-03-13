@@ -247,7 +247,7 @@
             <a href="#starting-campaigns" class="toc-h1 toc-link" data-title="starting-campaigns">Starting campaigns</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#sdk-initialization" class="toc-h2 toc-link" data-title="sdk-initialization">SDK Initialization</a>
+                    <a href="#allocate-campaign" class="toc-h2 toc-link" data-title="allocate-campaign">Allocate Campaign</a>
                   </li>
                   <li>
                     <a href="#activate-campaign" class="toc-h2 toc-link" data-title="activate-campaign">Activate Campaign</a>
@@ -346,6 +346,9 @@ To use ABTAstySdk as a dynamic framework, make sure use_frameworks! is not comme
 </code></pre>
 <p>To run experiments with ABTasty you&#39;ll need to initialize ABTasty with AB_TASTY_KEY. ABTasty instance can both allocate, activate experiments and track events.</p>
 
+<p>To do this, you just have to call the function <code>startABTastySdk</code> in the <code>ABTasty</code> class located in the frameWork <code>ABTastySdk.framework</code>.
+For each new user, at the very first initialization, the SDK is going to ask for a new visitor id to our servers and save it in a user Default.</p>
+
 <aside class="notice">
 The <code>AB_TASTY_KEY</code> key is provided by AB Tasty.
 </aside>
@@ -435,11 +438,8 @@ You should know be able to use the AB Tasty For App :)
 </aside></p>
 <h1 id='starting-campaigns'>Starting campaigns</h1>
 <p>This section of the documentation aims to help you to start a new campaign in your app using the ABTasty SDK.</p>
-<h2 id='sdk-initialization'>SDK Initialization</h2>
-<p>The first thing you need to do is initializing the SDK ABTasty. To do this, you just have to call the function <code>startABTastySdk</code> in the <code>ABTasty</code> class located in the frameWork <code>ABTastySdk.framework</code>.
-For each new user, at the very first initialization, the SDK is going to ask for a new visitor id to our servers and save it in a user Default.</p>
-
-<p><br></p>
+<h2 id='allocate-campaign'>Allocate Campaign</h2>
+<p>Once you get your visitor id, you can allocate campaign by calling &#39;allocateVariation&#39; function</p>
 <h2 id='activate-campaign'>Activate Campaign</h2>
 <p>Once you got a variation allocated for a campaign you need to activate it. This way it tells to AB Tasty that the current user got this variation for this campaign so it wont change and always get the same.</p>
 
