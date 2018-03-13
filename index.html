@@ -235,7 +235,7 @@
                     <a href="#manual-installation" class="toc-h2 toc-link" data-title="manual-installation">Manual Installation</a>
                   </li>
                   <li>
-                    <a href="#initialize-and-start-sdk" class="toc-h2 toc-link" data-title="initialize-and-start-sdk">Initialize and start SDK</a>
+                    <a href="#initialization" class="toc-h2 toc-link" data-title="initialization">Initialization</a>
                   </li>
               </ul>
           </li>
@@ -325,13 +325,19 @@ To use ABTAstySdk as a dynamic framework, make sure use_frameworks! is not comme
 <li><p>In Finder, navigate to the ABTastySdk.framework file and drop it under your &quot;Embedded Binaries&quot; section in Xcode</p></li>
 <li><p>After this manipulation, a popup will open, into it, don&#39;t forget to check &quot;Copy items if needed&quot;.</p></li>
 </ol>
-<h3 id='initialize-and-start-sdk'>Initialize and start SDK</h3>
+<h3 id='initialization'>Initialization</h3>
+<p>To run experiments with ABTasty you&#39;ll need to initialize ABTasty with AB_TASTY_KEY. ABTasty object can both allocate, activate experiments and track events.</p>
+
 <blockquote>
 <p>Add the following code into your AppDelegate.m file</p>
 </blockquote>
+
+<aside class="notice">
+Replace <code>AB_TASTY_KEY</code> with the key provided by AB Tasty.
+</aside>
 <pre class="highlight objective_c tab-objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="nf">application</span><span class="p">:(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions</span><span class="p">:(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span> <span class="p">{</span>
 
-    <span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">startABTastySdk</span><span class="p">];</span>
+    <span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">startABTastySdk</span><span class="p">:</span><span class="s">@"YOUR_ACCESS_KEY"</span><span class="p">];</span>
     <span class="k">return</span> <span class="nb">YES</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre><pre class="highlight plaintext"><code>public class MyActivity extends Activity {
