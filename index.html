@@ -285,7 +285,7 @@
         <h1 id='welcome'>Welcome</h1>
 <p>Welcome to the AB Tasty for app, <strong>ABTastySdk</strong> documentation !</p>
 
-<p>The ABTastySDK project is an iOS Framework that helps you to make server side tests on your iOS app.</p>
+<p>The ABTastySDK project is an iOS Framework that helps you to make server side tests on your native iOS app.</p>
 
 <p>You can use this FrameWork to access AB Tasty endpoints, which can generate a unique visitor ID, allocate a visitor to a test, and push visits and conversions events in order to help you analyze the outcomes of your campaigns.</p>
 
@@ -308,7 +308,12 @@ ABTastySdk support minimum ios 8.0+
 <li><p>Open Terminal and navigate to the directory that contains your project then enter the folowing command: <code>pod init</code> </p></li>
 <li><p>Open your Podfile and add the ABTAstySdk pod</p></li>
 <li><p>Run <code>pod install</code> from your Xcode project&#39;s base directory</p></li>
+<li><p>Make sure to always open the Xcode workspace instead of the project file when building your project:</p></li>
 </ol>
+
+<pre class="highlight">$ open App.xcworkspace
+</pre>
+ 
 <pre class="highlight ruby tab-ruby"><code> <span class="n">target</span> <span class="s1">'Your App'</span> <span class="k">do</span>
   <span class="n">use_frameworks!</span>
   <span class="n">pod</span> <span class="s1">'ABTastySdk'</span><span class="p">,</span> <span class="ss">:http</span> <span class="o">=&gt;</span> <span class="s1">'http://sdk.abtasty.com/ios/ABTastySdk.zip'</span>
