@@ -367,14 +367,14 @@ The <code>AB_TASTY_KEY</code> key is provided by AB Tasty.
 </tbody></table>
 <h3 id='initialize-with-tracking-data'>Initialize with tracking data</h3><pre class="highlight objective_c tab-objective_c"><code>    <span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">startABTastySdk</span><span class="p">:</span><span class="s">@"YOUR_ACCESS_KEY"</span> <span class="nf">WithTrackingInfos</span><span class="p">:</span>
     <span class="p">@{</span><span class="s">@"adel"</span><span class="o">:</span><span class="mi">@1</span><span class="p">,</span>
-    <span class="s">@"Longitude"</span><span class="o">:</span><span class="mf">@2.352222</span><span class="p">,</span>
-    <span class="s">@"Latitude"</span><span class="o">:</span> <span class="mf">@48.856614</span><span class="p">,</span>
+    <span class="s">@"Longitude"</span><span class="o">:</span><span class="mf">@2.3333</span><span class="p">,</span>
+    <span class="s">@"Latitude"</span><span class="o">:</span> <span class="mf">@48.48</span><span class="p">,</span>
     <span class="s">@"ipAddress"</span><span class="o">:</span><span class="s">@"192.168.1.1"</span><span class="p">,</span>
     <span class="s">@"blalala"</span><span class="o">:</span><span class="mi">@1</span><span class="p">,</span>
     <span class="s">@"ababaababba"</span><span class="o">:</span><span class="mi">@1</span><span class="p">,</span>
     <span class="s">@"errrrrrrr"</span><span class="o">:</span><span class="mi">@1</span><span class="p">}];</span>
 </code></pre><pre class="highlight swift tab-swift"><code>        <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">startSdk</span><span class="p">(</span><span class="s">"YOUR_ACCESS_KEY"</span><span class="p">,</span> <span class="nv">withTrackingInfos</span><span class="p">:</span>
-         <span class="p">[</span><span class="s">"Longitude"</span><span class="p">:</span><span class="mi">12</span><span class="p">,</span> <span class="s">"Latitude"</span><span class="p">:</span><span class="mi">12</span><span class="p">,</span><span class="s">"ipAddress"</span><span class="p">:</span><span class="s">"192.168.1.1"</span><span class="p">])</span>
+         <span class="p">[</span><span class="s">"Longitude"</span><span class="p">:</span><span class="mf">2.3333</span><span class="p">,</span> <span class="s">"Latitude"</span><span class="p">:</span><span class="mf">48.48</span><span class="p">,,</span><span class="s">"ipAddress"</span><span class="p">:</span><span class="s">"192.168.1.1"</span><span class="p">])</span>
 </code></pre>
 <p><code>- (void)startABTastySdk:(NSString*)appId WithTrackingInfos:(NSDictionary*)pInfosTracking</code></p>
 
@@ -396,6 +396,32 @@ The <code>AB_TASTY_KEY</code> key is provided by AB Tasty.
 <td>pInfosTracking</td>
 <td>NSDictionary</td>
 <td>infos tracking for default common data</td>
+</tr>
+</tbody></table>
+
+<p>COMMON TRACKING INFORMATIONS</p>
+
+<table><thead>
+<tr>
+<th>KEY</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Longitude</td>
+<td>Double</td>
+<td>Longitude</td>
+</tr>
+<tr>
+<td>Latitude</td>
+<td>Double</td>
+<td>Latitude</td>
+</tr>
+<tr>
+<td>ipAddress</td>
+<td>NSString</td>
+<td>ip adresse</td>
 </tr>
 </tbody></table>
 
