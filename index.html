@@ -229,13 +229,13 @@
             <a href="#getting-started" class="toc-h1 toc-link" data-title="getting-started">Getting started</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#add-the-repository" class="toc-h2 toc-link" data-title="add-the-repository">Add the repository</a>
+                    <a href="#cocoapods" class="toc-h2 toc-link" data-title="cocoapods">Cocoapods</a>
                   </li>
                   <li>
-                    <a href="#add-the-dependency" class="toc-h2 toc-link" data-title="add-the-dependency">Add the dependency</a>
+                    <a href="#manual-installation" class="toc-h2 toc-link" data-title="manual-installation">Manual Installation</a>
                   </li>
                   <li>
-                    <a href="#initialize-and-start-the-library" class="toc-h2 toc-link" data-title="initialize-and-start-the-library">Initialize and start the library</a>
+                    <a href="#initialize-abtastysdk" class="toc-h2 toc-link" data-title="initialize-abtastysdk">Initialize ABTastySDK</a>
                   </li>
               </ul>
           </li>
@@ -285,64 +285,40 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='welcome'>Welcome</h1>
-<p>Welcome to the AB Tasty for app <strong>librarybyapi</strong> documentation!</p>
+<p>Welcome to the AB Tasty for app <strong>ABTastySdk</strong> documentation!</p>
 
-<p>The librarybyapi project is an Android library that helps you perform server side tests on your Android app.</p>
+<p>The ABTastySDK project is an iOS Framework that helps you to make server side tests on your native iOS app.</p>
 
-<p>You can use this library to access AB Tasty endpoints, which can generate a unique visitor ID, allocate a visitor to a test, and push visits and conversions events in order to help you analyze the outcomes of your campaigns.</p>
+<p>You can use this FrameWork to access AB Tasty endpoints, which can generate a unique visitor ID, allocate a visitor to a test, and push visits and conversions events in order to help you analyze the outcomes of your campaigns.</p>
 
 <p>Should you have any question about this documentation, feel free to <a href="mailto:contact@abtastycom">reach out to us</a>.</p>
 <h1 id='app-prerequisites'>App prerequisites</h1>
-<blockquote>
-<p>Be sure that your app compile with at least the minSdkVersion 16 in the build.gradle file of your app module :</p>
-</blockquote>
-<pre class="highlight gradle tab-gradle"><code><span class="n">android</span> <span class="o">{</span>
-
-<span class="n">compileSdkVersion</span> <span class="mi">27</span>
-<span class="n">defaultConfig</span> <span class="o">{</span>
-
-<span class="n">minSdkVersion</span> <span class="mi">16</span>
-<span class="o">...</span>
-<span class="o">}</span>
-</code></pre>
-<blockquote>
-<p>Be sure that your app has the permission to use internet in your the Manifest file of your app :</p>
-</blockquote>
-<pre class="highlight xml tab-xml"><code><span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">"android.permission.INTERNET"</span> <span class="nt">/&gt;</span>
-</code></pre>
 <ul>
-<li><p>Your app must be a native app written in Kotlin or Java code</p></li>
-<li><p>Your app must be compatible with Android api version 16 at least (Android 4.1)</p></li>
-<li><p>Your app must have the necessary permissions to use the internet</p></li>
+<li><p>Your app must be a native app written in Swift or Objective C.</p></li>
+<li><p>ABTastySdk support minimum ios 8.0+</p></li>
 </ul>
 <h1 id='getting-started'>Getting started</h1>
-<p>Follow these steps in order to compile and start the AB Tasty libraybyapi</p>
-<h3 id='add-the-repository'>Add the repository</h3>
-<blockquote>
-<p>Add a repository in the <strong>main build.gradle</strong> file of your Android project:</p>
-</blockquote>
-<pre class="highlight gradle tab-gradle"><code><span class="k">allprojects</span> <span class="o">{</span>
-<span class="k">repositories</span> <span class="o">{</span>
-<span class="n">maven</span> <span class="o">{</span>
-<span class="n">url</span> <span class="s2">"s3://sdk.abtasty.com/android/"</span>
-<span class="o">}</span>
-<span class="o">}</span>
-<span class="o">}</span>
-</code></pre>
+<p>ABtastySDK is available through Pods and manual installation.</p>
+<h3 id='cocoapods'>Cocoapods</h3>
+<ol>
+<li><p><a href='https://guides.cocoapods.org/'> Install CocoaPods.</p></li>
+<li><p>Open Terminal and navigate to the directory that contains your project then enter the folowing command: pod init</p></li>
+<li><p>Open your Podfile and add the ABTAstySdk pod</p></li>
+<li><p>Run pod install from your Xcode project&#39;s base directory</p></li>
+<li><p>Make sure to always open the Xcode workspace instead of the project file when building your project</p></li>
+</ol>
+
 <p>First add the following repository in the <strong>main build.gradle of your project</strong> in order for gradle to find the library to build with.</p>
 
 <p><code>s3://sdk.abtasty.com/android/</code></p>
 
 <p><br></p>
-<h3 id='add-the-dependency'>Add the dependency</h3>
-<blockquote>
-<p>Add the following library dependency in the <strong>build.gradle</strong> file of your <strong>app module</strong>:</p>
-</blockquote>
-<pre class="highlight gradle tab-gradle"><code><span class="k">dependencies</span> <span class="o">{</span>
-<span class="n">implementation</span> <span class="s1">'com.abtasty:librarybyapi:b0.0.9'</span>
-<span class="o">}</span>
-</code></pre>
-<p>Then add the following library dependency in the <strong>build.gradle</strong> file of your <strong>app module</strong></p>
+<h3 id='manual-installation'>Manual Installation</h3>
+<ol>
+<li><p>Download the frameWork ABTastySdk.framework</p></li>
+<li><p>In Finder, navigate to the ABTastySdk.framework file and drop it under your &quot;Embedded Binaries&quot; section in Xcode</p></li>
+<li><p>After this manipulation, a popup will open, into it, don&#39;t forget to check &quot;Copy items if needed&quot;.</p></li>
+</ol>
 
 <p><code>com.abtasty:librarybyapi:x.x.x</code></p>
 
@@ -356,7 +332,7 @@ Warning : As the librarybyapi contains few methods it depends on other libraries
 </aside></p>
 
 <p><br></p>
-<h3 id='initialize-and-start-the-library'>Initialize and start the library</h3>
+<h3 id='initialize-abtastysdk'>Initialize ABTastySDK</h3>
 <blockquote>
 <p>Call the function <em>initialize</em> and its inner function <em>start</em> from the class <em>ABTasty</em> to init and start the library</p>
 </blockquote>
