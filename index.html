@@ -328,7 +328,7 @@ To use ABTAstySdk as a dynamic framework, make sure use_frameworks! is not comme
 </ol>
 <h3 id='initialization'>Initialization</h3>
 <blockquote>
-<p>Add the following code into your AppDelegate.m file</p>
+<p>Add the following code into your AppDelegate.m file </p>
 </blockquote>
 <pre class="highlight objective_c tab-objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="nf">application</span><span class="p">:(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions</span><span class="p">:(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span> <span class="p">{</span>
 
@@ -353,32 +353,16 @@ Congratulations !!
 You should know be able to use the AB Tasty For App :)
 </aside></p>
 <h1 id='starting-campaigns'>Starting campaigns</h1>
-<p>This section of the documentation aims to help you to start a new campaign in your app using the ABTasty android librarybyapi.</p>
+<p>This section of the documentation aims to help you to start a new campaign in your app using the ABTasty SDK.</p>
 <h2 id='library-initialization'>Library Initialization</h2>
-<p>The first thing you need to do is initializing the library. To do this, you just have to call the function <code>initialize</code> in the <code>ABTasty</code> class located in the package <code>com.abtasty.librarybyapi.main</code>.
-For each new user, at the very first initialization, the library is going to ask for a new visitor id to our servers and save it in a database.</p>
+<p>The first thing you need to do is initializing the SDK ABTasty. To do this, you just have to call the function <code>startABTastySdk</code> in the <code>ABTasty</code> class located in the frameWork <code>ABTastySdk.framework</code>.
+For each new user, at the very first initialization, the SDK is going to ask for a new visitor id to our servers and save it in a user Default.</p>
 
 <p><br></p>
-<h3 id='initialize'>Initialize</h3><pre class="highlight kotlin tab-kotlin"><code><span class="kd">class</span> <span class="nc">MyActivity</span> <span class="p">:</span> <span class="n">Activity</span><span class="p">()</span> <span class="p">{</span>
-
-    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
-        <span class="k">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
-
-        <span class="n">ABTasty</span><span class="p">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">applicationContext</span><span class="p">,</span> <span class="n">AB_TASTY_KEY</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
-    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
-
-        <span class="n">ABTasty</span><span class="o">.</span><span class="na">Companion</span><span class="o">.</span><span class="na">initialize</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">AB_TASTY_KEY</span><span class="o">).</span><span class="na">start</span><span class="o">();</span>
-    <span class="o">}</span>
-<span class="o">}</span>
+<h3 id='initialize'>Initialize</h3><pre class="highlight objective_c tab-objective_c"><code><span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">startABTastySdk</span><span class="p">:</span><span class="s">@"AIzaSyC5Dn9qmVBtWxOSJPWneDUEUolMOTOS8b8"</span><span class="p">];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">startSdk</span><span class="p">(</span><span class="s">"AIzaSyBOtlLZ1TPTmS1HJYvL1xVuiB5GndXD4P8"</span><span class="p">)</span>
 </code></pre>
-<p><code>fun initialize(context: Context, token: String) : ABInitializer</code> </p>
-
-<p>This function is the main library initializer.</p>
+<p><code>- (void)startABTastySdk:(NSString*)appId</code> </p>
 
 <table><thead>
 <tr>
@@ -388,24 +372,11 @@ For each new user, at the very first initialization, the library is going to ask
 </tr>
 </thead><tbody>
 <tr>
-<td>context</td>
-<td>Context</td>
-<td>Application context of your application.</td>
-</tr>
-<tr>
-<td>token</td>
-<td>String</td>
-<td>Access key provided by AB Tasty</td>
+<td>appId</td>
+<td>NSString</td>
+<td>Access key provided by AB Tasty.</td>
 </tr>
 </tbody></table>
-
-<p><br></p>
-
-<aside class="notice">
-This function returns an `ABInitializer` builder object in which you can pass some of the following initial configurations methods. Then call `start` to build and start the library with the given config.
-</aside>
-
-<p><br></p>
 <h3 id='initialize-with-campaign-ids'>Initialize with campaign Ids</h3><pre class="highlight kotlin tab-kotlin"><code><span class="kd">class</span> <span class="nc">MyActivity</span> <span class="p">:</span> <span class="n">Activity</span><span class="p">()</span> <span class="p">{</span>
 
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
