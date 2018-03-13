@@ -332,13 +332,8 @@ To use ABTAstySdk as a dynamic framework, make sure use_frameworks! is not comme
 </ol>
 <h3 id='initialization'>Initialization</h3>
 <blockquote>
-<p>Add the following code into your AppDelegate.m file 
-To run experiments with ABTasty you&#39;ll need to initialize ABTasty with AB_TASTY_KEY. ABTasty instance can both allocate, activate experiments and track events.</p>
+<p>Add the following code into your AppDelegate.m file </p>
 </blockquote>
-
-<aside class="notice">
-The <code>AB_TASTY_KEY</code> key is provided by AB Tasty.
-</aside>
 <pre class="highlight objective_c tab-objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="nf">application</span><span class="p">:(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions</span><span class="p">:(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span> <span class="p">{</span>
 
     <span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">startABTastySdk</span><span class="p">:</span><span class="s">@"YOUR_ACCESS_KEY"</span><span class="p">];</span>
@@ -349,6 +344,12 @@ The <code>AB_TASTY_KEY</code> key is provided by AB Tasty.
         <span class="k">return</span> <span class="kc">true</span>
     <span class="p">}</span>
 </code></pre>
+<p>To run experiments with ABTasty you&#39;ll need to initialize ABTasty with AB_TASTY_KEY. ABTasty instance can both allocate, activate experiments and track events.</p>
+
+<aside class="notice">
+The <code>AB_TASTY_KEY</code> key is provided by AB Tasty.
+</aside>
+
 <p><code>- (void)startABTastySdk:(NSString*)appId</code> </p>
 
 <table><thead>
