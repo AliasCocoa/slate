@@ -247,9 +247,6 @@
                     <a href="#sdk-initialization" class="toc-h2 toc-link" data-title="sdk-initialization">SDK Initialization</a>
                   </li>
                   <li>
-                    <a href="#allocate-variations" class="toc-h2 toc-link" data-title="allocate-variations">Allocate variations</a>
-                  </li>
-                  <li>
                     <a href="#activate-campaign" class="toc-h2 toc-link" data-title="activate-campaign">Activate Campaign</a>
                   </li>
               </ul>
@@ -377,7 +374,7 @@ For each new user, at the very first initialization, the SDK is going to ask for
 <td>Access key provided by AB Tasty.</td>
 </tr>
 </tbody></table>
-<h3 id='initialize-with-campaign-ids'>Initialize with campaign Ids</h3><pre class="highlight objective_c tab-objective_c"><code>    <span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">startABTastySdk</span><span class="p">:</span><span class="s">@"YOUR_ACCESS_KEY"</span> <span class="nf">WithTrackingInfos</span><span class="p">:</span>
+<h3 id='initialize-with-tracking-data'>Initialize with tracking data</h3><pre class="highlight objective_c tab-objective_c"><code>    <span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">startABTastySdk</span><span class="p">:</span><span class="s">@"YOUR_ACCESS_KEY"</span> <span class="nf">WithTrackingInfos</span><span class="p">:</span>
     <span class="p">@{</span><span class="s">@"adel"</span><span class="o">:</span><span class="mi">@1</span><span class="p">,</span>
     <span class="s">@"Longitude"</span><span class="o">:</span><span class="mf">@2.352222</span><span class="p">,</span>
     <span class="s">@"Latitude"</span><span class="o">:</span> <span class="mf">@48.856614</span><span class="p">,</span>
@@ -396,46 +393,6 @@ For each new user, at the very first initialization, the SDK is going to ask for
 </code></pre>
 <p><code>- (void)startABTastySdk:(NSString*)appId WithTrackingInfos:(NSDictionary*)pInfosTracking</code></p>
 
-<p>This method allows you to set campaigns ids to preload so the library is going to allocate all the campaigns variations at initialization time. Then all these campaigns will be available when the sdk is ready.</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>campaignIds</td>
-<td>ArrayList<String></td>
-<td>ArrayList<String> of ids of the desired campaigns.</td>
-</tr>
-</tbody></table>
-
-<p><br></p>
-<h3 id='initialize-with-tracking-data'>Initialize with tracking data</h3><pre class="highlight kotlin tab-kotlin"><code><span class="kd">class</span> <span class="nc">MyActivity</span> <span class="p">:</span> <span class="n">Activity</span><span class="p">()</span> <span class="p">{</span>
-
-    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
-        <span class="k">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
-
-        <span class="n">ABTasty</span><span class="p">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">applicationContext</span><span class="p">,</span> <span class="n">AB_TASTY_KEY</span><span class="p">)</span>
-                <span class="p">.</span><span class="n">withTrackingData</span><span class="p">(</span><span class="n">ABTracker</span><span class="p">.</span><span class="n">Builder</span><span class="p">().</span><span class="n">setDeviceType</span><span class="p">(</span><span class="n">DeviceType</span><span class="p">.</span><span class="n">MOBILE_PHONE</span><span class="p">).</span><span class="n">build</span><span class="p">())</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
-    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
-
-        <span class="n">ABTasty</span><span class="o">.</span><span class="na">Companion</span><span class="o">.</span><span class="na">initialize</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">AB_TASTY_KEY</span><span class="o">)</span>
-                <span class="o">.</span><span class="na">withTrackingData</span><span class="o">(</span><span class="k">new</span> <span class="n">ABTracker</span><span class="o">.</span><span class="na">Builder</span><span class="o">().</span><span class="na">setDeviceType</span><span class="o">(</span><span class="n">DeviceType</span><span class="o">.</span><span class="na">MOBILE_PHONE</span><span class="o">).</span><span class="na">build</span><span class="o">())</span>
-                <span class="o">.</span><span class="na">start</span><span class="o">();</span>
-
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre>
-<p><code>fun withTrackingData(tracker : ABTracker) : ABInitializer</code></p>
-
 <p>This method allows you to set default common tracking data that you want to share between all your events.</p>
 
 <table><thead>
@@ -446,261 +403,18 @@ For each new user, at the very first initialization, the SDK is going to ask for
 </tr>
 </thead><tbody>
 <tr>
-<td>tracker</td>
-<td>ABTracker</td>
-<td>Tracker with default common data</td>
+<td>appId</td>
+<td>NSString</td>
+<td>TrackeAccess key provided by AB Tasty.</td>
+</tr>
+<tr>
+<td>pInfosTracking</td>
+<td>NSDictionary</td>
+<td>infos tracking for default common data</td>
 </tr>
 </tbody></table>
 
 <p><br></p>
-<h3 id='initialize-with-ready'>Initialize with ready</h3><pre class="highlight kotlin tab-kotlin"><code><span class="kd">class</span> <span class="nc">MyActivity</span> <span class="p">:</span> <span class="n">Activity</span><span class="p">()</span> <span class="p">{</span>
-
-    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
-        <span class="k">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
-
-        <span class="n">ABTasty</span><span class="p">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">applicationContext</span><span class="p">,</span> <span class="n">AB_TASTY_KEY</span><span class="p">)</span>
-                <span class="p">.</span><span class="n">withWhenReady</span> <span class="p">{</span>
-                    <span class="n">System</span><span class="p">.</span><span class="k">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"&gt; READY"</span><span class="p">)</span>
-                <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
-    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
-
-        <span class="n">ABTasty</span><span class="o">.</span><span class="na">Companion</span><span class="o">.</span><span class="na">initialize</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">AB_TASTY_KEY</span><span class="o">)</span>
-                <span class="o">.</span><span class="na">withWhenReady</span><span class="o">(</span><span class="k">new</span> <span class="n">Function0</span><span class="o">&lt;</span><span class="n">Unit</span><span class="o">&gt;()</span> <span class="o">{</span>
-                    <span class="nd">@Override</span>
-                    <span class="kd">public</span> <span class="n">Unit</span> <span class="nf">invoke</span><span class="o">()</span> <span class="o">{</span>
-                        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&gt; READY"</span><span class="o">);</span>
-                        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
-                    <span class="o">}</span>
-                <span class="o">})</span>
-                <span class="o">.</span><span class="na">start</span><span class="o">();</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre>
-<p><code>withWhenReady(lambda: () -&gt; Unit) : ABInitializer</code></p>
-
-<p>As the sdk is asynchronous and run in parallel, this method allows you to set a lambda which is going to be executed when the library is ready.</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>lambda</td>
-<td>lambda</td>
-<td>Lambda that is going to be invoked when the library has finished to initialize itself.</td>
-</tr>
-</tbody></table>
-
-<p><br></p>
-<h3 id='initialize-with-logs'>Initialize with logs</h3><pre class="highlight kotlin tab-kotlin"><code><span class="kd">class</span> <span class="nc">MyActivity</span> <span class="p">:</span> <span class="n">Activity</span><span class="p">()</span> <span class="p">{</span>
-
-    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
-        <span class="k">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
-
-        <span class="n">ABTasty</span><span class="p">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">applicationContext</span><span class="p">,</span> <span class="n">AB_TASTY_KEY</span><span class="p">)</span>
-                <span class="p">.</span><span class="n">withLogMode</span><span class="p">(</span><span class="n">LogMode</span><span class="p">.</span><span class="n">ALL</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
-    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
-
-        <span class="n">ABTasty</span><span class="o">.</span><span class="na">Companion</span><span class="o">.</span><span class="na">initialize</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">AB_TASTY_KEY</span><span class="o">)</span>
-                <span class="o">.</span><span class="na">withLogMode</span><span class="o">(</span><span class="n">LogMode</span><span class="o">.</span><span class="na">ALL</span><span class="o">)</span>
-                <span class="o">.</span><span class="na">start</span><span class="o">();</span>
-
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre>
-<p><code>fun withLogMode(mode : LogMode) : ABInitializer</code></p>
-
-<p>This method aims to enable the logs from the library. </p>
-
-<p>It can be one of the following (NONE by default) : </p>
-
-<ul>
-<li>ALL</li>
-<li>NONE</li>
-<li>VERBOSE</li>
-<li>ERROR</li>
-</ul>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>mode</td>
-<td>LogMode(Enum)</td>
-<td>The log mode enum to enable</td>
-</tr>
-</tbody></table>
-
-<p><br></p>
-<h3 id='initialize-with-onerror'>Initialize with onError</h3><pre class="highlight kotlin tab-kotlin"><code><span class="kd">class</span> <span class="nc">MyActivity</span> <span class="p">:</span> <span class="n">Activity</span><span class="p">()</span> <span class="p">{</span>
-
-    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
-        <span class="k">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
-
-        <span class="n">ABTasty</span><span class="p">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">applicationContext</span><span class="p">,</span> <span class="n">AB_TASTY_KEY</span><span class="p">)</span>
-                <span class="p">.</span><span class="n">withOnError</span> <span class="p">{</span> <span class="n">tag</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="n">String</span> <span class="p">-&gt;</span>
-                    <span class="n">System</span><span class="p">.</span><span class="k">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"&gt; ERROR : $tag - $message"</span><span class="p">)</span>
-                <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
-    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
-
-        <span class="n">ABTasty</span><span class="o">.</span><span class="na">Companion</span><span class="o">.</span><span class="na">initialize</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">AB_TASTY_KEY</span><span class="o">)</span>
-                <span class="o">.</span><span class="na">withOnError</span><span class="o">(</span><span class="k">new</span> <span class="n">Function2</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">,</span> <span class="n">Unit</span><span class="o">&gt;()</span> <span class="o">{</span>
-                    <span class="nd">@Override</span>
-                    <span class="kd">public</span> <span class="n">Unit</span> <span class="nf">invoke</span><span class="o">(</span><span class="n">String</span> <span class="n">tag</span><span class="o">,</span> <span class="n">String</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
-                        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&gt; ERROR : "</span> <span class="o">+</span> <span class="n">tag</span> <span class="o">+</span> <span class="s">" - "</span> <span class="o">+</span> <span class="n">message</span><span class="o">);</span>
-                        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
-                    <span class="o">}</span>
-                <span class="o">})</span>
-                <span class="o">.</span><span class="na">start</span><span class="o">();</span>
-
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre>
-<p><code>fun withOnError(lambda: (tag:String, message:String) -&gt; Unit) : ABInitializer</code></p>
-
-<p>This method allows you to set a lambda which is going to be executed if an error occurs with the tag and the message as a parameters.</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>lambda</td>
-<td>lambda</td>
-<td>Lambda that is going to be invoked if an error occurs associated with a tag and an error message.</td>
-</tr>
-</tbody></table>
-
-<p><br></p>
-<h3 id='start'>Start</h3><pre class="highlight kotlin tab-kotlin"><code><span class="kd">class</span> <span class="nc">MyActivity</span> <span class="p">:</span> <span class="n">Activity</span><span class="p">()</span> <span class="p">{</span>
-
-    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
-        <span class="k">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
-
-        <span class="kd">val</span> <span class="py">campaigns</span> <span class="p">=</span> <span class="n">ArrayList</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;(</span><span class="n">arrayOf</span><span class="p">(</span><span class="s">"111111"</span><span class="p">,</span> <span class="s">"222222"</span><span class="p">).</span><span class="n">asList</span><span class="p">())</span>
-
-        <span class="n">ABTasty</span><span class="p">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">applicationContext</span><span class="p">,</span> <span class="n">AB_TASTY_KEY</span><span class="p">)</span>
-                <span class="p">.</span><span class="n">withCampaignIds</span><span class="p">(</span><span class="n">campaigns</span><span class="p">)</span>
-                <span class="p">.</span><span class="n">withWhenReady</span> <span class="p">{</span>
-                    <span class="n">System</span><span class="p">.</span><span class="k">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"&gt; READY"</span><span class="p">)</span>
-                <span class="p">}</span>
-                <span class="p">.</span><span class="n">withTrackingData</span><span class="p">(</span><span class="n">ABTracker</span><span class="p">.</span><span class="n">Builder</span><span class="p">().</span><span class="n">setDeviceType</span><span class="p">(</span><span class="n">DeviceType</span><span class="p">.</span><span class="n">MOBILE_PHONE</span><span class="p">).</span><span class="n">build</span><span class="p">())</span>
-                <span class="p">.</span><span class="n">withLogMode</span><span class="p">(</span><span class="n">LogMode</span><span class="p">.</span><span class="n">ALL</span><span class="p">)</span>
-                <span class="p">.</span><span class="n">withOnError</span> <span class="p">{</span> <span class="n">tag</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="n">String</span> <span class="p">-&gt;</span>
-                    <span class="n">System</span><span class="p">.</span><span class="k">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"&gt; ERROR : $tag - $message"</span><span class="p">)</span>
-                <span class="p">}</span>
-                <span class="p">.</span><span class="n">start</span><span class="p">()</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
-    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
-
-        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">campaigns</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="s">"111111"</span><span class="o">,</span> <span class="s">"222222"</span><span class="o">));</span>
-
-        <span class="n">ABTasty</span><span class="o">.</span><span class="na">Companion</span><span class="o">.</span><span class="na">initialize</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">AB_TASTY_KEY</span><span class="o">)</span>
-                <span class="o">.</span><span class="na">withCampaignIds</span><span class="o">(</span><span class="n">campaigns</span><span class="o">)</span>
-                <span class="o">.</span><span class="na">withWhenReady</span><span class="o">(</span><span class="k">new</span> <span class="n">Function0</span><span class="o">&lt;</span><span class="n">Unit</span><span class="o">&gt;()</span> <span class="o">{</span>
-                    <span class="nd">@Override</span>
-                    <span class="kd">public</span> <span class="n">Unit</span> <span class="nf">invoke</span><span class="o">()</span> <span class="o">{</span>
-                        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&gt; READY"</span><span class="o">);</span>
-                        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
-                    <span class="o">}</span>
-                <span class="o">})</span>
-                <span class="o">.</span><span class="na">withTrackingData</span><span class="o">(</span><span class="k">new</span> <span class="n">ABTracker</span><span class="o">.</span><span class="na">Builder</span><span class="o">().</span><span class="na">setDeviceType</span><span class="o">(</span><span class="n">DeviceType</span><span class="o">.</span><span class="na">MOBILE_PHONE</span><span class="o">).</span><span class="na">build</span><span class="o">())</span>
-                <span class="o">.</span><span class="na">withLogMode</span><span class="o">(</span><span class="n">LogMode</span><span class="o">.</span><span class="na">ALL</span><span class="o">)</span>
-                <span class="o">.</span><span class="na">withOnError</span><span class="o">(</span><span class="k">new</span> <span class="n">Function2</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">,</span> <span class="n">Unit</span><span class="o">&gt;()</span> <span class="o">{</span>
-                    <span class="nd">@Override</span>
-                    <span class="kd">public</span> <span class="n">Unit</span> <span class="nf">invoke</span><span class="o">(</span><span class="n">String</span> <span class="n">tag</span><span class="o">,</span> <span class="n">String</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
-                        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&gt; ERROR : "</span> <span class="o">+</span> <span class="n">tag</span> <span class="o">+</span> <span class="s">" - "</span> <span class="o">+</span> <span class="n">message</span><span class="o">);</span>
-                        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
-                    <span class="o">}</span>
-                <span class="o">})</span>
-                <span class="o">.</span><span class="na">start</span><span class="o">();</span>
-
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre>
-<p><code>fun start()</code></p>
-
-<p>The <code>start</code> method finally build the <code>ABInitializer</code> config and start the initialization of the library. </p>
-<h2 id='allocate-variations'>Allocate variations</h2><pre class="highlight kotlin tab-kotlin"><code> <span class="n">ABTasty</span><span class="p">.</span><span class="n">getVariationIdForCampaign</span><span class="p">(</span><span class="s">"xxxxxx"</span><span class="p">,</span> <span class="p">{</span>
-        <span class="k">when</span> <span class="p">(</span><span class="n">it</span><span class="p">)</span> <span class="p">{</span>
-            <span class="s">"aaaaaa"</span> <span class="p">-&gt;</span> <span class="n">System</span><span class="p">.</span><span class="k">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="err">'</span><span class="n">Variation</span> <span class="n">A</span><span class="err">'</span><span class="p">)</span>
-            <span class="s">"bbbbbb"</span> <span class="p">-&gt;</span> <span class="n">System</span><span class="p">.</span><span class="k">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="err">'</span><span class="n">Variation</span> <span class="n">B</span><span class="err">'</span><span class="p">)</span>
-            <span class="o">..</span><span class="p">.</span>
-        <span class="p">}</span>
-    <span class="p">})</span>
-</code></pre><pre class="highlight java tab-java"><code>    <span class="n">ABTasty</span><span class="o">.</span><span class="na">Companion</span><span class="o">.</span><span class="na">getVariationIdForCampaign</span><span class="o">(</span><span class="s">"xxxxxx"</span><span class="o">,</span> <span class="k">new</span> <span class="n">Function1</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Unit</span><span class="o">&gt;()</span> <span class="o">{</span>
-            <span class="nd">@Override</span>
-            <span class="kd">public</span> <span class="n">Unit</span> <span class="nf">invoke</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
-                <span class="k">switch</span> <span class="o">(</span><span class="n">s</span><span class="o">)</span> <span class="o">{</span>
-                    <span class="k">case</span> <span class="s">"aaaaaa"</span> <span class="o">:</span> <span class="o">{</span>
-                        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Variation A"</span><span class="o">);</span>
-                    <span class="o">}</span> <span class="k">break</span><span class="o">;</span>
-                    <span class="k">case</span> <span class="s">"bbbbbb"</span> <span class="o">:</span> <span class="o">{</span>
-                        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Variation B"</span><span class="o">);</span>
-                    <span class="o">}</span> <span class="k">break</span><span class="o">;</span>
-                <span class="o">}</span>
-                <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
-            <span class="o">}</span>
-        <span class="o">});</span>
-</code></pre>
-<p>Once the library is initialized you need to allocate a variation id to your campaign. For this, the library contains a method named
-<code>getVariationIdForCampaign</code> in the class <code>ABTasty</code> located in the package <code>com.abtasty.librarybyapi.main</code></p>
-
-<p><code>fun getVariationIdForCampaign(campaignId: String, lambda: (variationId: String?) -&gt; Unit)</code></p>
-
-<p>It takesthe id of your campaign and a lambda as parameters which is going to be invoked when a variation is allocated to this campaign.</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>campaignId</td>
-<td>String</td>
-<td>id of the campaign</td>
-</tr>
-<tr>
-<td>lambda</td>
-<td>lambda : (variationId: String?) -&gt; Unit</td>
-<td>code to be invoked when a variation is selected for this campaign. The selected variation will be given as a parameter.</td>
-</tr>
-</tbody></table>
-
-<aside class="notice">
-Replace <code>xxxxxx</code> with the id of your campaign and, <code>aaaaaa</code> and <code>bbbbbb</code> with all the possible variations id of your campaign.
-</aside>
 <h2 id='activate-campaign'>Activate Campaign</h2>
 <p>Once you got a variation allocated for a campaign you need to activate it. This way it tells to AB Tasty that the current user got this variation for this campaign so it wont change and always get the same.</p>
 
