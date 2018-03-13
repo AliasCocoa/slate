@@ -331,15 +331,14 @@ To use ABTAstySdk as a dynamic framework, make sure use_frameworks! is not comme
 <li><p>After this manipulation, a popup will open, into it, don&#39;t forget to check &quot;Copy items if needed&quot;.</p></li>
 </ol>
 <h3 id='initialization'>Initialization</h3>
-<p>To run experiments with ABTasty you&#39;ll need to initialize ABTasty with AB_TASTY_KEY. ABTasty instance can both allocate, activate experiments and track events.</p>
+<blockquote>
+<p>Add the following code into your AppDelegate.m file 
+To run experiments with ABTasty you&#39;ll need to initialize ABTasty with AB_TASTY_KEY. ABTasty instance can both allocate, activate experiments and track events.</p>
+</blockquote>
 
 <aside class="notice">
 The <code>AB_TASTY_KEY</code> key is provided by AB Tasty.
 </aside>
-
-<blockquote>
-<p>Add the following code into your AppDelegate.m file </p>
-</blockquote>
 <pre class="highlight objective_c tab-objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="nf">application</span><span class="p">:(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions</span><span class="p">:(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span> <span class="p">{</span>
 
     <span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">startABTastySdk</span><span class="p">:</span><span class="s">@"YOUR_ACCESS_KEY"</span><span class="p">];</span>
@@ -373,14 +372,8 @@ The <code>AB_TASTY_KEY</code> key is provided by AB Tasty.
     <span class="s">@"blalala"</span><span class="o">:</span><span class="mi">@1</span><span class="p">,</span>
     <span class="s">@"ababaababba"</span><span class="o">:</span><span class="mi">@1</span><span class="p">,</span>
     <span class="s">@"errrrrrrr"</span><span class="o">:</span><span class="mi">@1</span><span class="p">}];</span>
-</code></pre><pre class="highlight swift tab-swift"><code>    <span class="p">[[</span><span class="kt">ABTasty</span> <span class="n">sharedInstance</span><span class="p">]</span> <span class="nv">startABTastySdk</span><span class="p">:</span><span class="s">@"YOUR_ACCESS_KEY"</span> <span class="kt">WithTrackingInfos</span><span class="p">:</span>
-    <span class="err">@</span><span class="p">{</span><span class="s">@"adel"</span><span class="p">:</span><span class="err">@</span><span class="mi">1</span><span class="p">,</span>
-    <span class="s">@"Longitude"</span><span class="p">:</span><span class="err">@</span><span class="mf">2.352222</span><span class="p">,</span>
-    <span class="s">@"Latitude"</span><span class="p">:</span> <span class="err">@</span><span class="mf">48.856614</span><span class="p">,</span>
-    <span class="s">@"ipAddress"</span><span class="p">:</span><span class="s">@"192.168.1.1"</span><span class="p">,</span>
-    <span class="s">@"blalala"</span><span class="p">:</span><span class="err">@</span><span class="mi">1</span><span class="p">,</span>
-    <span class="s">@"ababaababba"</span><span class="p">:</span><span class="err">@</span><span class="mi">1</span><span class="p">,</span>
-    <span class="s">@"errrrrrrr"</span><span class="p">:</span><span class="err">@</span><span class="mi">1</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code>        <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">startSdk</span><span class="p">(</span><span class="s">"YOUR_ACCESS_KEY"</span><span class="p">,</span> <span class="nv">withTrackingInfos</span><span class="p">:</span>
+         <span class="p">[</span><span class="s">"Longitude"</span><span class="p">:</span><span class="mi">12</span><span class="p">,</span> <span class="s">"Latitude"</span><span class="p">:</span><span class="mi">12</span><span class="p">,</span><span class="s">"ipAddress"</span><span class="p">:</span><span class="s">"192.168.1.1"</span><span class="p">])</span>
 </code></pre>
 <p><code>- (void)startABTastySdk:(NSString*)appId WithTrackingInfos:(NSDictionary*)pInfosTracking</code></p>
 
