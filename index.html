@@ -311,9 +311,11 @@ ABTastySdk support minimum ios 8.0+
 <li><p>Make sure to always open the Xcode workspace instead of the project file when building your project:</p></li>
 </ol>
 
-<aside class="fade">
-open App.xcworkspace
-</aside>
+<pre>
+    includes:
+    - artists
+    - errors
+  </pre>
  
 <pre class="highlight ruby tab-ruby"><code> <span class="n">target</span> <span class="s1">'Your App'</span> <span class="k">do</span>
   <span class="n">use_frameworks!</span>
