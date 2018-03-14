@@ -421,7 +421,7 @@ You should know be able to use the AB Tasty librarybyapi :)
 <h1 id='experiments'>Experiments</h1>
 <p>This section of the documentation aims to help you to start a new campaign in your app using the ABTasty SDK.</p>
 <h2 id='allocate-campaign'>Allocate Campaign</h2>
-<p>Once you get your visitor id, you can allocate campaign by calling &#39;allocateVariation&#39; function</p>
+<p>Once you get your visitor id, you can allocate campaign by calling <code>allocateVariation</code> function</p>
 <pre class="highlight swift tab-swift"><code>        <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">allocateVariation</span><span class="p">(</span><span class="s">"campaignId"</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span> <span class="n">variationId</span><span class="p">,</span><span class="n">error</span><span class="p">)</span> <span class="k">in</span>
 
             <span class="k">if</span> <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">error</span> <span class="p">{</span>
@@ -461,9 +461,7 @@ You should know be able to use the AB Tasty librarybyapi :)
         <span class="p">}</span>
     <span class="p">}];</span>
 </code></pre>
-<p>Once the library is initialized you need to allocate a variation id to your campaign. To do this, use the <code>getVariationIdForCampaign</code> method in the <code>ABTasty</code> class located in the <code>com.abtasty.librarybyapi.main</code> package.</p>
-
-<p><code>fun getVariationIdForCampaign(campaignId: String, lambda: (variationId: String?) -&gt; Unit)</code></p>
+<p><code>- (void)allocateVariation:(NSString*)pIdCampaign completionBlock:(void(^)(NSString*,NSError*))pOnGetVariationId</code></p>
 
 <p>It uses the campaign id and a lambda as parameters which is going to be invoked when a variation is allocated to this campaign.</p>
 
@@ -475,27 +473,27 @@ You should know be able to use the AB Tasty librarybyapi :)
 </tr>
 </thead><tbody>
 <tr>
-<td>campaignId</td>
+<td>pIdCampaign</td>
 <td>String</td>
 <td>id of the campaign</td>
 </tr>
 <tr>
-<td>lambda</td>
-<td>lambda : (variationId: String?) -&gt; Unit</td>
-<td>code to be invoked when a variation is selected for this campaign. The selected variation will be given as a parameter.</td>
+<td>pOnGetVariationId</td>
+<td>block : (NSString: NSError?)</td>
+<td>block to be invoked when a variation is selected for this campaign. The selected variation will be given as a parameter.</td>
 </tr>
 </tbody></table>
 
 <aside class="notice">
-Replace <code>xxxxxx</code> with the id of your campaign and, <code>aaaaaa</code> and <code>bbbbbb</code> with the different variations id of your campaign.
+Replace <code>campaignId</code> with the id of your campaign and, <code>varId1</code> and <code>varId2</code> with the different variations id of your campaign.
 </aside>
 <h2 id='activate-campaign'>Activate Campaign</h2>
 <p>Once a variation has been allocated to a campaign you need to activate it. This way it tells AB Tasty that the current user saw this specific variation of the campaign so that the user
 always sees the same variation.</p>
 
-<p>The allocation can be changeg if you call <code>getVariationIdForCampaign</code> several times until you use <code>ABCampaignActivationTracker</code> to activate the campaign and freeze the variation.</p>
+<p>The allocation can be changeg if you call <code>allocateVariation</code> several times until you use <code>activateCampaign</code> to activate the campaign and freeze the variation.</p>
 
-<p><em>@See <code>ABCampaignActivationTracker</code> in the <a href="#activate">tracking section</a></em></p>
+<p><em>@See <code>activateCampaign</code> in the <a href="#activate">tracking section</a></em></p>
 <h1 id='experiments-2'>Experiments</h1><h2 id='sending-events'>Sending events</h2>
 <p>The library also provides some functions to send events to ABTasty, for example to send objectives configured for a campaign.</p>
 
