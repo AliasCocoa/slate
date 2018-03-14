@@ -418,6 +418,35 @@ Replace <code>AB_TASTY_KEY</codbe> with the key provided by AB Tasty.
 <td>infos tracking for common default data</td>
 </tr>
 </tbody></table>
+
+<p><strong>COMMON TRACKING INFORMATIONS</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Longitude</td>
+<td>Double</td>
+<td>Longitude</td>
+</tr>
+<tr>
+<td>Latitude</td>
+<td>Double</td>
+<td>Latitude</td>
+</tr>
+<tr>
+<td>ipAddress</td>
+<td>NSDictionary</td>
+<td>ip adress</td>
+</tr>
+</tbody></table>
+
+<p><code>-(void)updateConfigInfosTracking:(NSDictionary*)pInfoTracking</code>
+You can update those common tracking by calling </p>
 <h1 id='starting-campaigns'>Starting campaigns</h1>
 <p>This section of the documentation aims to help you to start a new campaign in your app using the ABTasty SDK.</p>
 <h3 id='allocate-camapign'>Allocate Camapign</h3>
@@ -532,7 +561,7 @@ Replace <code>campaignId</code> with the id of your campaign and, <code>varId1</
 <td>block to be invoked when all variations is selected for those campaigns.</td>
 </tr>
 </tbody></table>
-<h2 id='activate-campaign'>Activate Campaign</h2><pre class="highlight objective_c tab-objective_c"><code>
+<h3 id='activate-campaign'>Activate Campaign</h3><pre class="highlight objective_c tab-objective_c"><code>
     <span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">activateCampaign</span><span class="p">:</span><span class="s">@"campaignId"</span> <span class="nf">forVariationId</span><span class="p">:</span><span class="n">varId</span><span class="p">];</span>
 </code></pre><pre class="highlight swift tab-swift"><code>    <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">activateCampaign</span><span class="p">(</span><span class="s">"campaignId"</span><span class="p">,</span> <span class="nv">forVariationId</span><span class="p">:</span> <span class="s">"varId"</span><span class="p">)</span>
 </code></pre>
