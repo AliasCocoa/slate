@@ -236,6 +236,9 @@
                     <a href="#manual-installation" class="toc-h2 toc-link" data-title="manual-installation">Manual Installation</a>
                   </li>
                   <li>
+                    <a href="#apple-store-submission" class="toc-h2 toc-link" data-title="apple-store-submission">Apple Store Submission</a>
+                  </li>
+                  <li>
                     <a href="#initialize-abtastysdk" class="toc-h2 toc-link" data-title="initialize-abtastysdk">Initialize ABTastySDK</a>
                   </li>
                   <li>
@@ -317,7 +320,7 @@
 <p><img src="images/use.png" alt="alt text" /></p>
 
 <ol>
-<li><p>Run pod install from your Xcode project&#39;s base directory</p></li>
+<li><p>Run <code>pod install</code> from your Xcode project&#39;s base directory</p></li>
 <li><p>Make sure to always open the Xcode workspace instead of the project file when building your project</p></li>
 </ol>
 <h3 id='manual-installation'>Manual Installation</h3>
@@ -326,6 +329,17 @@
 <li><p>In Finder, navigate to the ABTastySdk.framework file and drop it under your &quot;Embedded Binaries&quot; section in Xcode</p></li>
 <li><p>After this manipulation, a popup will open, into it, don&#39;t forget to check &quot;Copy items if needed&quot;.</p></li>
 </ol>
+<h3 id='apple-store-submission'>Apple Store Submission</h3>
+<aside class="notice">
+ABTastySdk FrameWork is Universal and BitCode is enabled
+The universal framework for iOS contain architectures for Simulator and Device, you can run on all your devices and the iOS Simulator
+</aside>
+
+<p>If you have universal framework installed in your application, apple store will reject your app because unwanted architecture.
+You need to Add a Run Script step to your build steps, put it after your step to embed
+frameworks, set it to use /bin/sh</p>
+
+<p><img src="images/images/universalscript" alt="alt text" /></p>
 <h3 id='initialize-abtastysdk'>Initialize ABTastySDK</h3>
 <blockquote>
 <p>Add the following code into your AppDelegate.m file</p>
