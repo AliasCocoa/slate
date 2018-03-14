@@ -493,7 +493,8 @@ Replace <code>AB_TASTY_KEY</codbe> with the key provided by AB Tasty.
         <span class="p">}</span>
     <span class="p">}];</span>
 </code></pre>
-<p><code>- (void)allocateVariation:(NSString*)pIdCampaign completionBlock:(void(^)(NSString*,NSError*))pOnGetVariationId</code></p>
+<p><code>- (void)allocateVariation:(NSString*)pIdCampaign</code> 
+            <code>completionBlock:(void(^)(NSString*,NSError*))pOnGetVariationId</code></p>
 
 <p>It uses the campaign id and a block as parameters which is going to be invoked when a variation is allocated to this campaign.</p>
 
