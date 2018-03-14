@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>librarybyapi documentation</title>
+    <title>ABTastySDK documentation</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -306,7 +306,12 @@
 <ol>
 <li><p><a href='https://guides.cocoapods.org/'>Install CocoaPods.</a></p></li>
 <li><p>Open Terminal and navigate to the directory that contains your project then enter the folowing command: `pod init</p></li>
-<li><p>Open your Podfile and add the ABTAstySdk pod</p></li>
+<li><p>Open your Podfile and add the ABTAstySdk pod </p></li>
+</ol>
+<pre class="highlight objective_c tab-objective_c"><code>    <span class="n">pod</span> <span class="err">'</span><span class="n">ABTastySdk</span><span class="err">'</span><span class="p">,</span> <span class="o">:</span><span class="n">http</span> <span class="o">=&gt;</span> <span class="err">'</span><span class="n">http</span><span class="o">:</span><span class="c1">//sdk.abtasty.com/ios/ABTastySdk.zip'
+</span></code></pre><pre class="highlight swift tab-swift"><code>    <span class="n">pod</span> <span class="err">'</span><span class="kt">ABTastySdk</span><span class="err">'</span><span class="p">,</span> <span class="p">:</span><span class="n">http</span> <span class="o">=&gt;</span> <span class="err">'</span><span class="nv">http</span><span class="p">:</span><span class="c1">//sdk.abtasty.com/ios/ABTastySdk.zip'</span>
+</code></pre>
+<ol>
 <li><p>Run pod install from your Xcode project&#39;s base directory</p></li>
 <li><p>Make sure to always open the Xcode workspace instead of the project file when building your project</p></li>
 </ol>
@@ -889,7 +894,7 @@ Replace <code>xxxxxx</code> with the id of your campaign and <code>bbbbbb</code>
 </code></pre>
 <p>The <code>ABVisitEvent</code> lets you track any visit occurring on a mobile app.</p>
 
-<p>No need params for this event, the sdk handle it for you, because it take the common data set before on start SDK, if you want to update the common tracking for this specefic visit event, create un instance with <code>initABTracking</code>
+<p>No parameters needed for this event, the sdk handle it for you, it take the <code>common data</code> set before when start SDK, if you want to update the common tracking for this specefic visit event, create un instance with <code>initABTracking</code>.
 <br></p>
 <h1 id='reference'>Reference</h1>
 <p><a href="http://sdk.abtasty.com/android/ref/abtastysdk/index.html">Reference</a></p>
