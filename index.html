@@ -260,7 +260,7 @@
             <a href="#sending-events" class="toc-h1 toc-link" data-title="sending-events">Sending events</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#abtracker" class="toc-h2 toc-link" data-title="abtracker">ABTracker</a>
+                    <a href="#abtracking" class="toc-h2 toc-link" data-title="abtracking">ABTracking</a>
                   </li>
                   <li>
                     <a href="#campaign-activation-tracking" class="toc-h2 toc-link" data-title="campaign-activation-tracking">Campaign Activation Tracking</a>
@@ -549,11 +549,9 @@ always sees the same variation.</p>
 
 <p>All existing trackers are listed below.</p>
 
-<p>Each tracker contains a <code>Builder</code> class that facilitates its build.</p>
-
 <p><br></p>
-<h2 id='abtracker'>ABTracker</h2>
-<p>ABTracker is the generic tracker that contains common data and from which all others trackers inherit.</p>
+<h2 id='abtracking'>ABTracking</h2>
+<p>ABTracking is the generic tracker that contains common data and from which all others trackers inherit.</p>
 
 <table><thead>
 <tr>
@@ -564,46 +562,33 @@ always sees the same variation.</p>
 </thead><tbody>
 <tr>
 <td>device_type</td>
-<td>DeviceType</td>
+<td>ABDeviceType</td>
 <td>Device used by the visitor to view the test. The devices currently supported  are: <code>&quot;DESKTOP&quot;</code>, <code>&quot;MOBILE&quot;</code>, <code>&quot;TABLET&quot;</code>, <code>&quot;CAMERA&quot;</code>, <code>&quot;TV&quot;</code>, <code>&quot;GAMES_CONSOLE&quot;</code>, <code>&quot;PAYMENT_TERMINAL&quot;</code>, <code>&quot;WRISTWATCH&quot;</code>, and <code>&quot;OTHER&quot;</code>. <strong>required</strong></td>
 </tr>
 <tr>
-<td>timestamp</td>
-<td>Long</td>
-<td>timestamp of the event <strong>required</strong></td>
-</tr>
-<tr>
-<td>origin</td>
+<td>interfaceName</td>
 <td>String</td>
 <td>interface or page from where the event has been created <strong>required</strong></td>
 </tr>
 <tr>
-<td>geoPoint</td>
-<td>DoubleArray</td>
-<td> Current latitude / longitude of the device for geolocation [-90:90][-180:180] <strong>optional</strong></td>
+<td>longitude</td>
+<td>double</td>
+<td>longitude of the device for geolocation  <strong>optional</strong></td>
 </tr>
 <tr>
-<td>ip</td>
+<td>latitude</td>
+<td>double</td>
+<td> latitude  of the device for geolocation  <strong>optional</strong></td>
+</tr>
+<tr>
+<td>ipAdress</td>
 <td>String</td>
 <td>current ip of the device <strong>optional</strong></td>
-</tr>
-<tr>
-<td>deviceResolution</td>
-<td>IntArray</td>
-<td>current screen resolution of the device <strong>optional</strong> (<strong>required</strong> for ABActionTracking Touch)</td>
 </tr>
 </tbody></table>
 
 <aside class="notice">
-Common data can be automatically set from the tracker passed in the `ABInitializer` which is returned from the `initialize function`, or from another shared ABTracker instance.
-</aside>
-
-<aside class="warning">
-We strongly recommend to set the `timestamp` parameter everytime you post asynchronous events in order to ensure data consistency.
-</aside>
-
-<aside class="notice">
-the `device_type`, `timestamp`, `deviceResolution` parameters can be set automatically if not configured.
+Common data can be automatically set from the ABTracking passed in the `startABTastySdk` at start SDK, or from another ABTracking instance.
 </aside>
 
 <p><br></p>
@@ -652,28 +637,26 @@ Replace <code>xxxxxx</code> with the id of your campaign and <code>bbbbbb</code>
 </aside>
 
 <p><br></p>
-<h2 id='action-tracking'>Action Tracking</h2><pre class="highlight kotlin tab-kotlin"><code><span class="kd">val</span> <span class="py">tracker</span> <span class="p">=</span> <span class="n">ABActionTracker</span><span class="p">.</span><span class="n">Builder</span><span class="p">()</span>
-<span class="p">.</span><span class="n">setActionType</span><span class="p">(</span><span class="n">ABActionTracker</span><span class="p">.</span><span class="n">ActionType</span><span class="p">.</span><span class="n">TOUCH</span><span class="p">)</span>
-<span class="p">.</span><span class="n">setName</span><span class="p">(</span><span class="s">"nb_fingers_touch"</span><span class="p">)</span>
-<span class="p">.</span><span class="n">setValue</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
-<span class="p">.</span><span class="n">setOrigin</span><span class="p">(</span><span class="s">"PictureActivity"</span><span class="p">)</span>
-<span class="p">.</span><span class="n">setDeviceResolution</span><span class="p">(</span><span class="n">intArrayOf</span><span class="p">(</span><span class="m">1080</span><span class="p">,</span> <span class="m">1920</span><span class="p">))</span>
-<span class="p">.</span><span class="n">setTouchPosition</span><span class="p">(</span><span class="n">intArrayOf</span><span class="p">(</span><span class="m">347</span><span class="p">,</span> <span class="m">887</span><span class="p">))</span>
-<span class="p">.</span><span class="n">setDeviceType</span><span class="p">(</span><span class="n">DeviceType</span><span class="p">.</span><span class="n">MOBILE_PHONE</span><span class="p">)</span>
-<span class="p">.</span><span class="n">build</span><span class="p">()</span>
-<span class="n">ABTasty</span><span class="p">.</span><span class="n">sendTrackingEvent</span><span class="p">(</span><span class="n">tracker</span><span class="p">)</span>
-</code></pre><pre class="highlight java tab-java"><code><span class="n">ABActionTracker</span> <span class="n">tracker</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ABActionTracker</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
-<span class="o">.</span><span class="na">setActionType</span><span class="o">(</span><span class="n">ABActionTracker</span><span class="o">.</span><span class="na">ActionType</span><span class="o">.</span><span class="na">TOUCH</span><span class="o">)</span>
-<span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">"nb_fingers_touch"</span><span class="o">)</span>
-<span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="mi">2</span><span class="o">)</span>
-<span class="o">.</span><span class="na">setOrigin</span><span class="o">(</span><span class="s">"PictureActivity"</span><span class="o">)</span>
-<span class="o">.</span><span class="na">setDeviceResolution</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span> <span class="mi">1080</span><span class="o">,</span> <span class="mi">1920</span><span class="o">})</span>
-<span class="o">.</span><span class="na">setTouchPosition</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span><span class="mi">347</span><span class="o">,</span> <span class="mi">887</span><span class="o">})</span>
-<span class="o">.</span><span class="na">setDeviceType</span><span class="o">(</span><span class="n">DeviceType</span><span class="o">.</span><span class="na">MOBILE_PHONE</span><span class="o">)</span>
-<span class="o">.</span><span class="na">build</span><span class="o">();</span>
-<span class="n">ABTasty</span><span class="o">.</span><span class="na">Companion</span><span class="o">.</span><span class="na">sendTrackingEvent</span><span class="o">(</span><span class="n">tracker</span><span class="o">);</span>
+<h2 id='action-tracking'>Action Tracking</h2>
+<blockquote>
+<p>Send Action Tracking Event</p>
+</blockquote>
+<pre class="highlight objective_c tab-objective_c"><code><span class="n">ABActionTracking</span> <span class="o">*</span> <span class="n">action</span> <span class="o">=</span> <span class="p">[[</span><span class="n">ABActionTracking</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initABTracking</span><span class="p">:</span><span class="n">ABMobile</span> <span class="nf">longtitude</span><span class="p">:</span><span class="mi">2</span><span class="p">.</span><span class="mi">33</span> <span class="n">latitude</span><span class="o">:</span><span class="mi">48</span><span class="p">.</span><span class="mi">48</span> <span class="n">ipAdress</span><span class="o">:</span><span class="s">@"912.168.1.1"</span> <span class="n">interfaceName</span><span class="o">:</span><span class="s">@"ABHomeViewController"</span><span class="p">];</span>
+<span class="n">action</span><span class="p">.</span><span class="n">name</span>  <span class="o">=</span> <span class="s">@"MyGoal"</span><span class="p">;</span>
+<span class="n">action</span><span class="p">.</span><span class="n">position_X</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
+<span class="n">action</span><span class="p">.</span><span class="n">position_Y</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
+<span class="n">action</span><span class="p">.</span><span class="n">value</span> <span class="o">=</span> <span class="s">@"value"</span><span class="p">;</span>    
+<span class="c1">// Send Action Tracking 
+</span><span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">sendTrackingEvent</span><span class="p">:</span><span class="n">action</span><span class="p">];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">action</span> <span class="p">:</span><span class="kt">ABActionTracking</span> <span class="o">=</span> <span class="kt">ABActionTracking</span><span class="p">(</span><span class="nv">abTracking</span><span class="p">:</span><span class="kt">ABDeviceType</span><span class="o">.</span><span class="n">mobile</span><span class="p">,</span> <span class="nv">longtitude</span><span class="p">:</span> <span class="mf">2.33</span><span class="p">,</span> <span class="nv">latitude</span><span class="p">:</span> <span class="mf">48.48</span><span class="p">,</span> <span class="nv">ipAdress</span><span class="p">:</span> <span class="s">"192.168.1.1"</span><span class="p">,</span> <span class="nv">interfaceName</span><span class="p">:</span> <span class="s">"ABHomeViewController"</span><span class="p">)</span>      
+<span class="n">action</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">"MyGol"</span>
+<span class="n">action</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s">"value"</span>
+<span class="n">action</span><span class="o">.</span><span class="n">position_X</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">action</span><span class="o">.</span><span class="n">position_Y</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="c1">// Send Action tracking</span>
+<span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">sendTrackingEvent</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
 </code></pre>
-<p>This tracker sends a click or a touch event</p>
+<p><strong>ABActionTracking</strong>, This tracker sends touch event</p>
 
 <table><thead>
 <tr>
@@ -693,24 +676,19 @@ Replace <code>xxxxxx</code> with the id of your campaign and <code>bbbbbb</code>
 <td>Type of event CLICK or TOUCH <strong>required</strong></td>
 </tr>
 <tr>
-<td>value_string</td>
-<td>String</td>
-<td>String value attached to the action tracking event. <strong>optional</strong></td>
+<td>value</td>
+<td>id</td>
+<td>value attached to the action tracking event. Only NSString or NSNumber are accpeted. <strong>optional</strong></td>
 </tr>
 <tr>
-<td>value_interger</td>
-<td>Integer</td>
-<td>Integer value attached to the action tracking event.<strong>optional</strong></td>
+<td>position_X</td>
+<td>float</td>
+<td>Object that contains the position x where the touch occurred in the mobile screen. <strong>required for TOUCH</strong></td>
 </tr>
 <tr>
-<td>position</td>
-<td>IntArray</td>
-<td>Object that contains the position x/y where the touch occurred in the mobile page. <strong>required for TOUCH</strong></td>
-</tr>
-<tr>
-<td>resolution</td>
-<td>IntArray</td>
-<td>Object that contains the resolution in w/h of the screen where the touch occurred. <strong>required for TOUCH</strong></td>
+<td>position_Y</td>
+<td>float</td>
+<td>Object that contains the position y where the touch occurred in the mobile screen. <strong>required for TOUCH</strong></td>
 </tr>
 </tbody></table>
 
@@ -730,7 +708,7 @@ Replace <code>xxxxxx</code> with the id of your campaign and <code>bbbbbb</code>
 <span class="o">.</span><span class="na">build</span><span class="o">();</span>
 <span class="n">ABTasty</span><span class="o">.</span><span class="na">Companion</span><span class="o">.</span><span class="na">sendTrackingEvent</span><span class="o">(</span><span class="n">tracker</span><span class="o">);</span>
 </code></pre>
-<p>This tracker sends a custom event and lets you track events that are specific to your business.</p>
+<p><strong>ABCustomEvent</strong> This tracker sends a custom event and lets you track events that are specific to your business.</p>
 
 <table><thead>
 <tr>
@@ -740,94 +718,65 @@ Replace <code>xxxxxx</code> with the id of your campaign and <code>bbbbbb</code>
 </tr>
 </thead><tbody>
 <tr>
-<td>name</td>
+<td>goal_name</td>
 <td>String</td>
-<td>Label of the click tracking/touch as displayed in the reporting. <strong>required</strong></td>
+<td>Label of the click tracked as displayed in the reporting . <strong>required</strong></td>
 </tr>
 <tr>
-<td>type</td>
-<td>ActionType</td>
-<td>Type of event CLICK or TOUCH <strong>required</strong></td>
-</tr>
-<tr>
-<td>value_string</td>
+<td>value</td>
 <td>String</td>
 <td>String value attached to the action tracking event. <strong>optional</strong></td>
-</tr>
-<tr>
-<td>value_integer</td>
-<td>Integer</td>
-<td>Integer value attached to the action tracking event.<strong>optional</strong></td>
-</tr>
-<tr>
-<td>position</td>
-<td>IntArray</td>
-<td>Object that contains the position x/y where the touch occurred in the mobile page. <strong>required for TOUCH</strong></td>
-</tr>
-<tr>
-<td>resolution</td>
-<td>IntArray</td>
-<td>Object that contains the resolution in w/h of the screen where the touch occurred. <strong>required for TOUCH</strong></td>
-</tr>
-</tbody></table>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>name</td>
-<td>string</td>
-<td>Label of the click tracked as displayed in the reporting. <strong>required</strong></td>
-</tr>
-<tr>
-<td>value_string</td>
-<td>string</td>
-<td>String value attached to the action tracking event. <strong>optional</strong></td>
-</tr>
-<tr>
-<td>value_integer</td>
-<td>int</td>
-<td>Integer value attached to the action tracking event. <strong>optional</strong></td>
 </tr>
 </tbody></table>
 
 <p><br></p>
-<h2 id='transaction-tracking'>Transaction tracking</h2><pre class="highlight kotlin tab-kotlin"><code><span class="kd">val</span> <span class="py">item</span> <span class="p">=</span> <span class="n">ABTransactionTracker</span><span class="p">.</span><span class="n">Item</span><span class="p">.</span><span class="n">Builder</span><span class="p">()</span>
-<span class="p">.</span><span class="n">setName</span><span class="p">(</span><span class="s">"Android home"</span><span class="p">)</span>
-<span class="p">.</span><span class="n">setPrice</span><span class="p">(</span><span class="m">100</span><span class="p">)</span>
-<span class="p">.</span><span class="n">build</span><span class="p">()</span>
+<h2 id='transaction-tracking'>Transaction tracking</h2><pre class="highlight objective_c tab-objective_c"><code>
+    <span class="n">ABTransaction</span> <span class="o">*</span> <span class="n">transaction</span> <span class="o">=</span> <span class="p">[[</span><span class="n">ABTransaction</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initABTracking</span><span class="p">:</span><span class="n">ABMobile</span> <span class="nf">longtitude</span><span class="p">:</span><span class="mi">2</span><span class="p">.</span><span class="mi">33</span> <span class="n">latitude</span><span class="o">:</span><span class="mi">48</span><span class="p">.</span><span class="mi">48</span> <span class="n">ipAdress</span><span class="o">:</span><span class="s">@"192.168.1.1"</span> <span class="n">interfaceName</span><span class="o">:</span><span class="s">@"ABHomeViewController"</span><span class="p">];</span>
 
-<span class="kd">val</span> <span class="py">tracker</span> <span class="p">=</span> <span class="n">ABTransactionTracker</span><span class="p">.</span><span class="n">Builder</span><span class="p">()</span>
-<span class="p">.</span><span class="n">setName</span><span class="p">(</span><span class="s">"purchase"</span><span class="p">)</span>
-<span class="p">.</span><span class="n">setTransactionId</span><span class="p">(</span><span class="s">"#587837983"</span><span class="p">)</span>
-<span class="p">.</span><span class="n">setRevenue</span><span class="p">(</span><span class="m">10000</span><span class="p">)</span>
-<span class="p">.</span><span class="n">setShipping</span><span class="p">(</span><span class="m">1999</span><span class="p">)</span>
-<span class="p">.</span><span class="n">setOrigin</span><span class="p">(</span><span class="s">"Basketactivity"</span><span class="p">)</span>
-<span class="p">.</span><span class="n">addItem</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
-<span class="p">.</span><span class="n">setDeviceType</span><span class="p">(</span><span class="n">DeviceType</span><span class="p">.</span><span class="n">MOBILE_PHONE</span><span class="p">)</span>
-<span class="p">.</span><span class="n">build</span><span class="p">()</span>
-<span class="n">ABTasty</span><span class="p">.</span><span class="n">sendTrackingEvent</span><span class="p">(</span><span class="n">tracker</span><span class="p">)</span>
-</code></pre><pre class="highlight java tab-java"><code><span class="n">Item</span> <span class="n">item</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ABTransactionTracker</span><span class="o">.</span><span class="na">Item</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
-<span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">"Android home"</span><span class="o">)</span>
-<span class="o">.</span><span class="na">setPrice</span><span class="o">(</span><span class="mi">100</span><span class="o">)</span>
-<span class="o">.</span><span class="na">build</span><span class="o">();</span>
+    <span class="n">transaction</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">@"transaction"</span><span class="p">;</span>
+    <span class="n">transaction</span><span class="p">.</span><span class="n">transaction_id</span> <span class="o">=</span> <span class="s">@"revenue"</span><span class="p">;</span>
+    <span class="n">transaction</span><span class="p">.</span><span class="n">revenue</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span>
+    <span class="n">transaction</span><span class="p">.</span><span class="n">shipping</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
+    <span class="n">transaction</span><span class="p">.</span><span class="n">tax_total</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">23</span><span class="p">;</span>
+    <span class="n">transaction</span><span class="p">.</span><span class="n">discount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">;</span>
+    <span class="n">transaction</span><span class="p">.</span><span class="n">payment_method</span> <span class="o">=</span> <span class="s">@"PayPal"</span><span class="p">;</span>
+    <span class="n">transaction</span><span class="p">.</span><span class="n">currencyName</span> <span class="o">=</span> <span class="s">@"currency_name"</span><span class="p">;</span>
+    <span class="n">transaction</span><span class="p">.</span><span class="n">currencyRate</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">222</span><span class="p">;</span>
+    <span class="n">transaction</span><span class="p">.</span><span class="n">items_count</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
 
-<span class="n">ABTransactionTracker</span> <span class="n">tracker</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ABTransactionTracker</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
-<span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">"purchase"</span><span class="o">)</span>
-<span class="o">.</span><span class="na">setTransactionId</span><span class="o">(</span><span class="s">"#587837983"</span><span class="o">)</span>
-<span class="o">.</span><span class="na">setRevenue</span><span class="o">(</span><span class="mi">10000</span><span class="o">)</span>
-<span class="o">.</span><span class="na">setShipping</span><span class="o">(</span><span class="mi">1999</span><span class="o">)</span>
-<span class="o">.</span><span class="na">setOrigin</span><span class="o">(</span><span class="s">"Basketactivity"</span><span class="o">)</span>
-<span class="o">.</span><span class="na">addItem</span><span class="o">(</span><span class="n">item</span><span class="o">)</span>
-<span class="o">.</span><span class="na">setDeviceType</span><span class="o">(</span><span class="n">DeviceType</span><span class="o">.</span><span class="na">MOBILE_PHONE</span><span class="o">)</span>
-<span class="o">.</span><span class="na">build</span><span class="o">();</span>
-<span class="n">ABTasty</span><span class="o">.</span><span class="na">Companion</span><span class="o">.</span><span class="na">sendTrackingEvent</span><span class="o">(</span><span class="n">tracker</span><span class="o">);</span>
+    <span class="c1">// Set micro transaction
+</span>    <span class="n">ABMicroTransaction</span> <span class="o">*</span> <span class="n">minTransaction</span> <span class="o">=</span> <span class="p">[[</span><span class="n">ABMicroTransaction</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">init</span><span class="p">];</span>
+    <span class="n">minTransaction</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">@"name"</span><span class="p">;</span>
+    <span class="n">minTransaction</span><span class="p">.</span><span class="n">price</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
+    <span class="n">minTransaction</span><span class="p">.</span><span class="n">sku</span> <span class="o">=</span> <span class="s">@"sku"</span><span class="p">;</span>
+    <span class="n">minTransaction</span><span class="p">.</span><span class="n">category</span> <span class="o">=</span> <span class="s">@"cat"</span><span class="p">;</span>
+    <span class="n">minTransaction</span><span class="p">.</span><span class="n">quantity</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="n">minTransaction</span><span class="p">.</span><span class="n">tax_amount</span> <span class="o">=</span> <span class="mi">1111</span><span class="p">;</span>
+    <span class="n">transaction</span><span class="p">.</span><span class="n">microTransaction</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSMutableArray</span> <span class="nf">arrayWithObject</span><span class="p">:</span><span class="n">minTransaction</span><span class="p">];</span>
+</code></pre><pre class="highlight swift tab-swift"><code>        <span class="k">let</span> <span class="nv">transaction</span><span class="p">:</span><span class="kt">ABTransaction</span> <span class="o">=</span> <span class="kt">ABTransaction</span><span class="p">(</span><span class="nv">abTracking</span><span class="p">:</span> <span class="kt">ABDeviceType</span><span class="o">.</span><span class="n">mobile</span><span class="p">,</span> <span class="nv">longtitude</span><span class="p">:</span> <span class="mf">2.33</span><span class="p">,</span> <span class="nv">latitude</span><span class="p">:</span> <span class="mf">48.33</span><span class="p">,</span> <span class="nv">ipAdress</span><span class="p">:</span><span class="s">"192.168.1.1"</span><span class="p">,</span> <span class="nv">interfaceName</span><span class="p">:</span> <span class="s">"ABHomeViewController"</span><span class="p">)</span>
+
+        <span class="n">transaction</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">"transaction"</span>
+        <span class="n">transaction</span><span class="o">.</span><span class="n">transaction_id</span> <span class="o">=</span> <span class="s">"revenue"</span>
+        <span class="n">transaction</span><span class="o">.</span><span class="n">revenue</span> <span class="o">=</span> <span class="mi">1000</span>
+        <span class="n">transaction</span><span class="o">.</span><span class="n">shipping</span> <span class="o">=</span> <span class="mi">12</span>
+        <span class="n">transaction</span><span class="o">.</span><span class="n">tax_total</span> <span class="o">=</span> <span class="mf">0.23</span>
+        <span class="n">transaction</span><span class="o">.</span><span class="n">discount</span> <span class="o">=</span> <span class="mf">0.5</span>
+        <span class="n">transaction</span><span class="o">.</span><span class="n">payment_method</span> <span class="o">=</span> <span class="s">"PayPal"</span>
+        <span class="n">transaction</span><span class="o">.</span><span class="n">currencyName</span> <span class="o">=</span> <span class="s">"currency_name"</span>
+        <span class="n">transaction</span><span class="o">.</span><span class="n">currencyRate</span> <span class="o">=</span> <span class="mf">0.222</span>
+        <span class="n">transaction</span><span class="o">.</span><span class="n">items_count</span> <span class="o">=</span> <span class="mi">12</span>
+        <span class="c1">// Set micro transaction</span>
+        <span class="k">let</span> <span class="nv">miniTransaction</span><span class="p">:</span><span class="kt">ABMicroTransaction</span> <span class="o">=</span> <span class="kt">ABMicroTransaction</span><span class="p">()</span>
+        <span class="n">miniTransaction</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">"name"</span>
+        <span class="n">miniTransaction</span><span class="o">.</span><span class="n">price</span> <span class="o">=</span> <span class="mi">12</span>
+        <span class="n">miniTransaction</span><span class="o">.</span><span class="n">sku</span> <span class="o">=</span> <span class="s">"sku"</span>
+        <span class="n">miniTransaction</span><span class="o">.</span><span class="n">category</span> <span class="o">=</span> <span class="s">"cat"</span>
+        <span class="n">miniTransaction</span><span class="o">.</span><span class="n">quantity</span> <span class="o">=</span> <span class="mi">2</span>
+        <span class="n">miniTransaction</span><span class="o">.</span><span class="n">tax_amount</span> <span class="o">=</span> <span class="mi">1111</span>
+        <span class="n">transaction</span><span class="o">.</span><span class="n">microTransaction</span> <span class="o">=</span> <span class="p">[</span><span class="n">miniTransaction</span><span class="p">];</span>
+        <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">sendTrackingEvent</span><span class="p">(</span><span class="n">transaction</span><span class="p">)</span>
 </code></pre>
-<p>The <code>ABTransactionTracker</code> lets you track any purchase on your mobile app.</p>
+<p>The <code>ABTransaction</code> lets you track any purchase on your mobile app.</p>
 
 <table><thead>
 <tr>
@@ -842,7 +791,7 @@ Replace <code>xxxxxx</code> with the id of your campaign and <code>bbbbbb</code>
 <td>Label of the Transaction as displayed in the reporting.<strong>required</strong></td>
 </tr>
 <tr>
-<td>id</td>
+<td>transaction_id</td>
 <td>string</td>
 <td>Unique identifier of the transaction.<strong>required</strong></td>
 </tr>
@@ -872,57 +821,61 @@ Replace <code>xxxxxx</code> with the id of your campaign and <code>bbbbbb</code>
 <td>Total number of products purchased on the mobile app. <strong>optional</strong></td>
 </tr>
 <tr>
-<td>currency</td>
-<td>object</td>
-<td>Money used for the payment. <strong>optional</strong></td>
-</tr>
-<tr>
-<td>currency.name</td>
+<td>currencyName</td>
 <td>string</td>
 <td>Name of the money used for the payment. <strong>required</strong></td>
 </tr>
 <tr>
-<td>currency.rate</td>
+<td>currencyRate</td>
 <td>float</td>
 <td>Change rate between USD in cents (used as a reference) and the money used for the payment. <strong>required</strong></td>
 </tr>
 <tr>
-<td>items</td>
-<td>object</td>
+<td>microTransaction</td>
+<td>ABMicroTransaction</td>
 <td>Products purchased on the web site/mobile app. <strong>optional</strong></td>
 </tr>
+</tbody></table>
+
+<table><thead>
 <tr>
-<td>items.name</td>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
 <td>string</td>
 <td>Label of the product.  <strong>required</strong></td>
 </tr>
 <tr>
-<td>items.price</td>
+<td>price</td>
 <td>int</td>
 <td>Price of the item expressed in cents.<strong>required</strong></td>
 </tr>
 <tr>
-<td>items.sku</td>
+<td>sku</td>
 <td>string</td>
 <td>Identifier of the item. <strong>optional</strong></td>
 </tr>
 <tr>
-<td>items.category</td>
+<td>category</td>
 <td>string</td>
 <td>Category of product the item belongs to.</td>
 </tr>
 <tr>
-<td>items.quantity</td>
+<td>quantity</td>
 <td>int</td>
 <td>Number of identical products purchased at the same time on the mobile app. <strong>optional</strong></td>
 </tr>
 <tr>
-<td>items.tax_amount</td>
+<td>tax_amount</td>
 <td>int</td>
 <td>Tax amount applied to the item. <strong>optional</strong></td>
 </tr>
 <tr>
-<td>items.tax_rate</td>
+<td>tax_rate</td>
 <td>float</td>
 <td>Percentage of tax applied to the item. <strong>optional</strong></td>
 </tr>
