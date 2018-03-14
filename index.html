@@ -246,7 +246,10 @@
             <a href="#starting-campaigns" class="toc-h1 toc-link" data-title="starting-campaigns">Starting campaigns</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#allocate-campaign" class="toc-h2 toc-link" data-title="allocate-campaign">Allocate Campaign</a>
+                    <a href="#allocate-camapign" class="toc-h2 toc-link" data-title="allocate-camapign">Allocate Camapign</a>
+                  </li>
+                  <li>
+                    <a href="#allocate-sevral-camapigns" class="toc-h2 toc-link" data-title="allocate-sevral-camapigns">Allocate Sevral Camapigns</a>
                   </li>
                   <li>
                     <a href="#activate-campaign" class="toc-h2 toc-link" data-title="activate-campaign">Activate Campaign</a>
@@ -417,28 +420,34 @@ You should know be able to use the AB Tasty librarybyapi :)
 </aside>
 <h1 id='starting-campaigns'>Starting campaigns</h1>
 <p>This section of the documentation aims to help you to start a new campaign in your app using the ABTasty SDK.</p>
-<h2 id='allocate-campaign'>Allocate Campaign</h2><h3 id='allocate-camapign'>Allocate Camapign</h3>
+<h3 id='allocate-camapign'>Allocate Camapign</h3>
 <p>Once you get your visitor id, you can allocate campaign by calling <code>allocateVariation</code> function</p>
-<pre class="highlight swift tab-swift"><code>        <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">allocateVariation</span><span class="p">(</span><span class="s">"campaignId"</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span> <span class="n">variationId</span><span class="p">,</span><span class="n">error</span><span class="p">)</span> <span class="k">in</span>
 
-            <span class="k">if</span> <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">error</span> <span class="p">{</span>
+<blockquote>
+<p>Allocate one camapign 
+```swift
+        ABTasty.sharedInstance().allocateVariation(&quot;campaignId&quot;) { ( variationId,error) in</p>
+</blockquote>
 
-                <span class="nf">print</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span>
+<p>if let error = error {</p>
 
-            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="k">let</span> <span class="nv">variationId</span> <span class="o">=</span> <span class="n">variationId</span> <span class="p">{</span>
+<p>print (error)</p>
 
-                <span class="k">if</span><span class="p">(</span><span class="n">variationId</span> <span class="o">==</span> <span class="s">"varId1"</span><span class="p">){</span>
+<p>} else if let variationId = variationId {</p>
 
-                    <span class="c1">// Execute code for varId1</span>
+<p>if(variationId == &quot;varId1&quot;){</p>
 
-                <span class="p">}</span><span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">variationId</span> <span class="o">==</span> <span class="s">"varId2"</span><span class="p">){</span>
+<p>// Execute code for varId1</p>
 
-                    <span class="c1">// Execute code for varId2</span>
+<p>}else if (variationId == &quot;varId2&quot;){</p>
 
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-</code></pre><pre class="highlight objective_c tab-objective_c"><code>    <span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">allocateVariation</span><span class="p">:</span><span class="s">@"campaignId"</span> <span class="nf">completionBlock</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span> <span class="n">variationId</span><span class="p">,</span><span class="n">NSError</span><span class="o">*</span> <span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+<p>// Execute code for varId2</p>
+
+<p>}
+            }
+        }
+```</p>
+<pre class="highlight objective_c tab-objective_c"><code>    <span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">allocateVariation</span><span class="p">:</span><span class="s">@"campaignId"</span> <span class="nf">completionBlock</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span> <span class="n">variationId</span><span class="p">,</span><span class="n">NSError</span><span class="o">*</span> <span class="n">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">error</span><span class="p">){</span>
 
             <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%@"</span><span class="p">,</span> <span class="n">error</span><span class="p">.</span><span class="n">description</span><span class="p">);</span>
@@ -453,6 +462,26 @@ You should know be able to use the AB Tasty librarybyapi :)
 </span>            <span class="p">}</span>
 
         <span class="p">}</span>
+    <span class="p">}];</span>
+</code></pre>
+<blockquote>
+<p>Allocate sevral camapign with simple call</p>
+</blockquote>
+<pre class="highlight objective_c tab-objective_c"><code>    <span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">allocateVariations</span><span class="p">:[</span><span class="n">NSArray</span> <span class="nf">arrayWithObjects</span><span class="p">:</span><span class="s">@"campaignId1"</span><span class="p">,</span><span class="s">@"campaignId2"</span><span class="p">,</span><span class="s">@"campaignId3"</span><span class="p">,</span><span class="s">@"campaignId3"</span><span class="p">,</span> <span class="nb">nil</span><span class="p">]</span> <span class="nf">completionBlock</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSArray</span><span class="o">&lt;</span><span class="n">ABCampaign</span> <span class="o">*&gt;</span> <span class="o">*</span><span class="n">variationIdArray</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">variationIdArray</span><span class="p">)</span> <span class="p">{</span>
+
+            <span class="c1">// Here in this array you have all the varaitionID with their camapignId in the ABCampaign Object
+</span>        <span class="p">}</span>
+
+    <span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code>    <span class="p">[[</span><span class="kt">ABTasty</span> <span class="n">sharedInstance</span><span class="p">]</span> <span class="nv">allocateVariations</span><span class="p">:[</span><span class="kt">NSArray</span> <span class="nv">arrayWithObjects</span><span class="p">:</span><span class="s">@"campaignId1"</span><span class="p">,</span><span class="s">@"campaignId2"</span><span class="p">,</span><span class="s">@"campaignId3"</span><span class="p">,</span><span class="s">@"campaignId3"</span><span class="p">,</span> <span class="kc">nil</span><span class="p">]</span> <span class="nv">completionBlock</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">NSArray</span><span class="o">&lt;</span><span class="kt">ABCampaign</span> <span class="o">*&gt;</span> <span class="o">*</span><span class="n">variationIdArray</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">variationIdArray</span><span class="p">)</span> <span class="p">{</span>
+
+            <span class="c1">// Here in this array you have all the varaitionID with their camapignId in the ABCampaign Object</span>
+        <span class="p">}</span>
+
     <span class="p">}];</span>
 </code></pre>
 <p><code>- (void)allocateVariation:(NSString*)pIdCampaign completionBlock:(void(^)(NSString*,NSError*))pOnGetVariationId</code></p>
@@ -482,7 +511,7 @@ You should know be able to use the AB Tasty librarybyapi :)
 Replace <code>campaignId</code> with the id of your campaign and, <code>varId1</code> and <code>varId2</code> with the different variations id of your campaign.
 </aside>
 <h3 id='allocate-sevral-camapigns'>Allocate Sevral Camapigns</h3>
-<p>You can also allocate list of campaignId with at the same time. The completion block get varations for all campaigns</p>
+<p>You can also allocate sevral campaign with simple call function <code>allocateVariations</code>, the completion block pOnGetAllVariationId invoke with <strong>ABCampaign</strong> object</p>
 
 <p><code>- (void)allocateVariations:(NSArray&lt;NSString*&gt;*)pIdCampaignArray completionBlock:(void(^)(NSArray&lt;ABCampaign*&gt;*))pOnGetAllVariationId</code></p>
 
