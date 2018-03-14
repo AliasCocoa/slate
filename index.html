@@ -244,6 +244,11 @@
                   <li>
                     <a href="#initialize-with-tracking-data" class="toc-h2 toc-link" data-title="initialize-with-tracking-data">Initialize with Tracking data</a>
                   </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#starting-campaigns" class="toc-h1 toc-link" data-title="starting-campaigns">Starting campaigns</a>
+              <ul class="toc-list-h2">
                   <li>
                     <a href="#allocate-camapign" class="toc-h2 toc-link" data-title="allocate-camapign">Allocate Camapign</a>
                   </li>
@@ -414,8 +419,6 @@ Replace <code>AB_TASTY_KEY</codbe> with the key provided by AB Tasty.
 </tr>
 </tbody></table>
 
-<p><br></p>
-
 <p><strong>COMMON TRACKING INFORMATIONS</strong></p>
 
 <table><thead>
@@ -441,7 +444,10 @@ Replace <code>AB_TASTY_KEY</codbe> with the key provided by AB Tasty.
 <td>ip adress</td>
 </tr>
 </tbody></table>
-<h6 id='starting-campaigns'>Starting campaigns</h6>
+
+<p><code>-(void)updateConfigInfosTracking:(NSDictionary*)pInfoTracking</code>
+You can update those common tracking by calling </p>
+<h1 id='starting-campaigns'>Starting campaigns</h1>
 <p>This section of the documentation aims to help you to start a new campaign in your app using the ABTasty SDK.</p>
 <h3 id='allocate-camapign'>Allocate Camapign</h3>
 <p>Once you get your visitor id, you can allocate campaign by calling <code>allocateVariation</code> function</p>
