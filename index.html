@@ -424,30 +424,28 @@ You should know be able to use the AB Tasty librarybyapi :)
 <p>Once you get your visitor id, you can allocate campaign by calling <code>allocateVariation</code> function</p>
 
 <blockquote>
-<p>Allocate one camapign 
-```swift
-        ABTasty.sharedInstance().allocateVariation(&quot;campaignId&quot;) { ( variationId,error) in</p>
+<p>Allocate one camapign </p>
 </blockquote>
+<pre class="highlight swift tab-swift"><code>        <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">allocateVariation</span><span class="p">(</span><span class="s">"campaignId"</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span> <span class="n">variationId</span><span class="p">,</span><span class="n">error</span><span class="p">)</span> <span class="k">in</span>
 
-<p>if let error = error {</p>
+            <span class="k">if</span> <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">error</span> <span class="p">{</span>
 
-<p>print (error)</p>
+                <span class="nf">print</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span>
 
-<p>} else if let variationId = variationId {</p>
+            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="k">let</span> <span class="nv">variationId</span> <span class="o">=</span> <span class="n">variationId</span> <span class="p">{</span>
 
-<p>if(variationId == &quot;varId1&quot;){</p>
+                <span class="k">if</span><span class="p">(</span><span class="n">variationId</span> <span class="o">==</span> <span class="s">"varId1"</span><span class="p">){</span>
 
-<p>// Execute code for varId1</p>
+                    <span class="c1">// Execute code for varId1</span>
 
-<p>}else if (variationId == &quot;varId2&quot;){</p>
+                <span class="p">}</span><span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">variationId</span> <span class="o">==</span> <span class="s">"varId2"</span><span class="p">){</span>
 
-<p>// Execute code for varId2</p>
+                    <span class="c1">// Execute code for varId2</span>
 
-<p>}
-            }
-        }
-```</p>
-<pre class="highlight objective_c tab-objective_c"><code>    <span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">allocateVariation</span><span class="p">:</span><span class="s">@"campaignId"</span> <span class="nf">completionBlock</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span> <span class="n">variationId</span><span class="p">,</span><span class="n">NSError</span><span class="o">*</span> <span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+</code></pre><pre class="highlight objective_c tab-objective_c"><code>    <span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">allocateVariation</span><span class="p">:</span><span class="s">@"campaignId"</span> <span class="nf">completionBlock</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span> <span class="n">variationId</span><span class="p">,</span><span class="n">NSError</span><span class="o">*</span> <span class="n">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">error</span><span class="p">){</span>
 
             <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%@"</span><span class="p">,</span> <span class="n">error</span><span class="p">.</span><span class="n">description</span><span class="p">);</span>
