@@ -238,7 +238,7 @@
                     <a href="#initialize-abtastysdk" class="toc-h2 toc-link" data-title="initialize-abtastysdk">Initialize ABTastySDK</a>
                   </li>
                   <li>
-                    <a href="#initialize-with-tracking-data" class="toc-h2 toc-link" data-title="initialize-with-tracking-data">Initialize with tracking data</a>
+                    <a href="#initialize-with-tracking-data" class="toc-h2 toc-link" data-title="initialize-with-tracking-data">Initialize with Tracking data</a>
                   </li>
               </ul>
           </li>
@@ -308,8 +308,7 @@
 <li><p>Open Terminal and navigate to the directory that contains your project then enter the folowing command: pod init</p></li>
 <li><p>Open your Podfile and add the ABTAstySdk pod</p></li>
 <li><p>Run pod install from your Xcode project&#39;s base directory</p></li>
-<li><p>Make sure to always open the Xcode workspace instead of the project file when building your project
-<br></p></li>
+<li><p>Make sure to always open the Xcode workspace instead of the project file when building your project</p></li>
 </ol>
 <h3 id='manual-installation'>Manual Installation</h3>
 <ol>
@@ -354,7 +353,7 @@ Replace <code>AB_TASTY_KEY</code> with the key provided by AB Tasty.
 <td>Access key provided by AB Tasty</td>
 </tr>
 </tbody></table>
-<h3 id='initialize-with-tracking-data'>Initialize with tracking data</h3><pre class="highlight objective_c tab-objective_c"><code> <span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">startABTastySdk</span><span class="p">:</span><span class="s">@"YOUR_ACCESS_KEY"</span> <span class="nf">WithTrackingInfos</span><span class="p">:</span>
+<h3 id='initialize-with-tracking-data'>Initialize with Tracking data</h3><pre class="highlight objective_c tab-objective_c"><code> <span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">startABTastySdk</span><span class="p">:</span><span class="s">@"YOUR_ACCESS_KEY"</span> <span class="nf">WithTrackingInfos</span><span class="p">:</span>
     <span class="p">@{</span><span class="s">@"adel"</span><span class="o">:</span><span class="mi">@1</span><span class="p">,</span>
     <span class="s">@"Longitude"</span><span class="o">:</span><span class="mf">@2.3333</span><span class="p">,</span>
     <span class="s">@"Latitude"</span><span class="o">:</span> <span class="mf">@48.48</span><span class="p">,</span>
@@ -414,10 +413,6 @@ Replace <code>AB_TASTY_KEY</code> with the key provided by AB Tasty.
 </tr>
 </tbody></table>
 
-<p><br></p>
-
-<p><br><br></p>
-
 <aside class="success">
 Congratulations !!
 <br><br>
@@ -425,27 +420,41 @@ You should know be able to use the AB Tasty librarybyapi :)
 </aside>
 <h1 id='experiments'>Experiments</h1>
 <p>This section of the documentation aims to help you to start a new campaign in your app using the ABTasty SDK.</p>
-<h2 id='allocate-campaign'>Allocate Campaign</h2><pre class="highlight kotlin tab-kotlin"><code><span class="n">ABTasty</span><span class="p">.</span><span class="n">getVariationIdForCampaign</span><span class="p">(</span><span class="s">"xxxxxx"</span><span class="p">,</span> <span class="p">{</span>
-<span class="k">when</span> <span class="p">(</span><span class="n">it</span><span class="p">)</span> <span class="p">{</span>
-<span class="s">"aaaaaa"</span> <span class="p">-&gt;</span> <span class="n">System</span><span class="p">.</span><span class="k">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="err">'</span><span class="n">Variation</span> <span class="n">A</span><span class="err">'</span><span class="p">)</span>
-<span class="s">"bbbbbb"</span> <span class="p">-&gt;</span> <span class="n">System</span><span class="p">.</span><span class="k">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="err">'</span><span class="n">Variation</span> <span class="n">B</span><span class="err">'</span><span class="p">)</span>
-<span class="o">..</span><span class="p">.</span>
+<h2 id='allocate-campaign'>Allocate Campaign</h2>
+<p>Once you get your visitor id, you can allocate campaign by calling &#39;allocateVariation&#39; function</p>
+<pre class="highlight swift tab-swift"><code>        <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">allocateVariation</span><span class="p">(</span><span class="s">"campaignId"</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span> <span class="n">variationId</span><span class="p">,</span><span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+
+            <span class="k">if</span> <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">error</span> <span class="p">{</span>
+
+                <span class="nf">print</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span>
+
+            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="k">let</span> <span class="nv">variationId</span> <span class="o">=</span> <span class="n">variationId</span> <span class="p">{</span>
+
+                <span class="k">if</span><span class="p">(</span><span class="n">variationId</span> <span class="o">==</span> <span class="s">"varId1"</span><span class="p">){</span>
+
+                    <span class="c1">// Execute code for varId1</span>
+
+                <span class="p">}</span><span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">variationId</span> <span class="o">==</span> <span class="s">"varId2"</span><span class="p">){</span>
+
+                    <span class="c1">// Execute code for varId2</span>
+
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+</code></pre><pre class="highlight objective_c tab-objective_c"><code><span class="n">ABTasty</span><span class="p">.</span><span class="n">Companion</span><span class="p">.</span><span class="n">getVariationIdForCampaign</span><span class="p">(</span><span class="s">"xxxxxx"</span><span class="p">,</span> <span class="n">new</span> <span class="n">Function1</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Unit</span><span class="o">&gt;</span><span class="p">()</span> <span class="p">{</span>
+<span class="err">@Override</span>
+<span class="n">public</span> <span class="n">Unit</span> <span class="n">invoke</span><span class="p">(</span><span class="n">String</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">switch</span> <span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">case</span> <span class="s">"aaaaaa"</span> <span class="p">:</span> <span class="p">{</span>
+<span class="n">System</span><span class="p">.</span><span class="n">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"Variation A"</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">break</span><span class="p">;</span>
+<span class="k">case</span> <span class="s">"bbbbbb"</span> <span class="p">:</span> <span class="p">{</span>
+<span class="n">System</span><span class="p">.</span><span class="n">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"Variation B"</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">break</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="p">})</span>
-</code></pre><pre class="highlight java tab-java"><code><span class="n">ABTasty</span><span class="o">.</span><span class="na">Companion</span><span class="o">.</span><span class="na">getVariationIdForCampaign</span><span class="o">(</span><span class="s">"xxxxxx"</span><span class="o">,</span> <span class="k">new</span> <span class="n">Function1</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Unit</span><span class="o">&gt;()</span> <span class="o">{</span>
-<span class="nd">@Override</span>
-<span class="kd">public</span> <span class="n">Unit</span> <span class="nf">invoke</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
-<span class="k">switch</span> <span class="o">(</span><span class="n">s</span><span class="o">)</span> <span class="o">{</span>
-<span class="k">case</span> <span class="s">"aaaaaa"</span> <span class="o">:</span> <span class="o">{</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Variation A"</span><span class="o">);</span>
-<span class="o">}</span> <span class="k">break</span><span class="o">;</span>
-<span class="k">case</span> <span class="s">"bbbbbb"</span> <span class="o">:</span> <span class="o">{</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Variation B"</span><span class="o">);</span>
-<span class="o">}</span> <span class="k">break</span><span class="o">;</span>
-<span class="o">}</span>
-<span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
-<span class="o">}</span>
-<span class="o">});</span>
+<span class="k">return</span> <span class="n">null</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">});</span>
 </code></pre>
 <p>Once the library is initialized you need to allocate a variation id to your campaign. To do this, use the <code>getVariationIdForCampaign</code> method in the <code>ABTasty</code> class located in the <code>com.abtasty.librarybyapi.main</code> package.</p>
 
