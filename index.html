@@ -321,14 +321,6 @@
 <blockquote>
 <p>Add the following code into your AppDelegate.m file</p>
 </blockquote>
-
-<p>To run experiments with ABTasty you&#39;ll need to initialize ABTasty with AB_TASTY_KEY. ABTasty instance can both allocate, activate experiments and track events.</p>
-
-<p>To do this, you just have to call the function <code>startABTastySdk</code> in the ABTasty class located in the frameWork ABTastySdk.framework. For each new user, at the very first initialization, the SDK is going to ask for a new visitor id to our servers and save it in a user Default</p>
-
-<blockquote>
-<p>Call the function <em>initialize</em> and its inner function <em>start</em> from the class <em>ABTasty</em> to init and start the library</p>
-</blockquote>
 <pre class="highlight objective_c tab-objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="nf">application</span><span class="p">:(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions</span><span class="p">:(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span> <span class="p">{</span>
 
     <span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">startABTastySdk</span><span class="p">:</span><span class="s">@"YOUR_ACCESS_KEY"</span><span class="p">];</span>
@@ -339,13 +331,88 @@
         <span class="k">return</span> <span class="kc">true</span>
     <span class="p">}</span>
 </code></pre>
-<p><code>(void)startABTastySdk:(NSString*)appId</code></p>
+<p>To run experiments with ABTasty you&#39;ll need to initialize ABTasty with AB_TASTY_KEY. ABTasty instance can both allocate, activate experiments and track events.</p>
 
-<p><em>@See: Initalization section for more details</em></p>
+<p>To do this, you just have to call the function <code>startABTastySdk</code> in the ABTasty class located in the frameWork ABTastySdk.framework. For each new user, at the very first initialization, the SDK is going to ask for a new visitor id to our servers and save it in a user Default</p>
 
 <aside class="notice">
 Replace <code>AB_TASTY_KEY</code> with the key provided by AB Tasty.
 </aside>
+
+<p><code>(void)startABTastySdk:(NSString*)appId</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>appId</td>
+<td>NSString</td>
+<td>Access key provided by AB Tasty</td>
+</tr>
+</tbody></table>
+<h3 id='initialize-with-tracking-data'>Initialize with tracking data</h3><pre class="highlight objective_c tab-objective_c"><code> <span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">startABTastySdk</span><span class="p">:</span><span class="s">@"YOUR_ACCESS_KEY"</span> <span class="nf">WithTrackingInfos</span><span class="p">:</span>
+    <span class="p">@{</span><span class="s">@"adel"</span><span class="o">:</span><span class="mi">@1</span><span class="p">,</span>
+    <span class="s">@"Longitude"</span><span class="o">:</span><span class="mf">@2.3333</span><span class="p">,</span>
+    <span class="s">@"Latitude"</span><span class="o">:</span> <span class="mf">@48.48</span><span class="p">,</span>
+    <span class="s">@"ipAddress"</span><span class="o">:</span><span class="s">@"192.168.1.1"</span>
+    <span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code>     <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">startSdk</span><span class="p">(</span><span class="s">"YOUR_ACCESS_KEY"</span><span class="p">,</span> <span class="nv">withTrackingInfos</span><span class="p">:</span>
+         <span class="p">[</span><span class="s">"Longitude"</span><span class="p">:</span><span class="mf">2.3333</span><span class="p">,</span> <span class="s">"Latitude"</span><span class="p">:</span><span class="mf">48.48</span><span class="p">,,</span><span class="s">"ipAddress"</span><span class="p">:</span><span class="s">"192.168.1.1"</span><span class="p">])</span>
+</code></pre>
+<p><code>- (void)startABTastySdk:(NSString*)appId WithTrackingInfos:(NSDictionary*)pInfosTracking</code></p>
+
+<p>This method allows you to set common default tracking data that you want to share between all your events.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>appId</td>
+<td>NSString</td>
+<td>Access key provided by AB Tasty</td>
+</tr>
+<tr>
+<td>pInfosTracking</td>
+<td>NSDictionary</td>
+<td>infos tracking for common default data</td>
+</tr>
+</tbody></table>
+
+<p>COMMON TRACKING INFORMATIONS</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Longitude</td>
+<td>Double</td>
+<td>Longitude</td>
+</tr>
+<tr>
+<td>Latitude</td>
+<td>Double</td>
+<td>Latitude</td>
+</tr>
+<tr>
+<td>ipAddress</td>
+<td>NSDictionary</td>
+<td>ip adresse</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
 
 <p><br><br></p>
 
@@ -354,8 +421,6 @@ Congratulations !!
 <br><br>
 You should know be able to use the AB Tasty librarybyapi :)
 </aside>
-<h3 id='initialize-with-tracking-data'>Initialize with tracking data</h3>
-<p><br></p>
 <h1 id='experiments'>Experiments</h1>
 <p>This section of the documentation aims at helping you starting a new campaign in your app with the ABTasty android librarybyapi.</p>
 <h2 id='library-initialization'>Library Initialization</h2>
