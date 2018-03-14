@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;kotlin&quot;,&quot;java&quot;]">
+  <body class="index" data-languages="[&quot;objective_c&quot;,&quot;swift&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -211,8 +211,8 @@
     <div class="toc-wrapper">
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
-              <a href="#" data-language-name="kotlin">kotlin</a>
-              <a href="#" data-language-name="java">java</a>
+              <a href="#" data-language-name="objective_c">objective_c</a>
+              <a href="#" data-language-name="swift">swift</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -236,6 +236,9 @@
                   </li>
                   <li>
                     <a href="#initialize-abtastysdk" class="toc-h2 toc-link" data-title="initialize-abtastysdk">Initialize ABTastySDK</a>
+                  </li>
+                  <li>
+                    <a href="#initialize-with-tracking-data" class="toc-h2 toc-link" data-title="initialize-with-tracking-data">Initialize with tracking data</a>
                   </li>
               </ul>
           </li>
@@ -305,51 +308,38 @@
 <li><p>Open Terminal and navigate to the directory that contains your project then enter the folowing command: pod init</p></li>
 <li><p>Open your Podfile and add the ABTAstySdk pod</p></li>
 <li><p>Run pod install from your Xcode project&#39;s base directory</p></li>
-<li><p>Make sure to always open the Xcode workspace instead of the project file when building your project</p></li>
+<li><p>Make sure to always open the Xcode workspace instead of the project file when building your project
+<br></p></li>
 </ol>
-
-<p><br></p>
 <h3 id='manual-installation'>Manual Installation</h3>
 <ol>
-<li><p>Download the frameWork  <a href='ABTastySdk.framework'>Install CocoaPods.</a></p></li>
+<li><p>Download the frameWork  <a href='http://sdk.abtasty.com/ios/ABTastySdk.zip'>ABTastySdk.framework.</a></p></li>
 <li><p>In Finder, navigate to the ABTastySdk.framework file and drop it under your &quot;Embedded Binaries&quot; section in Xcode</p></li>
 <li><p>After this manipulation, a popup will open, into it, don&#39;t forget to check &quot;Copy items if needed&quot;.</p></li>
 </ol>
-
-<p><code>com.abtasty:librarybyapi:x.x.x</code></p>
-
-<aside class="notice">
-Replace <code>x.x.x</code> with the desired version.
-</aside>
-
-<p><br>
-<aside class="warning">
-Warning : As the librarybyapi contains few methods it depends on other libraries to build properly. You will sometimes need to enable the multidex option in case your app dex file exceeds 65K methods. Follow this link : <a href="https://developer.android.com/studio/build/multidex.html">Multidex</a>
-</aside></p>
-
-<p><br></p>
 <h3 id='initialize-abtastysdk'>Initialize ABTastySDK</h3>
+<blockquote>
+<p>Add the following code into your AppDelegate.m file</p>
+</blockquote>
+
+<p>To run experiments with ABTasty you&#39;ll need to initialize ABTasty with AB_TASTY_KEY. ABTasty instance can both allocate, activate experiments and track events.</p>
+
+<p>To do this, you just have to call the function <code>startABTastySdk</code> in the ABTasty class located in the frameWork ABTastySdk.framework. For each new user, at the very first initialization, the SDK is going to ask for a new visitor id to our servers and save it in a user Default</p>
+
 <blockquote>
 <p>Call the function <em>initialize</em> and its inner function <em>start</em> from the class <em>ABTasty</em> to init and start the library</p>
 </blockquote>
-<pre class="highlight kotlin tab-kotlin"><code><span class="kd">class</span> <span class="nc">MyActivity</span> <span class="p">:</span> <span class="n">Activity</span><span class="p">()</span> <span class="p">{</span>
+<pre class="highlight objective_c tab-objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="nf">application</span><span class="p">:(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions</span><span class="p">:(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span> <span class="p">{</span>
 
-<span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
-<span class="k">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
-<span class="n">ABTasty</span><span class="p">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">applicationContext</span><span class="p">,</span> <span class="n">AB_TASTY_KEY</span><span class="p">).</span><span class="n">start</span><span class="p">()</span>
+    <span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">startABTastySdk</span><span class="p">:</span><span class="s">@"YOUR_ACCESS_KEY"</span><span class="p">];</span>
+    <span class="k">return</span> <span class="nb">YES</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="p">}</span>
-</code></pre><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
-
-<span class="nd">@Override</span>
-<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
-<span class="n">ABTasty</span><span class="o">.</span><span class="na">Companion</span><span class="o">.</span><span class="na">initialize</span><span class="o">(</span><span class="n">getApplicationContext</span><span class="o">(),</span> <span class="n">AB_TASTY_KEY</span><span class="o">).</span><span class="na">start</span><span class="o">();</span>
-<span class="o">}</span>
-<span class="o">}</span>
+</code></pre><pre class="highlight swift tab-swift"><code>    <span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplicationLaunchOptionsKey</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>        
+        <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">startSdk</span><span class="p">(</span><span class="s">"YOUR_ACCESS_KEY"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">true</span>
+    <span class="p">}</span>
 </code></pre>
-<p>Finally, you just have to call the <code>initialize</code> function and its inner <code>start</code> function located in the <code>ABTasty</code> class. Insert it at the most appropriate location for your application to init and start the library.</p>
-
-<p><code>fun initialize(context: Context, token: String) : ABInitializer</code></p>
+<p><code>(void)startABTastySdk:(NSString*)appId</code></p>
 
 <p><em>@See: Initalization section for more details</em></p>
 
@@ -364,6 +354,8 @@ Congratulations !!
 <br><br>
 You should know be able to use the AB Tasty librarybyapi :)
 </aside>
+<h3 id='initialize-with-tracking-data'>Initialize with tracking data</h3>
+<p><br></p>
 <h1 id='experiments'>Experiments</h1>
 <p>This section of the documentation aims at helping you starting a new campaign in your app with the ABTasty android librarybyapi.</p>
 <h2 id='library-initialization'>Library Initialization</h2>
@@ -461,7 +453,7 @@ This function returns an `ABInitializer` builder object in which you can pass so
 </tbody></table>
 
 <p><br></p>
-<h3 id='initialize-with-tracking-data'>Initialize with tracking data</h3><pre class="highlight kotlin tab-kotlin"><code><span class="kd">class</span> <span class="nc">MyActivity</span> <span class="p">:</span> <span class="n">Activity</span><span class="p">()</span> <span class="p">{</span>
+<h3 id='initialize-with-tracking-data-2'>Initialize with tracking data</h3><pre class="highlight kotlin tab-kotlin"><code><span class="kd">class</span> <span class="nc">MyActivity</span> <span class="p">:</span> <span class="n">Activity</span><span class="p">()</span> <span class="p">{</span>
 
 <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">?)</span> <span class="p">{</span>
 <span class="k">super</span><span class="p">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
@@ -1208,8 +1200,8 @@ Replace <code>xxxxxx</code> with the id of your campaign and <code>bbbbbb</code>
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="kotlin">kotlin</a>
-                <a href="#" data-language-name="java">java</a>
+                <a href="#" data-language-name="objective_c">objective_c</a>
+                <a href="#" data-language-name="swift">swift</a>
           </div>
       </div>
     </div>
