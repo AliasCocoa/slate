@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;objective_c&quot;,&quot;swift&quot;,&quot;ruby&quot;,&quot;shell&quot;]">
+  <body class="index" data-languages="[&quot;objective_c&quot;,&quot;swift&quot;,&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -213,7 +213,6 @@
         <div class="lang-selector">
               <a href="#" data-language-name="objective_c">objective_c</a>
               <a href="#" data-language-name="swift">swift</a>
-              <a href="#" data-language-name="ruby">ruby</a>
               <a href="#" data-language-name="shell">shell</a>
         </div>
         <div class="search">
@@ -266,9 +265,6 @@
               <ul class="toc-list-h2">
                   <li>
                     <a href="#abtracking" class="toc-h2 toc-link" data-title="abtracking">ABTracking</a>
-                  </li>
-                  <li>
-                    <a href="#campaign-activation-tracking" class="toc-h2 toc-link" data-title="campaign-activation-tracking">Campaign Activation Tracking</a>
                   </li>
                   <li>
                     <a href="#action-tracking" class="toc-h2 toc-link" data-title="action-tracking">Action Tracking</a>
@@ -357,7 +353,7 @@ mv <span class="s2">"</span><span class="nv">$FRAMEWORK_EXECUTABLE_PATH</span><s
 <p><img src="images/rScript.png" alt="alt text" /></p>
 <h3 id='initialize-abtastysdk'>Initialize ABTastySDK</h3>
 <blockquote>
-<p>Add the following code into your AppDelegate.m file</p>
+<p>import ABTastySdk frameWork and Add the following code into your AppDelegate.m file</p>
 </blockquote>
 <pre class="highlight objective_c tab-objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="nf">application</span><span class="p">:(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions</span><span class="p">:(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span> <span class="p">{</span>
 
@@ -452,11 +448,7 @@ Replace <code>AB_TASTY_KEY</codbe> with the key provided by AB Tasty.
 </tr>
 </tbody></table>
 
-<aside class="success">
-Congratulations !!
-<br><br>
-You should know be able to use the AB Tasty librarybyapi :)
-</aside>
+<p>You can update those common tracking by calling <code>updateConfigInfosTracking:(NSDictionary*)pInfoTracking</code></p>
 <h1 id='starting-campaigns'>Starting campaigns</h1>
 <p>This section of the documentation aims to help you to start a new campaign in your app using the ABTasty SDK.</p>
 <h3 id='allocate-camapign'>Allocate Camapign</h3>
@@ -579,8 +571,6 @@ Replace <code>campaignId</code> with the id of your campaign and, <code>varId1</
 always sees the same variation.</p>
 
 <p>The allocation can be changeg if you call <code>allocateVariation</code> several times until you use <code>activateCampaign</code> to activate the campaign and freeze the variation.</p>
-
-<p><em>@See <code>activateCampaign</code> in the <a href="#activate">tracking section</a></em></p>
 <h1 id='sending-events'>Sending events</h1>
 <p>The library also provides some functions to send events to ABTasty, for example to send objectives configured for a campaign.</p>
 
@@ -628,51 +618,6 @@ always sees the same variation.</p>
 
 <aside class="notice">
 Common data can be automatically set from the ABTracking passed in the `startABTastySdk` at start SDK, or from another ABTracking instance.
-</aside>
-
-<p><br></p>
-
-<p><a name="activate"></a></p>
-<h2 id='campaign-activation-tracking'>Campaign Activation Tracking</h2><pre class="highlight kotlin tab-kotlin"><code><span class="kd">val</span> <span class="py">tracker</span> <span class="p">=</span> <span class="n">ABCampaignActivationTracker</span><span class="p">.</span><span class="n">Builder</span><span class="p">()</span>
-<span class="p">.</span><span class="n">setCampaignId</span><span class="p">(</span><span class="s">"xxxxxx"</span><span class="p">)</span>
-<span class="p">.</span><span class="n">setVariationId</span><span class="p">(</span><span class="s">"bbbbbbb"</span><span class="p">)</span>
-<span class="p">.</span><span class="n">setOrigin</span><span class="p">(</span><span class="s">"LoginActivity"</span><span class="p">)</span>
-<span class="p">.</span><span class="n">setDeviceType</span><span class="p">(</span><span class="n">DeviceType</span><span class="p">.</span><span class="n">MOBILE_PHONE</span><span class="p">)</span>
-<span class="p">.</span><span class="n">setTimestamp</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="n">currentTimeMillis</span><span class="p">()</span> <span class="p">/</span> <span class="m">1000</span><span class="p">)</span>
-<span class="p">.</span><span class="n">build</span><span class="p">()</span>
-<span class="n">ABTasty</span><span class="p">.</span><span class="n">sendTrackingEvent</span><span class="p">(</span><span class="n">tracker</span><span class="p">)</span>
-</code></pre><pre class="highlight java tab-java"><code><span class="n">ABCampaignActivationTracker</span> <span class="n">activation</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ABCampaignActivationTracker</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
-<span class="o">.</span><span class="na">setCampaignId</span><span class="o">(</span><span class="s">"xxxxxx"</span><span class="o">)</span>
-<span class="o">.</span><span class="na">setVariationId</span><span class="o">(</span><span class="s">"bbbbbb"</span><span class="o">)</span>
-<span class="o">.</span><span class="na">setOrigin</span><span class="o">(</span><span class="s">"LoginActivity"</span><span class="o">)</span>
-<span class="o">.</span><span class="na">setDeviceType</span><span class="o">(</span><span class="n">DeviceType</span><span class="o">.</span><span class="na">MOBILE_PHONE</span><span class="o">)</span>
-<span class="o">.</span><span class="na">setTimestamp</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">()</span> <span class="o">/</span> <span class="mi">1000</span><span class="o">)</span>
-<span class="o">.</span><span class="na">build</span><span class="o">();</span>
-<span class="n">ABTasty</span><span class="o">.</span><span class="na">Companion</span><span class="o">.</span><span class="na">sendTrackingEvent</span><span class="o">(</span><span class="n">activation</span><span class="o">);</span>
-</code></pre>
-<p>This tracker activates a campaign and its variation.</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>campaign_id</td>
-<td>String</td>
-<td>campaign id to be activated <strong>required</strong></td>
-</tr>
-<tr>
-<td>variation_id</td>
-<td>String</td>
-<td>variation id of the campaign to be activated <strong>required</strong></td>
-</tr>
-</tbody></table>
-
-<aside class="notice">
-Replace <code>xxxxxx</code> with the id of your campaign and <code>bbbbbb</code> with the selected variations id of your campaign.
 </aside>
 
 <p><br></p>
@@ -809,7 +754,7 @@ Replace <code>xxxxxx</code> with the id of your campaign and <code>bbbbbb</code>
         <span class="n">transaction</span><span class="o">.</span><span class="n">microTransaction</span> <span class="o">=</span> <span class="p">[</span><span class="n">miniTransaction</span><span class="p">];</span>
         <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">sendTrackingEvent</span><span class="p">(</span><span class="n">transaction</span><span class="p">)</span>
 </code></pre>
-<p>The <code>ABTransaction</code> lets you track any purchase on your mobile app.</p>
+<p>The <strong>ABTransaction</strong> lets you track any purchase on your mobile app.</p>
 
 <table><thead>
 <tr>
@@ -926,7 +871,7 @@ Replace <code>xxxxxx</code> with the id of your campaign and <code>bbbbbb</code>
 
      <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">sendTrackingEvent</span><span class="p">(</span><span class="n">visitEvent</span><span class="p">)</span>
 </code></pre>
-<p>The <code>ABVisitEvent</code> lets you track any visit occurring on a mobile app.</p>
+<p>The <strong>ABVisitEvent</strong> lets you track any visit occurring on a mobile app.</p>
 
 <p>No parameters needed for this event, the sdk handle it for you, it take the <code>common data</code> set before when start SDK, if you want to update the common tracking for this specefic visit event, create un instance with <code>initABTracking</code>.
 <br></p>
@@ -938,7 +883,6 @@ Replace <code>xxxxxx</code> with the id of your campaign and <code>bbbbbb</code>
           <div class="lang-selector">
                 <a href="#" data-language-name="objective_c">objective_c</a>
                 <a href="#" data-language-name="swift">swift</a>
-                <a href="#" data-language-name="ruby">ruby</a>
                 <a href="#" data-language-name="shell">shell</a>
           </div>
       </div>
