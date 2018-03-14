@@ -367,11 +367,10 @@ mv <span class="s2">"</span><span class="nv">$FRAMEWORK_EXECUTABLE_PATH</span><s
 </code></pre>
 <p>To run experiments with ABTasty you&#39;ll need to initialize ABTasty with AB_TASTY_KEY. ABTasty instance can both allocate, activate experiments and track events.</p>
 
-<p>To do this, you just have to call the function <code>startABTastySdk</code> in the ABTasty class located in the frameWork ABTastySdk.framework. For each new user, at the very first initialization, the SDK is going to ask for a new visitor id to our servers and save it in a user Default</p>
-
+<p>To do this, you just have to call the function <code>startABTastySdk</code> in the ABTasty class located in the frameWork ABTastySdk.framework. For each new user, at the very first initialization, the SDK is going to ask for a new visitor id to our servers and save it in a user Default
 <aside class="notice">
 Replace <code>AB_TASTY_KEY</codbe> with the key provided by AB Tasty.
-</aside>
+</aside></p>
 
 <p><code>(void)startABTastySdk:(NSString*)appId</code></p>
 
