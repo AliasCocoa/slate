@@ -251,9 +251,11 @@
                   <li>
                     <a href="#activate-campaign" class="toc-h2 toc-link" data-title="activate-campaign">Activate Campaign</a>
                   </li>
-                  <li>
-                    <a href="#sending-events" class="toc-h2 toc-link" data-title="sending-events">Sending events</a>
-                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#sending-events" class="toc-h1 toc-link" data-title="sending-events">Sending events</a>
+              <ul class="toc-list-h2">
                   <li>
                     <a href="#abtracker" class="toc-h2 toc-link" data-title="abtracker">ABTracker</a>
                   </li>
@@ -512,7 +514,7 @@ always sees the same variation.</p>
 <p>The allocation can be changeg if you call <code>allocateVariation</code> several times until you use <code>activateCampaign</code> to activate the campaign and freeze the variation.</p>
 
 <p><em>@See <code>activateCampaign</code> in the <a href="#activate">tracking section</a></em></p>
-<h2 id='sending-events'>Sending events</h2>
+<h1 id='sending-events'>Sending events</h1>
 <p>The library also provides some functions to send events to ABTasty, for example to send objectives configured for a campaign.</p>
 
 <p>To do so, use the <code>sendTrackingEvent</code> method and specify the expected tracker as a parameter.</p>
