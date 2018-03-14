@@ -337,6 +337,8 @@ You need to Add a Run Script step to your build steps, put it after your step to
 frameworks, set it to use /bin/sh</p>
 
 <p>and enter the following script:</p>
+
+<p><img src="images/rScript.png" alt="alt text" /></p>
 <pre class="highlight shell tab-shell"><code><span class="nv">FRAMEWORK</span><span class="o">=</span><span class="s2">"ABTastySdk"</span>
 <span class="nv">FRAMEWORK_EXECUTABLE_PATH</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">BUILT_PRODUCTS_DIR</span><span class="k">}</span><span class="s2">/</span><span class="k">${</span><span class="nv">FRAMEWORKS_FOLDER_PATH</span><span class="k">}</span><span class="s2">/</span><span class="nv">$FRAMEWORK</span><span class="s2">.framework/</span><span class="nv">$FRAMEWORK</span><span class="s2">"</span>
 <span class="nv">EXTRACTED_ARCHS</span><span class="o">=()</span>
