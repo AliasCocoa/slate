@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;objective_c&quot;,&quot;swift&quot;,&quot;ruby&quot;]">
+  <body class="index" data-languages="[&quot;objective_c&quot;,&quot;swift&quot;,&quot;ruby&quot;,&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -214,6 +214,7 @@
               <a href="#" data-language-name="objective_c">objective_c</a>
               <a href="#" data-language-name="swift">swift</a>
               <a href="#" data-language-name="ruby">ruby</a>
+              <a href="#" data-language-name="shell">shell</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -339,6 +340,20 @@ The universal framework for iOS contain architectures for Simulator and Device, 
 You need to Add a Run Script step to your build steps, put it after your step to embed
 frameworks, set it to use /bin/sh</p>
 
+<p>and enter the following script:</p>
+<pre class="highlight shell tab-shell"><code><span class="nv">FRAMEWORK</span><span class="o">=</span><span class="s2">"ABTastySdk"</span>
+<span class="nv">FRAMEWORK_EXECUTABLE_PATH</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">BUILT_PRODUCTS_DIR</span><span class="k">}</span><span class="s2">/</span><span class="k">${</span><span class="nv">FRAMEWORKS_FOLDER_PATH</span><span class="k">}</span><span class="s2">/</span><span class="nv">$FRAMEWORK</span><span class="s2">.framework/</span><span class="nv">$FRAMEWORK</span><span class="s2">"</span>
+<span class="nv">EXTRACTED_ARCHS</span><span class="o">=()</span>
+<span class="k">for </span>ARCH <span class="k">in</span> <span class="nv">$ARCHS</span>
+<span class="k">do
+</span>lipo -extract <span class="s2">"</span><span class="nv">$ARCH</span><span class="s2">"</span> <span class="s2">"</span><span class="nv">$FRAMEWORK_EXECUTABLE_PATH</span><span class="s2">"</span> -o <span class="s2">"</span><span class="nv">$FRAMEWORK_EXECUTABLE_PATH</span><span class="s2">-</span><span class="nv">$ARCH</span><span class="s2">"</span>
+EXTRACTED_ARCHS+<span class="o">=(</span><span class="s2">"</span><span class="nv">$FRAMEWORK_EXECUTABLE_PATH</span><span class="s2">-</span><span class="nv">$ARCH</span><span class="s2">"</span><span class="o">)</span>
+<span class="k">done
+</span>lipo -o <span class="s2">"</span><span class="nv">$FRAMEWORK_EXECUTABLE_PATH</span><span class="s2">-merged"</span> -create <span class="s2">"</span><span class="k">${</span><span class="nv">EXTRACTED_ARCHS</span><span class="p">[@]</span><span class="k">}</span><span class="s2">"</span>
+rm <span class="s2">"</span><span class="k">${</span><span class="nv">EXTRACTED_ARCHS</span><span class="p">[@]</span><span class="k">}</span><span class="s2">"</span>
+rm <span class="s2">"</span><span class="nv">$FRAMEWORK_EXECUTABLE_PATH</span><span class="s2">"</span>
+mv <span class="s2">"</span><span class="nv">$FRAMEWORK_EXECUTABLE_PATH</span><span class="s2">-merged"</span> <span class="s2">"</span><span class="nv">$FRAMEWORK_EXECUTABLE_PATH</span><span class="s2">"</span>
+</code></pre>
 <p><img src="images/universalscript.png" alt="alt text" /></p>
 <h3 id='initialize-abtastysdk'>Initialize ABTastySDK</h3>
 <blockquote>
@@ -924,6 +939,7 @@ Replace <code>xxxxxx</code> with the id of your campaign and <code>bbbbbb</code>
                 <a href="#" data-language-name="objective_c">objective_c</a>
                 <a href="#" data-language-name="swift">swift</a>
                 <a href="#" data-language-name="ruby">ruby</a>
+                <a href="#" data-language-name="shell">shell</a>
           </div>
       </div>
     </div>
