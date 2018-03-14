@@ -517,8 +517,6 @@ You can update those common tracking by calling </p>
 <aside class="notice">
 Replace <code>campaignId</code> with the id of your campaign and, <code>varId1</code> and <code>varId2</code> with the different variations id of your campaign.
 </aside>
-
-<p><br></p>
 <h3 id='allocate-sevral-camapigns'>Allocate Sevral Camapigns</h3>
 <blockquote>
 <p>Allocate sevral campaign with simple call</p>
@@ -563,8 +561,6 @@ Replace <code>campaignId</code> with the id of your campaign and, <code>varId1</
 <td>block to be invoked when all variations is selected for those campaigns.</td>
 </tr>
 </tbody></table>
-
-<p><br></p>
 <h2 id='activate-campaign'>Activate Campaign</h2><pre class="highlight objective_c tab-objective_c"><code>
     <span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">activateCampaign</span><span class="p">:</span><span class="s">@"campaignId"</span> <span class="nf">forVariationId</span><span class="p">:</span><span class="n">varId</span><span class="p">];</span>
 </code></pre><pre class="highlight swift tab-swift"><code>    <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">activateCampaign</span><span class="p">(</span><span class="s">"campaignId"</span><span class="p">,</span> <span class="nv">forVariationId</span><span class="p">:</span> <span class="s">"varId"</span><span class="p">)</span>
@@ -573,8 +569,6 @@ Replace <code>campaignId</code> with the id of your campaign and, <code>varId1</
 always sees the same variation.</p>
 
 <p>The allocation can be changeg if you call <code>allocateVariation</code> several times until you use <code>activateCampaign</code> to activate the campaign and freeze the variation.</p>
-
-<p><br></p>
 <h1 id='sending-events'>Sending events</h1>
 <p>The library also provides some functions to send events to ABTasty, for example to send objectives configured for a campaign.</p>
 
