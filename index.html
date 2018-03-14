@@ -367,10 +367,7 @@ mv <span class="s2">"</span><span class="nv">$FRAMEWORK_EXECUTABLE_PATH</span><s
 </code></pre>
 <p>To run experiments with ABTasty you&#39;ll need to initialize ABTasty with AB_TASTY_KEY. ABTasty instance can both allocate, activate experiments and track events.</p>
 
-<p>To do this, you just have to call the function <code>startABTastySdk</code> in the ABTasty class located in the frameWork ABTastySdk.framework. For each new user, at the very first initialization, the SDK is going to ask for a new visitor id to our servers and save it in a user Default
-<aside class="notice">
-Replace <code>AB_TASTY_KEY</codbe> with the key provided by AB Tasty.
-</aside></p>
+<p>To do this, you just have to call the function <code>startABTastySdk</code> in the ABTasty class located in the frameWork ABTastySdk.framework. For each new user, at the very first initialization, the SDK is going to ask for a new visitor id to our servers and save it in a user Default</p>
 
 <p><code>(void)startABTastySdk:(NSString*)appId</code></p>
 
@@ -447,6 +444,12 @@ Replace <code>AB_TASTY_KEY</codbe> with the key provided by AB Tasty.
 
 <p><code>-(void)updateConfigInfosTracking:(NSDictionary*)pInfoTracking</code>
 You can update those common tracking by calling </p>
+
+<aside class="notice">
+Replace <code>AB_TASTY_KEY</codbe> with the key provided by AB Tasty.
+</aside>
+
+<p><br><br></p>
 <h1 id='starting-campaigns'>Starting campaigns</h1>
 <p>This section of the documentation aims to help you to start a new campaign in your app using the ABTasty SDK.</p>
 <h3 id='allocate-camapign'>Allocate Camapign</h3>
