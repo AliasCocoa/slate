@@ -693,20 +693,14 @@ Replace <code>xxxxxx</code> with the id of your campaign and <code>bbbbbb</code>
 </tbody></table>
 
 <p><br></p>
-<h2 id='custom-tracking'>Custom Tracking</h2><pre class="highlight kotlin tab-kotlin"><code><span class="kd">val</span> <span class="py">tracker</span> <span class="p">=</span> <span class="n">ABCustomEventTracker</span><span class="p">.</span><span class="n">Builder</span><span class="p">()</span>
-<span class="p">.</span><span class="n">setName</span><span class="p">(</span><span class="s">"nb_connection"</span><span class="p">)</span>
-<span class="p">.</span><span class="n">setValue</span><span class="p">(</span><span class="s">"3"</span><span class="p">)</span>
-<span class="p">.</span><span class="n">setDeviceType</span><span class="p">(</span><span class="n">DeviceType</span><span class="p">.</span><span class="n">MOBILE_PHONE</span><span class="p">)</span>
-<span class="p">.</span><span class="n">setOrigin</span><span class="p">(</span><span class="s">"LoginActivity"</span><span class="p">)</span>
-<span class="p">.</span><span class="n">build</span><span class="p">()</span>
-<span class="n">ABTasty</span><span class="p">.</span><span class="n">sendTrackingEvent</span><span class="p">(</span><span class="n">tracker</span><span class="p">)</span>
-</code></pre><pre class="highlight java tab-java"><code><span class="n">ABCustomEventTracker</span> <span class="n">tracker</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ABCustomEventTracker</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
-<span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">"nb_connection"</span><span class="o">)</span>
-<span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="s">"3"</span><span class="o">)</span>
-<span class="o">.</span><span class="na">setDeviceType</span><span class="o">(</span><span class="n">DeviceType</span><span class="o">.</span><span class="na">MOBILE_PHONE</span><span class="o">)</span>
-<span class="o">.</span><span class="na">setOrigin</span><span class="o">(</span><span class="s">"LoginActivity"</span><span class="o">)</span>
-<span class="o">.</span><span class="na">build</span><span class="o">();</span>
-<span class="n">ABTasty</span><span class="o">.</span><span class="na">Companion</span><span class="o">.</span><span class="na">sendTrackingEvent</span><span class="o">(</span><span class="n">tracker</span><span class="o">);</span>
+<h2 id='custom-tracking'>Custom Tracking</h2><pre class="highlight objective_c tab-objective_c"><code>    <span class="n">ABCustomEvent</span> <span class="o">*</span> <span class="n">customEvent</span> <span class="o">=</span>  <span class="p">[[</span><span class="n">ABCustomEvent</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initABTracking</span><span class="p">:</span><span class="n">ABMobile</span> <span class="nf">longtitude</span><span class="p">:</span><span class="mi">2</span><span class="p">.</span><span class="mi">33</span> <span class="n">latitude</span><span class="o">:</span><span class="mi">48</span><span class="p">.</span><span class="mi">48</span> <span class="n">ipAdress</span><span class="o">:</span><span class="s">@"192.168.1.1"</span> <span class="n">interfaceName</span><span class="o">:</span><span class="s">@"ABHomeViewController"</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">customEvent</span> <span class="nf">setValue</span><span class="p">:</span><span class="s">@"value"</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">customEvent</span> <span class="nf">setGoal_name</span><span class="p">:</span><span class="s">@"GoalName"</span><span class="p">];</span>
+    <span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">sendTrackingEvent</span><span class="p">:</span><span class="n">customEvent</span><span class="p">];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">custom</span><span class="p">:</span><span class="kt">ABCustomEvent</span> <span class="o">=</span> <span class="kt">ABCustomEvent</span><span class="p">(</span><span class="nv">abTracking</span><span class="p">:</span> <span class="kt">ABDeviceType</span><span class="o">.</span><span class="n">mobile</span><span class="p">,</span> <span class="nv">longtitude</span><span class="p">:</span> <span class="mf">2.33</span><span class="p">,</span> <span class="nv">latitude</span><span class="p">:</span> <span class="mf">48.48</span><span class="p">,</span> <span class="nv">ipAdress</span><span class="p">:</span> <span class="s">"192.168.1.1"</span><span class="p">,</span> <span class="nv">interfaceName</span><span class="p">:</span> <span class="s">"ABHomeViewController"</span><span class="p">)</span>
+<span class="n">custom</span><span class="o">.</span><span class="n">goal_name</span> <span class="o">=</span> <span class="s">"goal"</span>
+<span class="n">custom</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s">"value"</span>
+<span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">sendTrackingEvent</span><span class="p">(</span><span class="n">custom</span><span class="p">)</span>
 </code></pre>
 <p><strong>ABCustomEvent</strong> This tracker sends a custom event and lets you track events that are specific to your business.</p>
 
@@ -882,66 +876,19 @@ Replace <code>xxxxxx</code> with the id of your campaign and <code>bbbbbb</code>
 </tbody></table>
 
 <p><br></p>
-<h2 id='visit-tracking'>Visit tracking</h2><pre class="highlight kotlin tab-kotlin"><code><span class="kd">val</span> <span class="py">tracker</span> <span class="p">=</span> <span class="n">ABVisitTracker</span><span class="p">.</span><span class="n">Builder</span><span class="p">()</span>
-<span class="p">.</span><span class="n">setOrigin</span><span class="p">(</span><span class="s">"VisitActivity"</span><span class="p">)</span>
-<span class="p">.</span><span class="n">setDeviceType</span><span class="p">(</span><span class="n">DeviceType</span><span class="p">.</span><span class="n">TABLET</span><span class="p">)</span>
-<span class="p">.</span><span class="n">setIp</span><span class="p">(</span><span class="s">"192.168.0.1"</span><span class="p">)</span>
-<span class="p">.</span><span class="n">build</span><span class="p">()</span>
-<span class="n">ABTasty</span><span class="p">.</span><span class="n">sendTrackingEvent</span><span class="p">(</span><span class="n">tracker</span><span class="p">)</span>
-</code></pre><pre class="highlight java tab-java"><code><span class="n">ABVisitTracker</span> <span class="n">tracker</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ABVisitTracker</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
-<span class="o">.</span><span class="na">setOrigin</span><span class="o">(</span><span class="s">"VisitActivity"</span><span class="o">)</span>
-<span class="o">.</span><span class="na">setDeviceType</span><span class="o">(</span><span class="n">DeviceType</span><span class="o">.</span><span class="na">TABLET</span><span class="o">)</span>
-<span class="o">.</span><span class="na">setIp</span><span class="o">(</span><span class="s">"192.168.0.1"</span><span class="o">)</span>
-<span class="o">.</span><span class="na">build</span><span class="o">();</span>
-<span class="n">ABTasty</span><span class="o">.</span><span class="na">Companion</span><span class="o">.</span><span class="na">sendTrackingEvent</span><span class="o">(</span><span class="n">tracker</span><span class="o">);</span>
+<h2 id='visit-tracking'>Visit tracking</h2><pre class="highlight objective_c tab-objective_c"><code>
+    <span class="n">ABVisitEvent</span> <span class="o">*</span> <span class="n">visitEvent</span> <span class="o">=</span> <span class="p">[[</span><span class="n">ABVisitEvent</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initABTracking</span><span class="p">:</span><span class="n">ABMobile</span> <span class="nf">longtitude</span><span class="p">:</span><span class="mi">2</span><span class="p">.</span><span class="mi">33</span> <span class="n">latitude</span><span class="o">:</span><span class="mi">48</span><span class="p">.</span><span class="mi">33</span> <span class="n">ipAdress</span><span class="o">:</span><span class="s">@"192.168.1.1"</span> <span class="n">interfaceName</span><span class="o">:</span><span class="s">@"ABHomeViewController"</span><span class="p">];</span>
+
+    <span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">sendTrackingEvent</span><span class="p">:</span><span class="n">visitEvent</span><span class="p">];</span>
+
+</code></pre><pre class="highlight swift tab-swift"><code>     <span class="k">let</span> <span class="nv">visitEvent</span><span class="p">:</span><span class="kt">ABVisitEvent</span> <span class="o">=</span> <span class="kt">ABVisitEvent</span><span class="p">(</span><span class="nv">abTracking</span><span class="p">:</span> <span class="kt">ABDeviceType</span><span class="o">.</span><span class="n">mobile</span><span class="p">,</span> <span class="nv">longtitude</span><span class="p">:</span> <span class="mf">2.33</span><span class="p">,</span> <span class="nv">latitude</span><span class="p">:</span> <span class="mf">48.33</span><span class="p">,</span> <span class="nv">ipAdress</span><span class="p">:</span><span class="s">"192.168.1.1"</span><span class="p">,</span> <span class="nv">interfaceName</span><span class="p">:</span> <span class="s">"ABHomeViewController"</span><span class="p">)</span>
+
+     <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">sendTrackingEvent</span><span class="p">(</span><span class="n">visitEvent</span><span class="p">)</span>
 </code></pre>
-<p>The <code>ABVisitTracker</code> lets you track any visit occurring on a mobile app.</p>
+<p>The <code>ABVisitEvent</code> lets you track any visit occurring on a mobile app.</p>
 
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Device_type</td>
-<td>string</td>
-<td>Device used by the visitor to view the test. The devices currently supported  are: <code>&quot;DESKTOP&quot;</code>, <code>&quot;MOBILE&quot;</code>, <code>&quot;TABLET&quot;</code>, <code>&quot;CAMERA&quot;</code>, <code>&quot;TV&quot;</code>, <code>&quot;GAMES_CONSOLE&quot;</code>, <code>&quot;PAYMENT_TERMINAL&quot;</code>, <code>&quot;WRISTWATCH&quot;</code>, and <code>&quot;OTHER&quot;</code>. <strong>required</strong></td>
-</tr>
-<tr>
-<td>origin</td>
-<td>string</td>
-<td>Original page where the event occurred (can be a URI or a screen name). <strong>required</strong></td>
-</tr>
-<tr>
-<td>timestamp</td>
-<td>string</td>
-<td>Date and time when the event occurred, expressed using the <a href="https://en.wikipedia.org/wiki/ISO_8601#Date_et_heure">iso8601 standards</a>. <strong>optional</strong></td>
-</tr>
-<tr>
-<td>ip</td>
-<td>string</td>
-<td>IP address of the visitor&#39;s device to determine the geolocation.</td>
-</tr>
-<tr>
-<td>geolocation</td>
-<td>object</td>
-<td>optional</td>
-</tr>
-<tr>
-<td>geolocation.lat</td>
-<td>float</td>
-<td>Latitude between 0 and 90. <strong>optional</strong></td>
-</tr>
-<tr>
-<td>geolocation.long</td>
-<td>float</td>
-<td>Longitude between -180 and 180. <strong>optional</strong></td>
-</tr>
-</tbody></table>
-
-<p><br></p>
+<p>No need params for this event, the sdk handle it for you, because it take the common data set before on start SDK, if you want to update the common tracking for this specefic visit event, create un instance with <code>initABTracking</code>
+<br></p>
 <h1 id='reference'>Reference</h1>
 <p><a href="http://sdk.abtasty.com/android/ref/abtastysdk/index.html">Reference</a></p>
 
