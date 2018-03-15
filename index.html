@@ -442,8 +442,7 @@ mv <span class="s2">"</span><span class="nv">$FRAMEWORK_EXECUTABLE_PATH</span><s
 </tr>
 </tbody></table>
 
-<p><code>-(void)updateConfigInfosTracking:(NSDictionary*)pInfoTracking</code>
-You can update those common tracking by calling </p>
+<p>You can update those common tracking by calling : <code>-(void)updateConfigInfosTracking:(NSDictionary*)pInfoTracking</code></p>
 
 <aside class="notice">
 Replace <code>AB_TASTY_KEY</code> with the key provided by AB Tasty.
@@ -464,41 +463,39 @@ You should know be able to use the AB TastySdk :)
 <blockquote>
 <p>Allocate one campaign </p>
 </blockquote>
-<pre class="highlight swift tab-swift"><code>        <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">allocateVariation</span><span class="p">(</span><span class="s">"campaignId"</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span> <span class="n">variationId</span><span class="p">,</span><span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+<pre class="highlight swift tab-swift"><code>    <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">allocateVariation</span><span class="p">(</span><span class="s">"campaignId"</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span> <span class="n">variationId</span><span class="p">,</span><span class="n">error</span><span class="p">)</span> <span class="k">in</span>
 
-            <span class="k">if</span> <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">error</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">error</span> <span class="p">{</span>
 
-                <span class="nf">print</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span>
+        <span class="nf">print</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span>
 
-            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="k">let</span> <span class="nv">variationId</span> <span class="o">=</span> <span class="n">variationId</span> <span class="p">{</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="k">let</span> <span class="nv">variationId</span> <span class="o">=</span> <span class="n">variationId</span> <span class="p">{</span>
 
-                <span class="k">if</span><span class="p">(</span><span class="n">variationId</span> <span class="o">==</span> <span class="s">"varId1"</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">variationId</span> <span class="o">==</span> <span class="s">"varId1"</span><span class="p">){</span>
 
-                    <span class="c1">// Execute code for varId1</span>
+                <span class="c1">// Execute code for varId1</span>
 
-                <span class="p">}</span><span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">variationId</span> <span class="o">==</span> <span class="s">"varId2"</span><span class="p">){</span>
+            <span class="p">}</span><span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">variationId</span> <span class="o">==</span> <span class="s">"varId2"</span><span class="p">){</span>
 
-                    <span class="c1">// Execute code for varId2</span>
+            <span class="c1">// Execute code for varId2</span>
 
-                <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">}</span>
-</code></pre><pre class="highlight objective_c tab-objective_c"><code>    <span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">allocateVariation</span><span class="p">:</span><span class="s">@"campaignId"</span> <span class="nf">completionBlock</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span> <span class="n">variationId</span><span class="p">,</span><span class="n">NSError</span><span class="o">*</span> <span class="n">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">error</span><span class="p">){</span>
+    <span class="p">}</span>
+</code></pre><pre class="highlight objective_c tab-objective_c"><code><span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">allocateVariation</span><span class="p">:</span><span class="s">@"campaignId"</span> <span class="nf">completionBlock</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span> <span class="n">variationId</span><span class="p">,</span><span class="n">NSError</span><span class="o">*</span> <span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">error</span><span class="p">){</span>
 
-            <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%@"</span><span class="p">,</span> <span class="n">error</span><span class="p">.</span><span class="n">description</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="k">else</span>
-        <span class="p">{</span>
-            <span class="k">if</span><span class="p">([</span><span class="n">variationId</span> <span class="nf">isEqualToString</span><span class="p">:</span><span class="s">@"varId1"</span><span class="p">]){</span>
-            <span class="c1">// Execute code variation for varId1
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%@"</span><span class="p">,</span> <span class="n">error</span><span class="p">.</span><span class="n">description</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="k">if</span><span class="p">([</span><span class="n">variationId</span> <span class="nf">isEqualToString</span><span class="p">:</span><span class="s">@"varId1"</span><span class="p">]){</span>
+        <span class="c1">// Execute code variation for varId1
 </span>
-            <span class="p">}</span><span class="k">else</span> <span class="k">if</span> <span class="p">([</span><span class="n">variationId</span> <span class="nf">isEqualToString</span><span class="p">:</span><span class="s">@"varId2"</span><span class="p">]){</span>
-                <span class="c1">// Execute code variation for varId2
-</span>            <span class="p">}</span>
-
-        <span class="p">}</span>
-    <span class="p">}];</span>
+        <span class="p">}</span><span class="k">else</span> <span class="k">if</span> <span class="p">([</span><span class="n">variationId</span> <span class="nf">isEqualToString</span><span class="p">:</span><span class="s">@"varId2"</span><span class="p">]){</span>
+        <span class="c1">// Execute code variation for varId2
+</span>    <span class="p">}</span>
+<span class="p">}}];</span>
 </code></pre>
 <p><code>- (void)allocateVariation:(NSString*)pIdCampaign completionBlock:(void(^)(NSString*,NSError*))pOnGetVariationId</code></p>
 
@@ -530,23 +527,22 @@ Replace <code>campaignId</code> with the id of your campaign and, <code>varId1</
 <blockquote>
 <p>Allocate sevral campaign with simple call</p>
 </blockquote>
-<pre class="highlight objective_c tab-objective_c"><code>    <span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">allocateVariations</span><span class="p">:[</span><span class="n">NSArray</span> <span class="nf">arrayWithObjects</span><span class="p">:</span><span class="s">@"campaignId1"</span><span class="p">,</span><span class="s">@"campaignId2"</span><span class="p">,</span><span class="s">@"campaignId3"</span><span class="p">,</span><span class="s">@"campaignId3"</span><span class="p">,</span> <span class="nb">nil</span><span class="p">]</span> <span class="nf">completionBlock</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSArray</span><span class="o">&lt;</span><span class="n">ABCampaign</span> <span class="o">*&gt;</span> <span class="o">*</span><span class="n">variationIdArray</span><span class="p">)</span> <span class="p">{</span>
+<pre class="highlight objective_c tab-objective_c"><code><span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">allocateVariations</span><span class="p">:[</span><span class="n">NSArray</span> <span class="nf">arrayWithObjects</span><span class="p">:</span><span class="s">@"campaignId1"</span><span class="p">,</span><span class="s">@"campaignId2"</span><span class="p">,</span><span class="s">@"campaignId3"</span><span class="p">,</span><span class="s">@"campaignId3"</span><span class="p">,</span> <span class="nb">nil</span><span class="p">]</span> <span class="nf">completionBlock</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSArray</span><span class="o">&lt;</span><span class="n">ABCampaign</span> <span class="o">*&gt;</span> <span class="o">*</span><span class="n">variationIdArray</span><span class="p">)</span> <span class="p">{</span>
 
-        <span class="k">if</span> <span class="p">(</span><span class="n">variationIdArray</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">variationIdArray</span><span class="p">)</span> <span class="p">{</span>
 
-            <span class="c1">// Here in this array you have all the varaitionID with their camapignId in the ABCampaign Object
-</span>        <span class="p">}</span>
+        <span class="c1">// Here in this array you have all the varaitionID with their camapignId in the ABCampaign Object
+</span>    <span class="p">}</span>   
+<span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">allocateVariations</span><span class="p">([</span><span class="s">"campaignId1"</span><span class="p">,</span><span class="s">"campaignId2"</span><span class="p">,</span><span class="s">"campaignId3"</span><span class="p">,</span><span class="s">"campaignId4"</span><span class="p">,</span><span class="s">"campaignId5"</span><span class="p">])</span> <span class="p">{</span> <span class="p">(</span><span class="n">arrayCampaign</span><span class="p">)</span> <span class="k">in</span>       
+<span class="k">if</span> <span class="k">let</span> <span class="nv">arrayCampaign</span> <span class="o">=</span> <span class="n">arrayCampaign</span><span class="p">{</span>
 
-    <span class="p">}];</span>
-</code></pre><pre class="highlight swift tab-swift"><code>    <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">allocateVariations</span><span class="p">([</span><span class="s">"campaignId1"</span><span class="p">,</span><span class="s">"campaignId2"</span><span class="p">,</span><span class="s">"campaignId3"</span><span class="p">,</span><span class="s">"campaignId4"</span><span class="p">,</span><span class="s">"campaignId5"</span><span class="p">])</span> <span class="p">{</span> <span class="p">(</span><span class="n">arrayCampaign</span><span class="p">)</span> <span class="k">in</span>       
-        <span class="k">if</span> <span class="k">let</span> <span class="nv">arrayCampaign</span> <span class="o">=</span> <span class="n">arrayCampaign</span><span class="p">{</span>
+        <span class="k">for</span> <span class="nv">item</span><span class="p">:</span><span class="kt">ABCampaign</span> <span class="k">in</span> <span class="n">arrayCampaign</span><span class="p">{</span>
 
-            <span class="k">for</span> <span class="nv">item</span><span class="p">:</span><span class="kt">ABCampaign</span> <span class="k">in</span> <span class="n">arrayCampaign</span><span class="p">{</span>
-
-                 <span class="c1">// Here in this array you have all the varaitionID with their camapignId in the ABCampaign Object                </span>
-            <span class="p">}</span>
+             <span class="c1">// Here in this array you have all the varaitionID with their camapignId in the ABCampaign Object                </span>
         <span class="p">}</span>
     <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
 <p>You can also allocate sevral campaign with simple call function <code>allocateVariations</code>, the completion block pOnGetAllVariationId invoke with <strong>ABCampaign</strong> object</p>
 
@@ -570,9 +566,8 @@ Replace <code>campaignId</code> with the id of your campaign and, <code>varId1</
 <td>block to be invoked when all variations is selected for those campaigns.</td>
 </tr>
 </tbody></table>
-<h3 id='activate-campaign'>Activate Campaign</h3><pre class="highlight objective_c tab-objective_c"><code>
-    <span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">activateCampaign</span><span class="p">:</span><span class="s">@"campaignId"</span> <span class="nf">forVariationId</span><span class="p">:</span><span class="n">varId</span><span class="p">];</span>
-</code></pre><pre class="highlight swift tab-swift"><code>    <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">activateCampaign</span><span class="p">(</span><span class="s">"campaignId"</span><span class="p">,</span> <span class="nv">forVariationId</span><span class="p">:</span> <span class="s">"varId"</span><span class="p">)</span>
+<h3 id='activate-campaign'>Activate Campaign</h3><pre class="highlight objective_c tab-objective_c"><code><span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">activateCampaign</span><span class="p">:</span><span class="s">@"campaignId"</span> <span class="nf">forVariationId</span><span class="p">:</span><span class="n">varId</span><span class="p">];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">activateCampaign</span><span class="p">(</span><span class="s">"campaignId"</span><span class="p">,</span> <span class="nv">forVariationId</span><span class="p">:</span> <span class="s">"varId"</span><span class="p">)</span>
 </code></pre>
 <p>Once a variation has been allocated to a campaign you need to activate it. This way it tells AB Tasty that the current user saw this specific variation of the campaign so that the user
 always sees the same variation.</p>
@@ -684,10 +679,10 @@ Common data can be automatically set from the ABTracking passed in the `startABT
 </tbody></table>
 
 <p><br></p>
-<h2 id='custom-tracking'>Custom Tracking</h2><pre class="highlight objective_c tab-objective_c"><code>    <span class="n">ABCustomEvent</span> <span class="o">*</span> <span class="n">customEvent</span> <span class="o">=</span>  <span class="p">[[</span><span class="n">ABCustomEvent</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initABTracking</span><span class="p">:</span><span class="n">ABMobile</span> <span class="nf">longtitude</span><span class="p">:</span><span class="mi">2</span><span class="p">.</span><span class="mi">33</span> <span class="n">latitude</span><span class="o">:</span><span class="mi">48</span><span class="p">.</span><span class="mi">48</span> <span class="n">ipAdress</span><span class="o">:</span><span class="s">@"192.168.1.1"</span> <span class="n">interfaceName</span><span class="o">:</span><span class="s">@"ABHomeViewController"</span><span class="p">];</span>
-    <span class="p">[</span><span class="n">customEvent</span> <span class="nf">setValue</span><span class="p">:</span><span class="s">@"value"</span><span class="p">];</span>
-    <span class="p">[</span><span class="n">customEvent</span> <span class="nf">setGoal_name</span><span class="p">:</span><span class="s">@"GoalName"</span><span class="p">];</span>
-    <span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">sendTrackingEvent</span><span class="p">:</span><span class="n">customEvent</span><span class="p">];</span>
+<h2 id='custom-tracking'>Custom Tracking</h2><pre class="highlight objective_c tab-objective_c"><code><span class="n">ABCustomEvent</span> <span class="o">*</span> <span class="n">customEvent</span> <span class="o">=</span>  <span class="p">[[</span><span class="n">ABCustomEvent</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initABTracking</span><span class="p">:</span><span class="n">ABMobile</span> <span class="nf">longtitude</span><span class="p">:</span><span class="mi">2</span><span class="p">.</span><span class="mi">33</span> <span class="n">latitude</span><span class="o">:</span><span class="mi">48</span><span class="p">.</span><span class="mi">48</span> <span class="n">ipAdress</span><span class="o">:</span><span class="s">@"192.168.1.1"</span> <span class="n">interfaceName</span><span class="o">:</span><span class="s">@"ABHomeViewController"</span><span class="p">];</span>
+<span class="p">[</span><span class="n">customEvent</span> <span class="nf">setValue</span><span class="p">:</span><span class="s">@"value"</span><span class="p">];</span>
+<span class="p">[</span><span class="n">customEvent</span> <span class="nf">setGoal_name</span><span class="p">:</span><span class="s">@"GoalName"</span><span class="p">];</span>
+<span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">sendTrackingEvent</span><span class="p">:</span><span class="n">customEvent</span><span class="p">];</span>
 </code></pre><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">custom</span><span class="p">:</span><span class="kt">ABCustomEvent</span> <span class="o">=</span> <span class="kt">ABCustomEvent</span><span class="p">(</span><span class="nv">abTracking</span><span class="p">:</span> <span class="kt">ABDeviceType</span><span class="o">.</span><span class="n">mobile</span><span class="p">,</span> <span class="nv">longtitude</span><span class="p">:</span> <span class="mf">2.33</span><span class="p">,</span> <span class="nv">latitude</span><span class="p">:</span> <span class="mf">48.48</span><span class="p">,</span> <span class="nv">ipAdress</span><span class="p">:</span> <span class="s">"192.168.1.1"</span><span class="p">,</span> <span class="nv">interfaceName</span><span class="p">:</span> <span class="s">"ABHomeViewController"</span><span class="p">)</span>
 <span class="n">custom</span><span class="o">.</span><span class="n">goal_name</span> <span class="o">=</span> <span class="s">"goal"</span>
 <span class="n">custom</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s">"value"</span>
@@ -716,50 +711,51 @@ Common data can be automatically set from the ABTracking passed in the `startABT
 
 <p><br></p>
 <h2 id='transaction-tracking'>Transaction tracking</h2><pre class="highlight objective_c tab-objective_c"><code>
-    <span class="n">ABTransaction</span> <span class="o">*</span> <span class="n">transaction</span> <span class="o">=</span> <span class="p">[[</span><span class="n">ABTransaction</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initABTracking</span><span class="p">:</span><span class="n">ABMobile</span> <span class="nf">longtitude</span><span class="p">:</span><span class="mi">2</span><span class="p">.</span><span class="mi">33</span> <span class="n">latitude</span><span class="o">:</span><span class="mi">48</span><span class="p">.</span><span class="mi">48</span> <span class="n">ipAdress</span><span class="o">:</span><span class="s">@"192.168.1.1"</span> <span class="n">interfaceName</span><span class="o">:</span><span class="s">@"ABHomeViewController"</span><span class="p">];</span>
+<span class="n">ABTransaction</span> <span class="o">*</span> <span class="n">transaction</span> <span class="o">=</span> <span class="p">[[</span><span class="n">ABTransaction</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initABTracking</span><span class="p">:</span><span class="n">ABMobile</span> <span class="nf">longtitude</span><span class="p">:</span><span class="mi">2</span><span class="p">.</span><span class="mi">33</span> <span class="n">latitude</span><span class="o">:</span><span class="mi">48</span><span class="p">.</span><span class="mi">48</span> <span class="n">ipAdress</span><span class="o">:</span><span class="s">@"192.168.1.1"</span> <span class="n">interfaceName</span><span class="o">:</span><span class="s">@"ABHomeViewController"</span><span class="p">];</span>
 
-    <span class="n">transaction</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">@"transaction"</span><span class="p">;</span>
-    <span class="n">transaction</span><span class="p">.</span><span class="n">transaction_id</span> <span class="o">=</span> <span class="s">@"revenue"</span><span class="p">;</span>
-    <span class="n">transaction</span><span class="p">.</span><span class="n">revenue</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span>
-    <span class="n">transaction</span><span class="p">.</span><span class="n">shipping</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
-    <span class="n">transaction</span><span class="p">.</span><span class="n">tax_total</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">23</span><span class="p">;</span>
-    <span class="n">transaction</span><span class="p">.</span><span class="n">discount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">;</span>
-    <span class="n">transaction</span><span class="p">.</span><span class="n">payment_method</span> <span class="o">=</span> <span class="s">@"PayPal"</span><span class="p">;</span>
-    <span class="n">transaction</span><span class="p">.</span><span class="n">currencyName</span> <span class="o">=</span> <span class="s">@"currency_name"</span><span class="p">;</span>
-    <span class="n">transaction</span><span class="p">.</span><span class="n">currencyRate</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">222</span><span class="p">;</span>
-    <span class="n">transaction</span><span class="p">.</span><span class="n">items_count</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
+<span class="n">transaction</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">@"transaction"</span><span class="p">;</span>
+<span class="n">transaction</span><span class="p">.</span><span class="n">transaction_id</span> <span class="o">=</span> <span class="s">@"revenue"</span><span class="p">;</span>
+<span class="n">transaction</span><span class="p">.</span><span class="n">revenue</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span>
+<span class="n">transaction</span><span class="p">.</span><span class="n">shipping</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
+<span class="n">transaction</span><span class="p">.</span><span class="n">tax_total</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">23</span><span class="p">;</span>
+<span class="n">transaction</span><span class="p">.</span><span class="n">discount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">;</span>
+<span class="n">transaction</span><span class="p">.</span><span class="n">payment_method</span> <span class="o">=</span> <span class="s">@"PayPal"</span><span class="p">;</span>
+<span class="n">transaction</span><span class="p">.</span><span class="n">currencyName</span> <span class="o">=</span> <span class="s">@"currency_name"</span><span class="p">;</span>
+<span class="n">transaction</span><span class="p">.</span><span class="n">currencyRate</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">222</span><span class="p">;</span>
+<span class="n">transaction</span><span class="p">.</span><span class="n">items_count</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
 
-    <span class="c1">// Set micro transaction
-</span>    <span class="n">ABMicroTransaction</span> <span class="o">*</span> <span class="n">minTransaction</span> <span class="o">=</span> <span class="p">[[</span><span class="n">ABMicroTransaction</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">init</span><span class="p">];</span>
-    <span class="n">minTransaction</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">@"name"</span><span class="p">;</span>
-    <span class="n">minTransaction</span><span class="p">.</span><span class="n">price</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
-    <span class="n">minTransaction</span><span class="p">.</span><span class="n">sku</span> <span class="o">=</span> <span class="s">@"sku"</span><span class="p">;</span>
-    <span class="n">minTransaction</span><span class="p">.</span><span class="n">category</span> <span class="o">=</span> <span class="s">@"cat"</span><span class="p">;</span>
-    <span class="n">minTransaction</span><span class="p">.</span><span class="n">quantity</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-    <span class="n">minTransaction</span><span class="p">.</span><span class="n">tax_amount</span> <span class="o">=</span> <span class="mi">1111</span><span class="p">;</span>
-    <span class="n">transaction</span><span class="p">.</span><span class="n">microTransaction</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSMutableArray</span> <span class="nf">arrayWithObject</span><span class="p">:</span><span class="n">minTransaction</span><span class="p">];</span>
-</code></pre><pre class="highlight swift tab-swift"><code>        <span class="k">let</span> <span class="nv">transaction</span><span class="p">:</span><span class="kt">ABTransaction</span> <span class="o">=</span> <span class="kt">ABTransaction</span><span class="p">(</span><span class="nv">abTracking</span><span class="p">:</span> <span class="kt">ABDeviceType</span><span class="o">.</span><span class="n">mobile</span><span class="p">,</span> <span class="nv">longtitude</span><span class="p">:</span> <span class="mf">2.33</span><span class="p">,</span> <span class="nv">latitude</span><span class="p">:</span> <span class="mf">48.33</span><span class="p">,</span> <span class="nv">ipAdress</span><span class="p">:</span><span class="s">"192.168.1.1"</span><span class="p">,</span> <span class="nv">interfaceName</span><span class="p">:</span> <span class="s">"ABHomeViewController"</span><span class="p">)</span>
+<span class="c1">// Set micro transaction
+</span><span class="n">ABMicroTransaction</span> <span class="o">*</span> <span class="n">minTransaction</span> <span class="o">=</span> <span class="p">[[</span><span class="n">ABMicroTransaction</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">init</span><span class="p">];</span>
+<span class="n">minTransaction</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">@"name"</span><span class="p">;</span>
+<span class="n">minTransaction</span><span class="p">.</span><span class="n">price</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
+<span class="n">minTransaction</span><span class="p">.</span><span class="n">sku</span> <span class="o">=</span> <span class="s">@"sku"</span><span class="p">;</span>
+<span class="n">minTransaction</span><span class="p">.</span><span class="n">category</span> <span class="o">=</span> <span class="s">@"cat"</span><span class="p">;</span>
+<span class="n">minTransaction</span><span class="p">.</span><span class="n">quantity</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="n">minTransaction</span><span class="p">.</span><span class="n">tax_amount</span> <span class="o">=</span> <span class="mi">1111</span><span class="p">;</span>
+<span class="n">transaction</span><span class="p">.</span><span class="n">microTransaction</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSMutableArray</span> <span class="nf">arrayWithObject</span><span class="p">:</span><span class="n">minTransaction</span><span class="p">];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">transaction</span><span class="p">:</span><span class="kt">ABTransaction</span> <span class="o">=</span> <span class="kt">ABTransaction</span><span class="p">(</span><span class="nv">abTracking</span><span class="p">:</span> <span class="kt">ABDeviceType</span><span class="o">.</span><span class="n">mobile</span><span class="p">,</span> <span class="nv">longtitude</span><span class="p">:</span> <span class="mf">2.33</span><span class="p">,</span> <span class="nv">latitude</span><span class="p">:</span> <span class="mf">48.33</span><span class="p">,</span> <span class="nv">ipAdress</span><span class="p">:</span><span class="s">"192.168.1.1"</span><span class="p">,</span> <span class="nv">interfaceName</span><span class="p">:</span> <span class="s">"ABHomeViewController"</span><span class="p">)</span>
 
-        <span class="n">transaction</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">"transaction"</span>
-        <span class="n">transaction</span><span class="o">.</span><span class="n">transaction_id</span> <span class="o">=</span> <span class="s">"revenue"</span>
-        <span class="n">transaction</span><span class="o">.</span><span class="n">revenue</span> <span class="o">=</span> <span class="mi">1000</span>
-        <span class="n">transaction</span><span class="o">.</span><span class="n">shipping</span> <span class="o">=</span> <span class="mi">12</span>
-        <span class="n">transaction</span><span class="o">.</span><span class="n">tax_total</span> <span class="o">=</span> <span class="mf">0.23</span>
-        <span class="n">transaction</span><span class="o">.</span><span class="n">discount</span> <span class="o">=</span> <span class="mf">0.5</span>
-        <span class="n">transaction</span><span class="o">.</span><span class="n">payment_method</span> <span class="o">=</span> <span class="s">"PayPal"</span>
-        <span class="n">transaction</span><span class="o">.</span><span class="n">currencyName</span> <span class="o">=</span> <span class="s">"currency_name"</span>
-        <span class="n">transaction</span><span class="o">.</span><span class="n">currencyRate</span> <span class="o">=</span> <span class="mf">0.222</span>
-        <span class="n">transaction</span><span class="o">.</span><span class="n">items_count</span> <span class="o">=</span> <span class="mi">12</span>
-        <span class="c1">// Set micro transaction</span>
-        <span class="k">let</span> <span class="nv">miniTransaction</span><span class="p">:</span><span class="kt">ABMicroTransaction</span> <span class="o">=</span> <span class="kt">ABMicroTransaction</span><span class="p">()</span>
-        <span class="n">miniTransaction</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">"name"</span>
-        <span class="n">miniTransaction</span><span class="o">.</span><span class="n">price</span> <span class="o">=</span> <span class="mi">12</span>
-        <span class="n">miniTransaction</span><span class="o">.</span><span class="n">sku</span> <span class="o">=</span> <span class="s">"sku"</span>
-        <span class="n">miniTransaction</span><span class="o">.</span><span class="n">category</span> <span class="o">=</span> <span class="s">"cat"</span>
-        <span class="n">miniTransaction</span><span class="o">.</span><span class="n">quantity</span> <span class="o">=</span> <span class="mi">2</span>
-        <span class="n">miniTransaction</span><span class="o">.</span><span class="n">tax_amount</span> <span class="o">=</span> <span class="mi">1111</span>
-        <span class="n">transaction</span><span class="o">.</span><span class="n">microTransaction</span> <span class="o">=</span> <span class="p">[</span><span class="n">miniTransaction</span><span class="p">];</span>
-        <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">sendTrackingEvent</span><span class="p">(</span><span class="n">transaction</span><span class="p">)</span>
+<span class="n">transaction</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">"transaction"</span>
+<span class="n">transaction</span><span class="o">.</span><span class="n">transaction_id</span> <span class="o">=</span> <span class="s">"revenue"</span>
+<span class="n">transaction</span><span class="o">.</span><span class="n">revenue</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">transaction</span><span class="o">.</span><span class="n">shipping</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">transaction</span><span class="o">.</span><span class="n">tax_total</span> <span class="o">=</span> <span class="mf">0.23</span>
+<span class="n">transaction</span><span class="o">.</span><span class="n">discount</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">transaction</span><span class="o">.</span><span class="n">payment_method</span> <span class="o">=</span> <span class="s">"PayPal"</span>
+<span class="n">transaction</span><span class="o">.</span><span class="n">currencyName</span> <span class="o">=</span> <span class="s">"currency_name"</span>
+<span class="n">transaction</span><span class="o">.</span><span class="n">currencyRate</span> <span class="o">=</span> <span class="mf">0.222</span>
+<span class="n">transaction</span><span class="o">.</span><span class="n">items_count</span> <span class="o">=</span> <span class="mi">12</span>
+
+<span class="c1">// Set micro transaction</span>
+<span class="k">let</span> <span class="nv">miniTransaction</span><span class="p">:</span><span class="kt">ABMicroTransaction</span> <span class="o">=</span> <span class="kt">ABMicroTransaction</span><span class="p">()</span>
+<span class="n">miniTransaction</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">"name"</span>
+<span class="n">miniTransaction</span><span class="o">.</span><span class="n">price</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">miniTransaction</span><span class="o">.</span><span class="n">sku</span> <span class="o">=</span> <span class="s">"sku"</span>
+<span class="n">miniTransaction</span><span class="o">.</span><span class="n">category</span> <span class="o">=</span> <span class="s">"cat"</span>
+<span class="n">miniTransaction</span><span class="o">.</span><span class="n">quantity</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">miniTransaction</span><span class="o">.</span><span class="n">tax_amount</span> <span class="o">=</span> <span class="mi">1111</span>
+<span class="n">transaction</span><span class="o">.</span><span class="n">microTransaction</span> <span class="o">=</span> <span class="p">[</span><span class="n">miniTransaction</span><span class="p">];</span>
+<span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">sendTrackingEvent</span><span class="p">(</span><span class="n">transaction</span><span class="p">)</span>
 </code></pre>
 <p>The <strong>ABTransaction</strong> lets you track any purchase on your mobile app.</p>
 
@@ -869,18 +865,17 @@ Common data can be automatically set from the ABTracking passed in the `startABT
 </tbody></table>
 
 <p><br></p>
-<h2 id='visit-tracking'>Visit tracking</h2><pre class="highlight objective_c tab-objective_c"><code>
-    <span class="n">ABVisitEvent</span> <span class="o">*</span> <span class="n">visitEvent</span> <span class="o">=</span> <span class="p">[[</span><span class="n">ABVisitEvent</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initABTracking</span><span class="p">:</span><span class="n">ABMobile</span> <span class="nf">longtitude</span><span class="p">:</span><span class="mi">2</span><span class="p">.</span><span class="mi">33</span> <span class="n">latitude</span><span class="o">:</span><span class="mi">48</span><span class="p">.</span><span class="mi">33</span> <span class="n">ipAdress</span><span class="o">:</span><span class="s">@"192.168.1.1"</span> <span class="n">interfaceName</span><span class="o">:</span><span class="s">@"ABHomeViewController"</span><span class="p">];</span>
+<h2 id='visit-tracking'>Visit tracking</h2><pre class="highlight objective_c tab-objective_c"><code><span class="n">ABVisitEvent</span> <span class="o">*</span> <span class="n">visitEvent</span> <span class="o">=</span> <span class="p">[[</span><span class="n">ABVisitEvent</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initABTracking</span><span class="p">:</span><span class="n">ABMobile</span> <span class="nf">longtitude</span><span class="p">:</span><span class="mi">2</span><span class="p">.</span><span class="mi">33</span> <span class="n">latitude</span><span class="o">:</span><span class="mi">48</span><span class="p">.</span><span class="mi">33</span> <span class="n">ipAdress</span><span class="o">:</span><span class="s">@"192.168.1.1"</span> <span class="n">interfaceName</span><span class="o">:</span><span class="s">@"ABHomeViewController"</span><span class="p">];</span>
 
-    <span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">sendTrackingEvent</span><span class="p">:</span><span class="n">visitEvent</span><span class="p">];</span>
+<span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">sendTrackingEvent</span><span class="p">:</span><span class="n">visitEvent</span><span class="p">];</span>
 
-</code></pre><pre class="highlight swift tab-swift"><code>     <span class="k">let</span> <span class="nv">visitEvent</span><span class="p">:</span><span class="kt">ABVisitEvent</span> <span class="o">=</span> <span class="kt">ABVisitEvent</span><span class="p">(</span><span class="nv">abTracking</span><span class="p">:</span> <span class="kt">ABDeviceType</span><span class="o">.</span><span class="n">mobile</span><span class="p">,</span> <span class="nv">longtitude</span><span class="p">:</span> <span class="mf">2.33</span><span class="p">,</span> <span class="nv">latitude</span><span class="p">:</span> <span class="mf">48.33</span><span class="p">,</span> <span class="nv">ipAdress</span><span class="p">:</span><span class="s">"192.168.1.1"</span><span class="p">,</span> <span class="nv">interfaceName</span><span class="p">:</span> <span class="s">"ABHomeViewController"</span><span class="p">)</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">visitEvent</span><span class="p">:</span><span class="kt">ABVisitEvent</span> <span class="o">=</span> <span class="kt">ABVisitEvent</span><span class="p">(</span><span class="nv">abTracking</span><span class="p">:</span> <span class="kt">ABDeviceType</span><span class="o">.</span><span class="n">mobile</span><span class="p">,</span> <span class="nv">longtitude</span><span class="p">:</span> <span class="mf">2.33</span><span class="p">,</span> <span class="nv">latitude</span><span class="p">:</span> <span class="mf">48.33</span><span class="p">,</span> <span class="nv">ipAdress</span><span class="p">:</span><span class="s">"192.168.1.1"</span><span class="p">,</span> <span class="nv">interfaceName</span><span class="p">:</span> <span class="s">"ABHomeViewController"</span><span class="p">)</span>
 
-     <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">sendTrackingEvent</span><span class="p">(</span><span class="n">visitEvent</span><span class="p">)</span>
+ <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">sendTrackingEvent</span><span class="p">(</span><span class="n">visitEvent</span><span class="p">)</span>
 </code></pre>
 <p>The <strong>ABVisitEvent</strong> lets you track any visit occurring on a mobile app.</p>
 
-<p>No parameters needed for this event, the sdk handle it for you, it take the <code>common data</code> set before when start SDK, if you want to update the common tracking for this specefic visit event, create un instance with <code>initABTracking</code>.
+<p>No parameters needed for this event, the sdk handle it for you, it take the <code>common data</code> set before when started SDK, if you want to update the common tracking for this specefic visit event, create un instance with <code>initABTracking</code>.
 <br></p>
 <h1 id='reference'>Reference</h1>
 <p><a href="http://sdk.abtasty.com/android/ref/abtastysdk/index.html">Reference</a></p>
