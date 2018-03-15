@@ -492,7 +492,7 @@ You should know be able to use the ABTastySdk :)
 <h1 id='starting-campaigns'>Starting campaigns</h1>
 <p>This section of the documentation aims at helping you start a new campaign in your app using the ABTasty SDK.</p>
 <h3 id='allocate-campaign'>Allocate Campaign</h3>
-<p>Once you get your visitor id, you can allocate a campaign by calling the <code>allocateVariation</code> function</p>
+<p>Once you get your visitor id, you can allocate a campaign&#39;s variation by calling the <code>allocateVariation</code> function</p>
 
 <blockquote>
 <p>Allocate one campaign </p>
@@ -559,7 +559,7 @@ Replace <code>campaignId</code> with the id of your campaign and, <code>varId1</
 </aside>
 <h3 id='allocate-several-campaigns'>Allocate Several Campaigns</h3>
 <blockquote>
-<p>Allocate sevral campaign with simple call</p>
+<p>Allocate several campaign with a single call</p>
 </blockquote>
 <pre class="highlight objective_c tab-objective_c"><code><span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">allocateVariations</span><span class="p">:[</span><span class="n">NSArray</span> <span class="nf">arrayWithObjects</span><span class="p">:</span><span class="s">@"campaignId1"</span><span class="p">,</span><span class="s">@"campaignId2"</span><span class="p">,</span><span class="s">@"campaignId3"</span><span class="p">,</span><span class="s">@"campaignId3"</span><span class="p">,</span> <span class="nb">nil</span><span class="p">]</span> <span class="nf">completionBlock</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSArray</span><span class="o">&lt;</span><span class="n">ABCampaign</span> <span class="o">*&gt;</span> <span class="o">*</span><span class="n">variationIdArray</span><span class="p">)</span> <span class="p">{</span>
 
@@ -578,7 +578,7 @@ Replace <code>campaignId</code> with the id of your campaign and, <code>varId1</
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre>
-<p>You can also allocate several campaigns with simple call function <code>allocateVariations</code>, the completion block pOnGetAllVariationId invoke with <strong>ABCampaign</strong> object</p>
+<p>You also allocate several campaigns with a single call to the <code>allocateVariations</code> function. Once the operation is done, the pOnGetAllVariationId completion block is invoked and it returns the list of <strong>ABCampaign</strong> objects.</p>
 
 <p><code>- (void)allocateVariations:(NSArray&lt;NSString*&gt;*)pIdCampaignArray completionBlock:(void(^)(NSArray&lt;ABCampaign*&gt;*))pOnGetAllVariationId</code></p>
 
