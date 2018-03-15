@@ -249,10 +249,10 @@
             <a href="#starting-campaigns" class="toc-h1 toc-link" data-title="starting-campaigns">Starting campaigns</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#allocate-camapign" class="toc-h2 toc-link" data-title="allocate-camapign">Allocate Camapign</a>
+                    <a href="#allocate-campaign" class="toc-h2 toc-link" data-title="allocate-campaign">Allocate Campaign</a>
                   </li>
                   <li>
-                    <a href="#allocate-sevral-camapigns" class="toc-h2 toc-link" data-title="allocate-sevral-camapigns">Allocate Sevral Camapigns</a>
+                    <a href="#allocate-several-campaigns" class="toc-h2 toc-link" data-title="allocate-several-campaigns">Allocate Several Campaigns</a>
                   </li>
                   <li>
                     <a href="#activate-campaign" class="toc-h2 toc-link" data-title="activate-campaign">Activate Campaign</a>
@@ -289,7 +289,7 @@
 
 <p>The ABTastySDK project is an iOS framework that helps you to create server side tests on your native iOS app.</p>
 
-<p>You can use this FrameWork to access AB Tasty endpoints, which can generate a unique visitor ID, allocate a visitor to a test, and push visits and conversions events in order to help you analyze the outcomes of your campaigns.</p>
+<p>You can use this frameWork to access AB Tasty endpoints, which can generate a unique visitor ID, allocate a visitor to a test, and push visits and conversions events in order to help you analyze the outcomes of your campaigns.</p>
 
 <p>Should you have any question about this documentation, feel free to <a href="mailto:contact@abtastycom">reach out to us</a>.</p>
 <h1 id='app-prerequisites'>App prerequisites</h1>
@@ -316,16 +316,16 @@
 </code></pre>
 <ol>
 <li><p><a href='https://guides.cocoapods.org/'>Install CocoaPods.</a></p></li>
-<li><p>Open Terminal and navigate to the directory that contains your project then enter the folowing command: `pod init</p></li>
+<li><p>Open Terminal and navigate to the directory that contains your project then enter the following command: `pod init</p></li>
 <li><p>Open your Podfile and add the following line to the Podfile </p></li>
 <li><p>Run <code>pod install</code> from your Xcode project&#39;s base directory</p></li>
-<li><p>Make sure to always open the Xcode workspace instead of the project file when building your project</p></li>
+<li><p>Make sure you always open the Xcode workspace and not the project file when building your project</p></li>
 </ol>
 <h3 id='manual-installation'>Manual Installation</h3>
 <ol>
 <li><p>Download the frameWork  <a href='http://sdk.abtasty.com/ios/ABTastySdk.zip'>ABTastySdk.framework.</a></p></li>
-<li><p>In Finder, navigate to the ABTastySdk.framework file and drop it under your &quot;Embedded Binaries&quot; section in Xcode</p></li>
-<li><p>After this manipulation, a popup will open, into it, don&#39;t forget to check &quot;Copy items if needed&quot;.</p></li>
+<li><p>In Finder, navigate to the ABTastySdk.framework file and move it under your &quot;Embedded Binaries&quot; section in Xcode</p></li>
+<li><p>When moving it, a popup is displayed, in which you must check &quot;Copy items if needed&quot;.</p></li>
 </ol>
 <h3 id='apple-store-submission'>Apple Store Submission</h3><pre class="highlight shell tab-shell"><code><span class="nv">FRAMEWORK</span><span class="o">=</span><span class="s2">"ABTastySdk"</span>
 <span class="nv">FRAMEWORK_EXECUTABLE_PATH</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">BUILT_PRODUCTS_DIR</span><span class="k">}</span><span class="s2">/</span><span class="k">${</span><span class="nv">FRAMEWORKS_FOLDER_PATH</span><span class="k">}</span><span class="s2">/</span><span class="nv">$FRAMEWORK</span><span class="s2">.framework/</span><span class="nv">$FRAMEWORK</span><span class="s2">"</span>
@@ -341,12 +341,12 @@ rm <span class="s2">"</span><span class="nv">$FRAMEWORK_EXECUTABLE_PATH</span><s
 mv <span class="s2">"</span><span class="nv">$FRAMEWORK_EXECUTABLE_PATH</span><span class="s2">-merged"</span> <span class="s2">"</span><span class="nv">$FRAMEWORK_EXECUTABLE_PATH</span><span class="s2">"</span>
 </code></pre>
 <aside class="notice">
-<b>ABTastySdk FrameWork is Universal and BitCode is enabled</b> <br>
-The universal framework for iOS contain architectures for Simulator and Device, you can run on all your devices and the iOS Simulator
+<b>ABTastySdk FrameWork is universal and BitCode supported</b> <br>
+The universal framework for iOS contains architectures for Simulator and Device, you can run on all your devices and the iOS Simulator
 </aside>
 
-<p>If you have universal framework installed in your application, apple store will reject your app because unwanted architecture.
-You need to Add a Run Script step to your build steps, put it after your step to embed
+<p>if your app contains a universal framework, the App store will reject your app because of an unwanted architecture.
+You need to add a Run Script step to your build steps, put it after your step to embed
 frameworks, set it to use /bin/sh</p>
 
 <p>and enter the following script:</p>
@@ -366,9 +366,9 @@ frameworks, set it to use /bin/sh</p>
         <span class="k">return</span> <span class="kc">true</span>
     <span class="p">}</span>
 </code></pre>
-<p>To run experiments with ABTasty you&#39;ll need to initialize ABTasty with AB_TASTY_KEY. ABTasty instance can both allocate, activate experiments and track events.</p>
+<p>To run experiments with ABTasty you&#39;ll need to initialize ABTasty with the AB_TASTY_KEY parameter. ABTasty instance can both allocate, activate experiments and track events.</p>
 
-<p>To do this, you just have to call the function <code>startABTastySdk</code> in the ABTasty class located in the frameWork ABTastySdk.framework. For each new user, at the very first initialization, the SDK is going to ask for a new visitor id to our servers and save it in a user Default</p>
+<p>To do so, just call the <code>startABTastySdk</code> function in the ABTasty class located in the frameWork ABTastySdk.framework. For each new user, at the very first initialization, the SDK requests a new visitor id to our servers and save it in a <code>UserDefaults</code></p>
 
 <p><code>(void)startABTastySdk:(NSString*)appId</code></p>
 
@@ -395,7 +395,7 @@ frameworks, set it to use /bin/sh</p>
 </code></pre>
 <p><code>- (void)startABTastySdk:(NSString*)appId WithTrackingInfos:(NSDictionary*)pInfosTracking</code></p>
 
-<p>This method allows you to set common default tracking data that you want to share between all your events.</p>
+<p>This method lets you to set common default tracking data to be shared between all your events.</p>
 
 <table><thead>
 <tr>
@@ -412,7 +412,7 @@ frameworks, set it to use /bin/sh</p>
 <tr>
 <td>pInfosTracking</td>
 <td>NSDictionary</td>
-<td>infos tracking for common default data</td>
+<td>tracking information of common default data</td>
 </tr>
 </tbody></table>
 
@@ -455,15 +455,15 @@ frameworks, set it to use /bin/sh</p>
 </span><span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">updateConfigInfosTracking</span><span class="p">:@{</span><span class="s">@"ipAddress"</span><span class="o">:</span><span class="s">@"xxx.xxx.xxx.xxx"</span><span class="p">}];</span>
 
 </code></pre><pre class="highlight swift tab-swift"><code>
-<span class="c1">// Update all common tracking data</span>
+<span class="c1">// Update all common tracking information data</span>
 <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">startSdk</span><span class="p">(</span><span class="s">"AIzaSyBOtlLZ1TPTmS1HJYvL1xVuiB5GndXD4P8"</span><span class="p">,</span> <span class="nv">withTrackingInfos</span><span class="p">:</span>
 <span class="p">[</span><span class="s">"Longitude"</span><span class="p">:</span><span class="mf">2.33</span><span class="p">,</span> <span class="s">"Latitude"</span><span class="p">:</span><span class="mf">48.48</span><span class="p">,</span><span class="s">"ipAddress"</span><span class="p">:</span><span class="s">"xxx.xxx.xxx.xxx"</span><span class="p">])</span>
 
-<span class="c1">// Update one of the common tracking data - ipAdress</span>
+<span class="c1">// Update one of the common tracking information data - ipAdress</span>
 <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">updateConfigInfosTracking</span><span class="p">([</span><span class="s">"ipAddress"</span><span class="p">:</span><span class="s">"xxx.xxx.xxx.xxx"</span><span class="p">])</span>
 
 </code></pre>
-<p>You can update those common tracking by calling : <code>-(void)updateConfigInfosTracking:(NSDictionary*)pInfoTracking</code></p>
+<p>You can update those tracking information by calling : <code>-(void)updateConfigInfosTracking:(NSDictionary*)pInfoTracking</code></p>
 
 <aside class="notice">
 Replace <code>AB_TASTY_KEY</code> with the key provided by AB Tasty.
@@ -474,12 +474,12 @@ Replace <code>AB_TASTY_KEY</code> with the key provided by AB Tasty.
 <aside class="success">
 Congratulations !!
 <br><br>
-You should know be able to use the AB TastySdk :)
+You should know be able to use the ABTastySdk :)
 </aside>
 <h1 id='starting-campaigns'>Starting campaigns</h1>
-<p>This section of the documentation aims to help you to start a new campaign in your app using the ABTasty SDK.</p>
-<h3 id='allocate-camapign'>Allocate Camapign</h3>
-<p>Once you get your visitor id, you can allocate campaign by calling <code>allocateVariation</code> function</p>
+<p>This section of the documentation aims at helping you start a new campaign in your app using the ABTasty SDK.</p>
+<h3 id='allocate-campaign'>Allocate Campaign</h3>
+<p>Once you get your visitor id, you can allocate a campaign by calling the <code>allocateVariation</code> function</p>
 
 <blockquote>
 <p>Allocate one campaign </p>
@@ -544,7 +544,7 @@ You should know be able to use the AB TastySdk :)
 <aside class="notice">
 Replace <code>campaignId</code> with the id of your campaign and, <code>varId1</code> and <code>varId2</code> with the different variations id of your campaign.
 </aside>
-<h3 id='allocate-sevral-camapigns'>Allocate Sevral Camapigns</h3>
+<h3 id='allocate-several-campaigns'>Allocate Several Campaigns</h3>
 <blockquote>
 <p>Allocate sevral campaign with simple call</p>
 </blockquote>
@@ -565,7 +565,7 @@ Replace <code>campaignId</code> with the id of your campaign and, <code>varId1</
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre>
-<p>You can also allocate sevral campaign with simple call function <code>allocateVariations</code>, the completion block pOnGetAllVariationId invoke with <strong>ABCampaign</strong> object</p>
+<p>You can also allocate several campaigns with simple call function <code>allocateVariations</code>, the completion block pOnGetAllVariationId invoke with <strong>ABCampaign</strong> object</p>
 
 <p><code>- (void)allocateVariations:(NSArray&lt;NSString*&gt;*)pIdCampaignArray completionBlock:(void(^)(NSArray&lt;ABCampaign*&gt;*))pOnGetAllVariationId</code></p>
 
@@ -584,7 +584,7 @@ Replace <code>campaignId</code> with the id of your campaign and, <code>varId1</
 <tr>
 <td>pOnGetAllVariationId</td>
 <td>block</td>
-<td>block to be invoked when all variations is selected for those campaigns.</td>
+<td>block to be invoked when all variations are selected for those campaigns.</td>
 </tr>
 </tbody></table>
 <h3 id='activate-campaign'>Activate Campaign</h3><pre class="highlight objective_c tab-objective_c"><code><span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">activateCampaign</span><span class="p">:</span><span class="s">@"campaignId"</span> <span class="nf">forVariationId</span><span class="p">:</span><span class="n">varId</span> <span class="n">atInterfaceName</span><span class="o">:</span><span class="s">@"ABHomeViewController"</span><span class="p">];</span>
@@ -612,18 +612,18 @@ Replace <code>campaignId</code> with the id of your campaign and, <code>varId1</
 <tr>
 <td>pInterfaceName</td>
 <td>NSString</td>
-<td>interface name, the origin where this campaign is activated</td>
+<td>interface name, the location where the campaign is activated</td>
 </tr>
 </tbody></table>
 
 <p>Once a variation has been allocated to a campaign you need to activate it. This way it tells AB Tasty that the current user saw this specific variation of the campaign so that the user
 always sees the same variation.</p>
 
-<p>The allocation can be change if you call <code>allocateVariation</code> several times until you use <code>activateCampaign</code> to activate the campaign and freeze the variation.</p>
+<p>The allocation can be changed if you call <code>allocateVariation</code> several times until you use <code>activateCampaign</code> to activate the campaign and freeze the variation.</p>
 
-<p>This <strong>activate</strong> function use common tracking infos if they already set before when started the SDK</p>
+<p>This <strong>activate</strong> function uses common tracking infos if they already set before starting the SDK</p>
 
-<p>If you want to activate a campaign with another common tracking data use this function :</p>
+<p>If you want to activate a campaign with another common tracking data, use this function :</p>
 
 <p><code>- (void)activateCampaign:(NSString*)pCampaignId forVariationId:(NSString*)pVariationID withTracking:(ABTracking*)pTracking</code></p>
 
@@ -647,7 +647,7 @@ always sees the same variation.</p>
 <tr>
 <td>pTracking</td>
 <td>ABTracking</td>
-<td>Object that represent common info tracking</td>
+<td>Object that represents ommon tracking information</td>
 </tr>
 </tbody></table>
 
@@ -711,7 +711,7 @@ always sees the same variation.</p>
 </tbody></table>
 
 <aside class="notice">
-Common data can be automatically set from the ABTracking passed in the `startABTastySdk` at start SDK, or from another ABTracking instance.
+Common data can be automatically set from the ABTracking passed in the `startABTastySdk` when starting the SDK, or from another ABTracking instance.
 </aside>
 
 <p><br></p>
@@ -734,7 +734,7 @@ Common data can be automatically set from the ABTracking passed in the `startABT
 <span class="c1">// Send Action tracking</span>
 <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">sendTrackingEvent</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
 </code></pre>
-<p><strong>ABActionTracking</strong>, This tracker sends touch event</p>
+<p><strong>ABActionTracking</strong>, This tracker sends a touch event</p>
 
 <table><thead>
 <tr>
@@ -967,8 +967,15 @@ Common data can be automatically set from the ABTracking passed in the `startABT
 </code></pre>
 <p>The <strong>ABVisitEvent</strong> lets you track any visit occurring on a mobile app.</p>
 
-<p>No parameters needed for this event, the sdk handle it for you, it take the <code>common data</code> set before when started SDK, if you want to update the common tracking for this specefic visit event, create un instance with <code>initABTracking</code>.
-<br></p>
+<p>No parameters needed for this event, the SDK uses the <code>common tracking information</code> set before when starting the SDK.</p>
+
+<p>By default the SDK send event with <code>common sharing information</code> set before when starting the SDK.</p>
+
+<p>If you want to send an event with another <code>common information</code> use <code>initABTracking</code> function to create this event, Then SDK will ignore the common tracking information used by default.</p>
+
+<p><code>- (instancetype)initABTracking:(ABDeviceType)pDeviceType longtitude:(double)pLong latitude :(double)pLat ipAdress :(NSString*)pAdressIp interfaceName:(NSString*)pInterfaceName</code></p>
+
+<p><br></p>
 
       </div>
       <div class="dark-box">
