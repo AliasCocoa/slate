@@ -969,13 +969,15 @@ Common data can be automatically set from the ABTracking passed in the `startABT
 
 <p>No parameters needed for this event, the SDK uses the <code>common tracking information</code> set before when starting the SDK.</p>
 
-<p><br></p>
-
+<p><br>
 <aside class="notice">
-By default the SDK send all events with `common sharing information` set before when starting the SDK.
-</aside>
+By default the SDK send all events with <b>common sharing information</b> set before when starting the SDK.
+</aside></p>
 
-<p>If you want to send an event with another <code>common information</code> use <code>initABTracking</code> function to create this event, Then SDK will ignore the common tracking information used by default.</p>
+<p><br>
+<aside class="notice">
+If you want to send an event with another common information use <br>initABTracking<br> function to create this event, The SDK will ignore the common tracking information used by default.
+</aside></p>
 
 <p><code>- (instancetype)initABTracking:(ABDeviceType)pDeviceType longtitude:(double)pLong latitude :(double)pLat ipAdress :(NSString*)pAdressIp interfaceName:(NSString*)pInterfaceName</code></p>
 
