@@ -582,14 +582,85 @@ Replace <code>campaignId</code> with the id of your campaign and, <code>varId1</
 <td>block to be invoked when all variations is selected for those campaigns.</td>
 </tr>
 </tbody></table>
-<h3 id='activate-campaign'>Activate Campaign</h3><pre class="highlight objective_c tab-objective_c"><code><span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">activateCampaign</span><span class="p">:</span><span class="s">@"campaignId"</span> <span class="nf">forVariationId</span><span class="p">:</span><span class="n">varId</span><span class="p">];</span>
+<h3 id='activate-campaign'>Activate Campaign</h3><pre class="highlight objective_c tab-objective_c"><code><span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">activateCampaign</span><span class="p">:</span><span class="s">@"campaignId"</span> <span class="nf">forVariationId</span><span class="p">:</span><span class="n">varId</span> <span class="n">atInterfaceName</span><span class="o">:</span><span class="s">@"ABHomeViewController"</span><span class="p">];</span>
 </code></pre><pre class="highlight swift tab-swift"><code><span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">activateCampaign</span><span class="p">(</span><span class="s">"campaignId"</span><span class="p">,</span> <span class="nv">forVariationId</span><span class="p">:</span> <span class="s">"varId"</span><span class="p">)</span>
 </code></pre>
+<p><code>-(void)activateCampaign:(NSString*)pCampaignId forVariationId:(NSString*)pVariationID atInterfaceName:(NSString *)pInterfaceName</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>pCampaignId</td>
+<td>NSString</td>
+<td>campaign id</td>
+</tr>
+<tr>
+<td>pVariationID</td>
+<td>NSString</td>
+<td>variation id</td>
+</tr>
+<tr>
+<td>pInterfaceName</td>
+<td>NSString</td>
+<td>interface name, the origin where this campaign is activated</td>
+</tr>
+</tbody></table>
+
 <p>Once a variation has been allocated to a campaign you need to activate it. This way it tells AB Tasty that the current user saw this specific variation of the campaign so that the user
 always sees the same variation.</p>
 
-<p>The allocation can be changeg if you call <code>allocateVariation</code> several times until you use <code>activateCampaign</code> to activate the campaign and freeze the variation.</p>
-<h1 id='sending-events'>Sending events</h1>
+<p>The allocation can be change if you call <code>allocateVariation</code> several times until you use <code>activateCampaign</code> to activate the campaign and freeze the variation.</p>
+
+<p>This <strong>activate</strong> function use common tracking infos if they already set before when started the SDK</p>
+
+<p>If you want to activate a campaign with another common tracking data use this function :</p>
+
+<p><code>- (void)activateCampaign:(NSString*)pCampaignId forVariationId:(NSString*)pVariationID withTracking:(ABTracking*)pTracking</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>pCampaignId</td>
+<td>NSString</td>
+<td>campaign id</td>
+</tr>
+<tr>
+<td>pVariationID</td>
+<td>NSString</td>
+<td>variation id</td>
+</tr>
+<tr>
+<td>pTracking</td>
+<td>ABTracking</td>
+<td>Object that represent common info tracking</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Activate campaign with ABTracking Object</p>
+</blockquote>
+<pre class="highlight objective_c tab-objective_c"><code><span class="c1">// Tracking Object
+</span><span class="n">ABTracking</span> <span class="o">*</span> <span class="n">tracking</span> <span class="o">=</span> <span class="p">[[</span><span class="n">ABTracking</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initABTracking</span><span class="p">:</span><span class="n">ABMobile</span> <span class="nf">longtitude</span><span class="p">:</span><span class="mi">2</span><span class="p">.</span><span class="mi">33</span> <span class="n">latitude</span><span class="o">:</span><span class="mi">48</span><span class="p">.</span><span class="mi">48</span> <span class="n">ipAdress</span><span class="o">:</span><span class="s">@"xxx.xxx.xxx.xxx"</span> <span class="n">interfaceName</span><span class="o">:</span><span class="s">@"ABHomeViewController"</span><span class="p">];</span>
+
+<span class="c1">// Activate campaign
+</span><span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">activateCampaign</span><span class="p">:</span><span class="s">@"campaignId"</span> <span class="nf">forVariationId</span><span class="p">:</span><span class="s">@"varId"</span> <span class="n">withTracking</span><span class="o">:</span><span class="n">tracking</span><span class="p">];</span>
+
+</code></pre><pre class="highlight swift tab-swift"><code><span class="c1">// Tracking Object</span>
+<span class="k">let</span> <span class="nv">trackig</span> <span class="o">=</span> <span class="kt">ABTracking</span><span class="p">(</span><span class="nv">abTracking</span><span class="p">:</span><span class="kt">ABDeviceType</span><span class="o">.</span><span class="n">mobile</span><span class="p">,</span> <span class="nv">longtitude</span><span class="p">:</span> <span class="mf">2.33</span><span class="p">,</span> <span class="nv">latitude</span><span class="p">:</span> <span class="mf">48.33</span><span class="p">,</span> <span class="nv">ipAdress</span><span class="p">:</span> <span class="s">"xxx.xxx.xxx.xxx"</span><span class="p">,</span> <span class="nv">interfaceName</span><span class="p">:</span> <span class="s">"ABHomeViewController"</span><span class="p">)</span>
+
+<span class="c1">// Activate Campaign "campaignId"</span>
+<span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">activateCampaign</span><span class="p">(</span><span class="s">"campaignId"</span><span class="p">,</span> <span class="nv">forVariationId</span><span class="p">:</span> <span class="s">"variationId"</span><span class="p">,</span> <span class="nv">with</span><span class="p">:</span><span class="n">trackig</span><span class="p">)</span>
+</code></pre><h1 id='sending-events'>Sending events</h1>
 <p>The library also provides some functions to send events to ABTasty, for example to send objectives configured for a campaign.</p>
 
 <p>To do so, use the <code>sendTrackingEvent</code> method and specify the expected tracker as a parameter.</p>
