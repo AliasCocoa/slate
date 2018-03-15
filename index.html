@@ -300,25 +300,26 @@
 <h1 id='getting-started'>Getting started</h1>
 <p>ABtastySDK is available through Pods and manual installation.</p>
 <h3 id='cocoapods'>Cocoapods</h3>
+<blockquote>
+<p>Make sure  <code>use_frameworks!</code>  is also included in the Podfile:
+<code>ruby
+target &#39;Your App&#39; do
+    use_frameworks!
+    pod &#39;ABTastySdk&#39;, :http =&gt; &#39;http://sdk.abtasty.com/ios/ABTastySdk.zip&#39;
+  end
+</code></p>
+
+<p>Run pod isntall from your Xcode project&#39;s base directory</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>pod install
+
+</code></pre>
 <ol>
 <li><p><a href='https://guides.cocoapods.org/'>Install CocoaPods.</a></p></li>
 <li><p>Open Terminal and navigate to the directory that contains your project then enter the folowing command: `pod init</p></li>
 <li><p>Open your Podfile and add the following line to the Podfile </p></li>
-</ol>
-<pre class="highlight ruby tab-ruby"><code><span class="n">target</span> <span class="s1">'Your App'</span> <span class="k">do</span>
-    <span class="n">use_frameworks!</span>
-    <span class="n">pod</span> <span class="s1">'ABTastySdk'</span><span class="p">,</span> <span class="ss">:http</span> <span class="o">=&gt;</span> <span class="s1">'http://sdk.abtasty.com/ios/ABTastySdk.zip'</span>
-  <span class="k">end</span>
-</code></pre>
-<p>Make sure  <code>use_frameworks!</code>  is also included in the Podfile:</p>
-
-<ol>
-<li>Run <code>pod install</code> from your Xcode project&#39;s base directory</li>
-</ol>
-<pre class="highlight shell tab-shell"><code>pod install
-</code></pre>
-<ol>
-<li>Make sure to always open the Xcode workspace instead of the project file when building your project</li>
+<li><p>Run <code>pod install</code> from your Xcode project&#39;s base directory</p></li>
+<li><p>Make sure to always open the Xcode workspace instead of the project file when building your project</p></li>
 </ol>
 <h3 id='manual-installation'>Manual Installation</h3>
 <ol>
