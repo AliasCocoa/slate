@@ -381,7 +381,6 @@ frameworks, set it to use /bin/sh</p>
 </tr>
 </tbody></table>
 <h3 id='initialize-with-tracking-data'>Initialize with Tracking data</h3><pre class="highlight objective_c tab-objective_c"><code> <span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">startABTastySdk</span><span class="p">:</span><span class="s">@"YOUR_ACCESS_KEY"</span> <span class="nf">WithTrackingInfos</span><span class="p">:</span>
-    <span class="p">@{</span><span class="s">@"adel"</span><span class="o">:</span><span class="mi">@1</span><span class="p">,</span>
     <span class="s">@"Longitude"</span><span class="o">:</span><span class="mf">@2.3333</span><span class="p">,</span>
     <span class="s">@"Latitude"</span><span class="o">:</span> <span class="mf">@48.48</span><span class="p">,</span>
     <span class="s">@"ipAddress"</span><span class="o">:</span><span class="s">@"192.168.1.1"</span>
@@ -437,6 +436,27 @@ frameworks, set it to use /bin/sh</p>
 <td>ip adress</td>
 </tr>
 </tbody></table>
+
+<blockquote>
+<p>You can update all parameters or one of them
+```objective_c
+    // Update all common tracking data
+    [[ABTasty sharedInstance] updateConfigInfosTracking:@{@&quot;Longitude&quot;:@2.352222,
+    @&quot;Latitude&quot;: @48.856614,
+    @&quot;ipAddress&quot;:@&quot;xxx.xxx.xxx.xxx&quot;}];</p>
+</blockquote>
+
+<p>// Update one of the common tracking data - ipAdress
+    [[ABTasty sharedInstance] updateConfigInfosTracking:@{@&quot;ipAddress&quot;:@&quot;xxx.xxx.xxx.xxx&quot;}];
+<code>
+</code>swift
+        // Update all common tracking data
+        ABTasty.sharedInstance().startSdk(&quot;AIzaSyBOtlLZ1TPTmS1HJYvL1xVuiB5GndXD4P8&quot;, withTrackingInfos:
+        [&quot;Longitude&quot;:2.33, &quot;Latitude&quot;:48.48,&quot;ipAddress&quot;:&quot;xxx.xxx.xxx.xxx&quot;])</p>
+
+<p>// Update one of the common tracking data - ipAdress
+        ABTasty.sharedInstance().updateConfigInfosTracking([&quot;ipAddress&quot;:&quot;xxx.xxx.xxx.xxx&quot;])
+```</p>
 
 <p>You can update those common tracking by calling : <code>-(void)updateConfigInfosTracking:(NSDictionary*)pInfoTracking</code></p>
 
