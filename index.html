@@ -333,8 +333,6 @@ You need to Add a Run Script step to your build steps, put it after your step to
 frameworks, set it to use /bin/sh</p>
 
 <p>and enter the following script:</p>
-
-<p><img src="images/rScript.png" alt="alt text" /></p>
 <pre class="highlight shell tab-shell"><code><span class="nv">FRAMEWORK</span><span class="o">=</span><span class="s2">"ABTastySdk"</span>
 <span class="nv">FRAMEWORK_EXECUTABLE_PATH</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">BUILT_PRODUCTS_DIR</span><span class="k">}</span><span class="s2">/</span><span class="k">${</span><span class="nv">FRAMEWORKS_FOLDER_PATH</span><span class="k">}</span><span class="s2">/</span><span class="nv">$FRAMEWORK</span><span class="s2">.framework/</span><span class="nv">$FRAMEWORK</span><span class="s2">"</span>
 <span class="nv">EXTRACTED_ARCHS</span><span class="o">=()</span>
@@ -347,7 +345,9 @@ EXTRACTED_ARCHS+<span class="o">=(</span><span class="s2">"</span><span class="n
 rm <span class="s2">"</span><span class="k">${</span><span class="nv">EXTRACTED_ARCHS</span><span class="p">[@]</span><span class="k">}</span><span class="s2">"</span>
 rm <span class="s2">"</span><span class="nv">$FRAMEWORK_EXECUTABLE_PATH</span><span class="s2">"</span>
 mv <span class="s2">"</span><span class="nv">$FRAMEWORK_EXECUTABLE_PATH</span><span class="s2">-merged"</span> <span class="s2">"</span><span class="nv">$FRAMEWORK_EXECUTABLE_PATH</span><span class="s2">"</span>
-</code></pre><h3 id='initialize-abtastysdk'>Initialize ABTastySDK</h3>
+</code></pre>
+<p><img src="images/rScript.png" alt="alt text" /></p>
+<h3 id='initialize-abtastysdk'>Initialize ABTastySDK</h3>
 <blockquote>
 <p>import ABTastySdk frameWork and Add the following code into your AppDelegate.m file</p>
 </blockquote>
