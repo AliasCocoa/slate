@@ -322,18 +322,7 @@
 <li><p>In Finder, navigate to the ABTastySdk.framework file and drop it under your &quot;Embedded Binaries&quot; section in Xcode</p></li>
 <li><p>After this manipulation, a popup will open, into it, don&#39;t forget to check &quot;Copy items if needed&quot;.</p></li>
 </ol>
-<h3 id='apple-store-submission'>Apple Store Submission</h3>
-<aside class="notice">
-<b>ABTastySdk FrameWork is Universal and BitCode is enabled</b> <br>
-The universal framework for iOS contain architectures for Simulator and Device, you can run on all your devices and the iOS Simulator
-</aside>
-
-<p>If you have universal framework installed in your application, apple store will reject your app because unwanted architecture.
-You need to Add a Run Script step to your build steps, put it after your step to embed
-frameworks, set it to use /bin/sh</p>
-
-<p>and enter the following script:</p>
-<pre class="highlight shell tab-shell"><code><span class="nv">FRAMEWORK</span><span class="o">=</span><span class="s2">"ABTastySdk"</span>
+<h3 id='apple-store-submission'>Apple Store Submission</h3><pre class="highlight shell tab-shell"><code><span class="nv">FRAMEWORK</span><span class="o">=</span><span class="s2">"ABTastySdk"</span>
 <span class="nv">FRAMEWORK_EXECUTABLE_PATH</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">BUILT_PRODUCTS_DIR</span><span class="k">}</span><span class="s2">/</span><span class="k">${</span><span class="nv">FRAMEWORKS_FOLDER_PATH</span><span class="k">}</span><span class="s2">/</span><span class="nv">$FRAMEWORK</span><span class="s2">.framework/</span><span class="nv">$FRAMEWORK</span><span class="s2">"</span>
 <span class="nv">EXTRACTED_ARCHS</span><span class="o">=()</span>
 <span class="k">for </span>ARCH <span class="k">in</span> <span class="nv">$ARCHS</span>
@@ -346,6 +335,17 @@ rm <span class="s2">"</span><span class="k">${</span><span class="nv">EXTRACTED_
 rm <span class="s2">"</span><span class="nv">$FRAMEWORK_EXECUTABLE_PATH</span><span class="s2">"</span>
 mv <span class="s2">"</span><span class="nv">$FRAMEWORK_EXECUTABLE_PATH</span><span class="s2">-merged"</span> <span class="s2">"</span><span class="nv">$FRAMEWORK_EXECUTABLE_PATH</span><span class="s2">"</span>
 </code></pre>
+<aside class="notice">
+<b>ABTastySdk FrameWork is Universal and BitCode is enabled</b> <br>
+The universal framework for iOS contain architectures for Simulator and Device, you can run on all your devices and the iOS Simulator
+</aside>
+
+<p>If you have universal framework installed in your application, apple store will reject your app because unwanted architecture.
+You need to Add a Run Script step to your build steps, put it after your step to embed
+frameworks, set it to use /bin/sh</p>
+
+<p>and enter the following script:</p>
+
 <p><img src="images/rScript.png" alt="alt text" /></p>
 <h3 id='initialize-abtastysdk'>Initialize ABTastySDK</h3>
 <blockquote>
