@@ -472,11 +472,17 @@ Replace <code>AB_TASTY_KEY</code> with the key provided by AB Tasty.
 </code></pre>
 <p>You can update those tracking information by calling : <code>-(void)updateConfigInfosTracking:(NSDictionary*)pInfoTracking</code></p>
 
+<p><br>
 <aside class="notice">
-Replace <code>AB_TASTY_KEY</code> with the key provided by AB Tasty.
-</aside>
+By default the SDK sends all the events with <b>common sharing information</b> set before when starting the SDK.
+</aside></p>
 
-<p><br><br></p>
+<p><br>
+<aside class="notice">
+If you want to send an event with another common information use <b>initABTracking</b> function to create this event, The SDK will ignore the common tracking information used by default.
+</aside></p>
+
+<p><code>- (instancetype)initABTracking:(ABDeviceType)pDeviceType longtitude:(double)pLong latitude :(double)pLat ipAdress :(NSString*)pAdressIp interfaceName:(NSString*)pInterfaceName</code></p>
 
 <aside class="success">
 Congratulations !!
@@ -974,21 +980,8 @@ Common data can be automatically set from the ABTracking passed in the `startABT
 </code></pre>
 <p>The <strong>ABVisitEvent</strong> lets you track any visit occurring on a mobile app.</p>
 
-<p>No parameters are needed for this event as the SDK uses the <code>COMMON TRACKING INFORMATIONS</code> set before when starting the SDK.</p>
-
-<p><br>
-<aside class="notice">
-By default the SDK sends all the events with <b>common sharing information</b> set before when starting the SDK.
-</aside></p>
-
-<p><br>
-<aside class="notice">
-If you want to send an event with another common information use <b>initABTracking</b> function to create this event, The SDK will ignore the common tracking information used by default.
-</aside></p>
-
-<p><code>- (instancetype)initABTracking:(ABDeviceType)pDeviceType longtitude:(double)pLong latitude :(double)pLat ipAdress :(NSString*)pAdressIp interfaceName:(NSString*)pInterfaceName</code></p>
-
-<p><br></p>
+<p>No parameters are needed for this event as the SDK uses the <code>COMMON TRACKING INFORMATIONS</code> set before when starting the SDK.
+<br></p>
 
       </div>
       <div class="dark-box">
