@@ -301,7 +301,7 @@
 <li><p>ABTastySdk supports at least ios 8.0+</p></li>
 </ul>
 <h1 id='getting-started'>Getting started</h1>
-<p>ABtastySDK is available through Pods and manual installation.</p>
+<p>ABtastySDK is available for distribution through Pods or manual installation.</p>
 <h3 id='cocoapods'>Cocoapods</h3>
 <blockquote>
 <p>Make sure  <code>use_frameworks!</code>  is also included in the Podfile</p>
@@ -369,7 +369,7 @@ In the <code>Shell</code> field, enter the following script:</p>
 </code></pre>
 <p>To run experiments with ABTasty you&#39;ll need to initialize ABTasty with the AB_TASTY_KEY parameter. ABTasty instance can both allocate, activate experiments and track events.</p>
 
-<p>To do so, just call the <code>startABTastySdk</code> function in the ABTasty class located in the frameWork ABTastySdk.framework. For each new user, at the very first initialization, the SDK requests a new visitor id to our servers and save it in a <code>UserDefaults</code></p>
+<p>To do so, just call the <code>startABTastySdk</code> function in the ABTasty class located in the frameWork ABTastySdk.framework. For each new user, at the very first initialization, the SDK requests a new visitor id to our servers and save it in <code>UserDefaults</code></p>
 
 <p><code>(void)startABTastySdk:(NSString*)appId</code></p>
 
