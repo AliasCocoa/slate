@@ -348,11 +348,9 @@ mv <span class="s2">"</span><span class="nv">$FRAMEWORK_EXECUTABLE_PATH</span><s
 The universal framework for iOS contains architectures for simulators and devices. You will then be able to run your application on all devices and all iOS simulators.
 </aside>
 
-<p>if your app contains a universal framework, the App store will reject your app because of an unwanted architecture.
-You need to add a Run Script step to your build steps, put it after your step to embed
-frameworks, set it to use /bin/sh</p>
-
-<p>and enter the following script:</p>
+<p>If your app contains a universal framework, the App store will reject your app because of an unwanted architecture.
+You need to add a new build phase, then select <code>Run Script</code> to add a new build step after <code>Embed frameworks</code>.
+In the <code>Shell</code> field, enter the following script:</p>
 
 <p><img src="images/rScript.png" alt="alt text" /></p>
 <h3 id='initialize-abtastysdk'>Initialize ABTastySDK</h3>
