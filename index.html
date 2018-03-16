@@ -889,18 +889,23 @@ Common data can be automatically set from the ABTracking passed in the `startABT
 </tr>
 <tr>
 <td>revenue</td>
-<td>int</td>
+<td>double</td>
 <td>Total amount of money spent by the visitor expressed in cents. <strong>required</strong></td>
 </tr>
 <tr>
 <td>shipping</td>
-<td>int</td>
+<td>double</td>
 <td>Shipping cost - expressed in cents.<strong>required</strong></td>
 </tr>
 <tr>
 <td>tax_total</td>
-<td>int</td>
+<td>double</td>
 <td>Total tax expressed in cents. <strong>optional</strong></td>
+</tr>
+<tr>
+<td>discount</td>
+<td>double</td>
+<td>Discount in cents, if applicable. <strong>optional</strong></td>
 </tr>
 <tr>
 <td>payment_method</td>
@@ -909,7 +914,7 @@ Common data can be automatically set from the ABTracking passed in the `startABT
 </tr>
 <tr>
 <td>items_count</td>
-<td>int</td>
+<td>double</td>
 <td>Total number of products purchased on the mobile app. <strong>optional</strong></td>
 </tr>
 <tr>
