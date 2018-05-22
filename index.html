@@ -498,6 +498,7 @@ You should now be able to use the ABTastySdk :)
         <span class="c1">// Manage your Variation aaaaa
 </span>
     <span class="p">}</span><span class="k">else</span> <span class="k">if</span> <span class="p">([</span><span class="n">variationId</span> <span class="nf">isEqualToString</span><span class="p">:</span><span class="s">@"bbbbb"</span><span class="p">]){</span> 
+
         <span class="c1">// Manage your Variation bbbbb
 </span>
     <span class="p">}</span><span class="k">else</span><span class="p">{</span> 
@@ -505,19 +506,20 @@ You should now be able to use the ABTastySdk :)
         <span class="c1">// The default behavior
 </span>    <span class="p">}</span>
 </code></pre><pre class="highlight swift tab-swift"><code>
-        <span class="k">let</span> <span class="nv">variation</span> <span class="o">=</span> <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">getVariationForCampaignId</span><span class="p">(</span><span class="s">"xxxxx"</span><span class="p">)</span>
+    <span class="k">let</span> <span class="nv">variation</span> <span class="o">=</span> <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">getVariationForCampaignId</span><span class="p">(</span><span class="s">"xxxxx"</span><span class="p">)</span>
 
-            <span class="k">if</span> <span class="n">variation</span> <span class="o">==</span> <span class="s">"aaaaa"</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">variation</span> <span class="o">==</span> <span class="s">"aaaaa"</span> <span class="p">{</span>
 
-                <span class="c1">// Manage your Variation aaaaa</span>
+            <span class="c1">// Manage your Variation aaaaa</span>
 
-            <span class="p">}</span><span class="k">else</span> <span class="k">if</span> <span class="n">variation</span> <span class="o">==</span> <span class="s">"bbbbb"</span> <span class="p">{</span>
+        <span class="p">}</span><span class="k">else</span> <span class="k">if</span> <span class="n">variation</span> <span class="o">==</span> <span class="s">"bbbbb"</span> <span class="p">{</span>
 
-                <span class="c1">// Manage your Variation bbbbb</span>
-            <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+            <span class="c1">// Manage your Variation bbbbb</span>
 
-                <span class="c1">// The default behavior</span>
-            <span class="p">}</span>
+        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+
+            <span class="c1">// The default behavior</span>
+        <span class="p">}</span>
 </code></pre>
 <p>When the SDK is ready to use, each campaign will have a variation allocated, to get this information just call the <code>getVariationForCampaignId</code> function in the ABTasty class located in the frameWork ABTastySdk.framework.</p>
 
