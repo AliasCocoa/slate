@@ -246,11 +246,9 @@
                   <li>
                     <a href="#common-tracking-information" class="toc-h2 toc-link" data-title="common-tracking-information">Common Tracking Information</a>
                   </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#getting-variations" class="toc-h1 toc-link" data-title="getting-variations">Getting variations</a>
-              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#getting-variations" class="toc-h2 toc-link" data-title="getting-variations">Getting variations</a>
+                  </li>
                   <li>
                     <a href="#activate-campaign" class="toc-h2 toc-link" data-title="activate-campaign">Activate Campaign</a>
                   </li>
@@ -489,7 +487,7 @@ Congratulations !!
 <br><br>
 You should now be able to use the ABTastySdk :)
 </aside>
-<h1 id='getting-variations'>Getting variations</h1>
+<h3 id='getting-variations'>Getting variations</h3>
 <p>When the SDK is ready to use, each campaign will have a variation allocated, to get this information just call the <code>getVariationForCampaignId</code> function in the ABTasty class located in the frameWork ABTastySdk.framework.</p>
 
 <p>It returns a NSString corresponding to the selected variation, or an nil if the campaign can&#39;t be found or if the SDK is not yet ready to use.
@@ -535,7 +533,11 @@ When you apply some changes according to your variation, dont forget to activate
 <td>campaign id</td>
 </tr>
 </tbody></table>
-<h3 id='activate-campaign'>Activate Campaign</h3><pre class="highlight objective_c tab-objective_c"><code><span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">activateCampaign</span><span class="p">:</span><span class="s">@"campaignId"</span> <span class="nf">forVariationId</span><span class="p">:</span><span class="n">varId</span> <span class="n">atInterfaceName</span><span class="o">:</span><span class="s">@"ABHomeViewController"</span><span class="p">];</span>
+<h3 id='activate-campaign'>Activate Campaign</h3>
+<blockquote>
+<p>Activate campaign</p>
+</blockquote>
+<pre class="highlight objective_c tab-objective_c"><code><span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">activateCampaign</span><span class="p">:</span><span class="s">@"campaignId"</span> <span class="nf">forVariationId</span><span class="p">:</span><span class="n">varId</span> <span class="n">atInterfaceName</span><span class="o">:</span><span class="s">@"ABHomeViewController"</span><span class="p">];</span>
 </code></pre><pre class="highlight swift tab-swift"><code><span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">activateCampaign</span><span class="p">(</span><span class="s">"campaignId"</span><span class="p">,</span> <span class="nv">forVariationId</span><span class="p">:</span> <span class="s">"varId"</span><span class="p">,</span> <span class="nv">atInterfaceName</span><span class="p">:</span><span class="s">"ABHomeViewController"</span><span class="p">)</span>
 </code></pre>
 <p><code>-(void)activateCampaign:(NSString*)pCampaignId forVariationId:(NSString*)pVariationID atInterfaceName:(NSString *)pInterfaceName</code></p>
