@@ -249,7 +249,7 @@
               </ul>
           </li>
           <li>
-            <a href="#starting-campaigns" class="toc-h1 toc-link" data-title="starting-campaigns">Starting campaigns</a>
+            <a href="#getting-variations" class="toc-h1 toc-link" data-title="getting-variations">Getting variations</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#activate-campaign" class="toc-h2 toc-link" data-title="activate-campaign">Activate Campaign</a>
@@ -369,9 +369,9 @@ In the <code>Shell</code> field, enter the following script:</p>
         <span class="k">return</span> <span class="kc">true</span>
     <span class="p">}</span>
 </code></pre>
-<p>To run experiments with ABTasty you&#39;ll need to initialize ABTasty with the AB_TASTY_KEY parameter. ABTasty instance can both allocate, activate experiments and track events.</p>
+<p>To run experiments with ABTasty you&#39;ll need to initialize ABTasty with the AB_TASTY_KEY parameter. ABTasty instance can both activate experiments and track events.</p>
 
-<p>To do so, just call the <code>startABTastySdk</code> function in the ABTasty class located in the frameWork ABTastySdk.framework. For each new user, at the very first initialization, the SDK requests a new visitor id to our servers and save it in <code>UserDefaults</code></p>
+<p>To do so, just call the <code>startABTastySdk</code> function in the ABTasty class located in the frameWork ABTastySdk.framework. For each new user, at the very first initialization, the SDK requests a new visitor id to our servers and save it in <code>UserDefaults</code>, and for each initialization the SDK will allocates variations for all camapigns.</p>
 
 <p><code>(void)startABTastySdk:(NSString*)appId</code></p>
 
@@ -489,7 +489,30 @@ Congratulations !!
 <br><br>
 You should now be able to use the ABTastySdk :)
 </aside>
-<h1 id='starting-campaigns'>Starting campaigns</h1><h3 id='activate-campaign'>Activate Campaign</h3><pre class="highlight objective_c tab-objective_c"><code><span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">activateCampaign</span><span class="p">:</span><span class="s">@"campaignId"</span> <span class="nf">forVariationId</span><span class="p">:</span><span class="n">varId</span> <span class="n">atInterfaceName</span><span class="o">:</span><span class="s">@"ABHomeViewController"</span><span class="p">];</span>
+<h1 id='getting-variations'>Getting variations</h1>
+<p>When the SDK is ready to use, each campaign will have a variation allocated, to get this information just call the <code>getVariationForCampaignId</code> function in the ABTasty class located in the frameWork ABTastySdk.framework.</p>
+
+<p>It returns a NSString corresponding to the selected variation, or an nil if the campaign can&#39;t be found or if the SDK is not yet ready to use.
+When you apply some changes according to your variation, dont forget to activate the campaign and its variation so the user will always see the same.</p>
+<pre class="highlight objective_c tab-objective_c"><code><span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">getVariationForCampaignId</span><span class="p">:</span><span class="s">@"xxxxx"</span><span class="p">];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">getVariationForCampaignId</span><span class="p">(</span><span class="s">"xxxxx"</span><span class="p">)</span>
+</code></pre>
+<p><code>- (NSString*)getVariationForCampaignId:(NSString*)pCampaignId</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>pCampaignId</td>
+<td>NSString</td>
+<td>campaign id</td>
+</tr>
+</tbody></table>
+<h3 id='activate-campaign'>Activate Campaign</h3><pre class="highlight objective_c tab-objective_c"><code><span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">activateCampaign</span><span class="p">:</span><span class="s">@"campaignId"</span> <span class="nf">forVariationId</span><span class="p">:</span><span class="n">varId</span> <span class="n">atInterfaceName</span><span class="o">:</span><span class="s">@"ABHomeViewController"</span><span class="p">];</span>
 </code></pre><pre class="highlight swift tab-swift"><code><span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">activateCampaign</span><span class="p">(</span><span class="s">"campaignId"</span><span class="p">,</span> <span class="nv">forVariationId</span><span class="p">:</span> <span class="s">"varId"</span><span class="p">,</span> <span class="nv">atInterfaceName</span><span class="p">:</span><span class="s">"ABHomeViewController"</span><span class="p">)</span>
 </code></pre>
 <p><code>-(void)activateCampaign:(NSString*)pCampaignId forVariationId:(NSString*)pVariationID atInterfaceName:(NSString *)pInterfaceName</code></p>
