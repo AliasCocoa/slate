@@ -252,6 +252,9 @@
                   <li>
                     <a href="#activate-campaign" class="toc-h2 toc-link" data-title="activate-campaign">Activate Campaign</a>
                   </li>
+                  <li>
+                    <a href="#block-operation-when-sdk-is-ready" class="toc-h2 toc-link" data-title="block-operation-when-sdk-is-ready">Block Operation When SDK is Ready</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -627,7 +630,68 @@ always sees the same variation.</p>
 
 <span class="c1">// Activate Campaign "campaignId"</span>
 <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">activateCampaign</span><span class="p">(</span><span class="s">"campaignId"</span><span class="p">,</span> <span class="nv">forVariationId</span><span class="p">:</span> <span class="s">"variationId"</span><span class="p">,</span> <span class="nv">with</span><span class="p">:</span><span class="n">trackig</span><span class="p">)</span>
-</code></pre><h1 id='sending-events'>Sending events</h1>
+</code></pre><h3 id='block-operation-when-sdk-is-ready'>Block Operation When SDK is Ready</h3>
+<p>This function allow user to execute some actions when the sdk is ready to use</p>
+
+<p><code>- (void)executeWhenSdkReady:(void (^)(void))pBlock</code></p>
+
+<blockquote>
+<p>Execute Block when SDK is ready</p>
+</blockquote>
+<pre class="highlight objective_c tab-objective_c"><code>
+    <span class="p">[</span><span class="n">ABTasty</span><span class="p">.</span><span class="n">sharedInstance</span> <span class="nf">executeWhenSdkReady</span><span class="p">:</span><span class="o">^</span><span class="p">{</span>
+
+        <span class="n">NSString</span> <span class="o">*</span> <span class="n">variationId</span> <span class="o">=</span> <span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">getVariationForCampaignId</span><span class="p">:</span><span class="s">@"xxxxx"</span><span class="p">];</span>
+
+        <span class="k">if</span> <span class="p">([</span><span class="n">variationId</span> <span class="nf">isEqualToString</span><span class="p">:</span><span class="s">@""</span><span class="p">])</span> <span class="p">{</span>
+
+            <span class="c1">// Manage variation aaaaa
+</span>
+        <span class="p">}</span><span class="k">else</span> <span class="k">if</span> <span class="p">([</span><span class="n">variationId</span> <span class="nf">isEqualToString</span><span class="p">:</span><span class="s">@""</span><span class="p">]){</span>
+
+            <span class="c1">// Manage variation bbbbb
+</span>
+        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+
+            <span class="c1">// The default behavior
+</span>        <span class="p">}</span>
+    <span class="p">}];</span>
+
+</code></pre><pre class="highlight swift tab-swift"><code>
+    <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="n">execute</span> <span class="p">{</span>
+
+        <span class="k">let</span> <span class="nv">variation</span> <span class="o">=</span> <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">getVariationForCampaignId</span><span class="p">(</span><span class="s">"xxxxx"</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">variation</span> <span class="o">==</span> <span class="s">"aaaaa"</span> <span class="p">{</span>
+
+            <span class="c1">// Manage your variation aaaaa</span>
+
+
+        <span class="p">}</span><span class="k">else</span> <span class="k">if</span> <span class="n">variation</span> <span class="o">==</span> <span class="s">"bbbbb"</span> <span class="p">{</span>
+
+            <span class="c1">// Manage your variation bbbbb</span>
+
+        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+
+            <span class="c1">// The default behavior</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>pBlock</td>
+<td>block</td>
+<td>The block to be invoked</td>
+</tr>
+</tbody></table>
+<h1 id='sending-events'>Sending events</h1>
 <p>The library also provides some functions to send events to ABTasty, for example to send objectives configured for a campaign.</p>
 
 <p>To do so, use the <code>sendTrackingEvent</code> method and specify the expected tracker as a parameter.</p>
