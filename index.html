@@ -524,10 +524,19 @@ You should now be able to use the ABTastySdk :)
             <span class="c1">// The default behavior</span>
         <span class="p">}</span>
 </code></pre>
-<p>When the SDK is ready to use, each campaign will have a variation allocated, to get this information just call the <code>getVariationForCampaignId</code> function in the ABTasty class located in the frameWork ABTastySdk.framework.</p>
+<p>When the SDK is ready to use, all campaigns will have a variation allocated,that determine which of your campaign&#39;s variations they are going to see</p>
 
-<p>This function return NSString corresponding to the selected variation, or nil if the campaign can&#39;t be found or the SDK is not yet ready to use.
-When you apply some changes according to your variation, dont forget to activate the campaign and its variation so the user will always see the same.</p>
+<p>To get this information use <code>getVariationForCampaignId</code> function in the ABTasty class located in the frameWork ABTastySdk.framework.</p>
+
+<p>This function return NSString corresponding to the selected variation, or <code>nil</code> if :</p>
+
+<ul>
+<li>The campaign don&#39;t exist,</li>
+<li>The campaign is not running </li>
+<li>The SDK is not ready to use</li>
+</ul>
+
+<p>You should activate the campaign When you apply some changes for the variation, so the user will have the same beahvi</p>
 
 <p><code>- (NSString*)getVariationForCampaignId:(NSString*)pCampaignId</code></p>
 
@@ -631,7 +640,7 @@ always sees the same variation.</p>
 <span class="c1">// Activate Campaign "campaignId"</span>
 <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">activateCampaign</span><span class="p">(</span><span class="s">"campaignId"</span><span class="p">,</span> <span class="nv">forVariationId</span><span class="p">:</span> <span class="s">"variationId"</span><span class="p">,</span> <span class="nv">with</span><span class="p">:</span><span class="n">trackig</span><span class="p">)</span>
 </code></pre><h3 id='block-operation-when-sdk-is-ready'>Block Operation When SDK is Ready</h3>
-<p>This function allow user to execute some actions when the sdk is ready to use</p>
+<p>This function allow user to invoke block when the sdk is ready</p>
 
 <p><code>- (void)executeWhenSdkReady:(void (^)(void))pBlock</code></p>
 
