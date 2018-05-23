@@ -640,10 +640,6 @@ always sees the same variation.</p>
 <span class="c1">// Activate Campaign "campaignId"</span>
 <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">activateCampaign</span><span class="p">(</span><span class="s">"campaignId"</span><span class="p">,</span> <span class="nv">forVariationId</span><span class="p">:</span> <span class="s">"variationId"</span><span class="p">,</span> <span class="nv">with</span><span class="p">:</span><span class="n">trackig</span><span class="p">)</span>
 </code></pre><h3 id='block-operation-when-sdk-is-ready'>Block Operation When SDK is Ready</h3>
-<p>This function allow user to invoke block when the sdk is ready</p>
-
-<p><code>- (void)executeWhenSdkReady:(void (^)(void))pBlock</code></p>
-
 <blockquote>
 <p>Execute Block when SDK is ready</p>
 </blockquote>
@@ -687,6 +683,10 @@ always sees the same variation.</p>
     <span class="p">}</span>
 
 </code></pre>
+<p>This function allow user to invoke block when the sdk is ready</p>
+
+<p><code>- (void)executeWhenSdkReady:(void (^)(void))pBlock</code></p>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
