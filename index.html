@@ -557,7 +557,11 @@ You should now be able to use the ABTastySdk :)
 <aside class="notice">
 Replace xxxxxx with the id of your campaign and, aaaaaa and bbbbbb with the different variations id of your campaign.
 </aside>
-<h3 id='activate-campaign'>Activate Campaign</h3><pre class="highlight objective_c tab-objective_c"><code><span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">activateCampaign</span><span class="p">:</span><span class="s">@"campaignId"</span> <span class="nf">forVariationId</span><span class="p">:</span><span class="n">varId</span> <span class="n">atInterfaceName</span><span class="o">:</span><span class="s">@"ABHomeViewController"</span><span class="p">];</span>
+<h3 id='activate-campaign'>Activate Campaign</h3>
+<blockquote>
+<p>Activate campaign</p>
+</blockquote>
+<pre class="highlight objective_c tab-objective_c"><code><span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">activateCampaign</span><span class="p">:</span><span class="s">@"campaignId"</span> <span class="nf">forVariationId</span><span class="p">:</span><span class="n">varId</span> <span class="n">atInterfaceName</span><span class="o">:</span><span class="s">@"ABHomeViewController"</span><span class="p">];</span>
 </code></pre><pre class="highlight swift tab-swift"><code><span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">activateCampaign</span><span class="p">(</span><span class="s">"campaignId"</span><span class="p">,</span> <span class="nv">forVariationId</span><span class="p">:</span> <span class="s">"varId"</span><span class="p">,</span> <span class="nv">atInterfaceName</span><span class="p">:</span><span class="s">"ABHomeViewController"</span><span class="p">)</span>
 </code></pre>
 <p><code>-(void)activateCampaign:(NSString*)pCampaignId forVariationId:(NSString*)pVariationID atInterfaceName:(NSString *)pInterfaceName</code></p>
