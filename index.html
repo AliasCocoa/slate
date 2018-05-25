@@ -363,10 +363,13 @@ In the <code>Shell</code> field, enter the following script:</p>
 <pre class="highlight objective_c tab-objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="nf">application</span><span class="p">:(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions</span><span class="p">:(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span> <span class="p">{</span>
 
     <span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">startABTastySdk</span><span class="p">:</span><span class="s">@"YOUR_ACCESS_KEY"</span><span class="p">];</span>
+
     <span class="k">return</span> <span class="nb">YES</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre><pre class="highlight swift tab-swift"><code><span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplicationLaunchOptionsKey</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>        
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplicationLaunchOptionsKey</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+
     <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">startSdk</span><span class="p">(</span><span class="s">"YOUR_ACCESS_KEY"</span><span class="p">)</span>
+
     <span class="k">return</span> <span class="kc">true</span>
 <span class="p">}</span>
 </code></pre>
@@ -848,12 +851,18 @@ Common data can be automatically set from the ABTracking passed in the `startABT
 
 <p><br></p>
 <h2 id='custom-tracking'>Custom Tracking</h2><pre class="highlight objective_c tab-objective_c"><code><span class="n">ABCustomEvent</span> <span class="o">*</span> <span class="n">customEvent</span> <span class="o">=</span>  <span class="p">[[</span><span class="n">ABCustomEvent</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initABTracking</span><span class="p">:</span><span class="n">ABMobile</span> <span class="nf">longtitude</span><span class="p">:</span><span class="mi">2</span><span class="p">.</span><span class="mi">33</span> <span class="n">latitude</span><span class="o">:</span><span class="mi">48</span><span class="p">.</span><span class="mi">48</span> <span class="n">ipAdress</span><span class="o">:</span><span class="s">@"xxx.xxx.xxx.xxx"</span> <span class="n">interfaceName</span><span class="o">:</span><span class="s">@"ABHomeViewController"</span><span class="p">];</span>
+
 <span class="p">[</span><span class="n">customEvent</span> <span class="nf">setValue</span><span class="p">:</span><span class="s">@"value"</span><span class="p">];</span>
+
 <span class="p">[</span><span class="n">customEvent</span> <span class="nf">setGoal_name</span><span class="p">:</span><span class="s">@"GoalName"</span><span class="p">];</span>
+
 <span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">sendTrackingEvent</span><span class="p">:</span><span class="n">customEvent</span><span class="p">];</span>
 </code></pre><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">custom</span><span class="p">:</span><span class="kt">ABCustomEvent</span> <span class="o">=</span> <span class="kt">ABCustomEvent</span><span class="p">(</span><span class="nv">abTracking</span><span class="p">:</span> <span class="kt">ABDeviceType</span><span class="o">.</span><span class="n">mobile</span><span class="p">,</span> <span class="nv">longtitude</span><span class="p">:</span> <span class="mf">2.33</span><span class="p">,</span> <span class="nv">latitude</span><span class="p">:</span> <span class="mf">48.48</span><span class="p">,</span> <span class="nv">ipAdress</span><span class="p">:</span> <span class="s">"xxx.xxx.xxx.xxx"</span><span class="p">,</span> <span class="nv">interfaceName</span><span class="p">:</span> <span class="s">"ABHomeViewController"</span><span class="p">)</span>
+
 <span class="n">custom</span><span class="o">.</span><span class="n">goal_name</span> <span class="o">=</span> <span class="s">"goal"</span>
+
 <span class="n">custom</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s">"value"</span>
+
 <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">sendTrackingEvent</span><span class="p">(</span><span class="n">custom</span><span class="p">)</span>
 </code></pre>
 <p><strong>ABCustomEvent</strong> This tracker sends a custom event and lets you track events that are specific to your business.</p>
