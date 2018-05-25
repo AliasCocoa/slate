@@ -373,15 +373,23 @@ In the <code>Shell</code> field, enter the following script:</p>
 <blockquote>
 <p>Initialize ABTastySDK with completion Block</p>
 </blockquote>
-<pre class="highlight swift tab-swift"><code>    <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">startSdk</span><span class="p">(</span><span class="s">"YOUR_ACCESS_KEY"</span><span class="p">)</span> <span class="p">{</span>
+<pre class="highlight swift tab-swift"><code><span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplicationLaunchOptionsKey</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+
+    <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">startSdk</span><span class="p">(</span><span class="s">"AIzaSyBN34OZidWXwtl9Qapi1ZEUuXlV6fmV_L8"</span><span class="p">)</span> <span class="p">{</span>
 
         <span class="nf">print</span><span class="p">(</span><span class="s">"SDK is Ready"</span><span class="p">)</span>
     <span class="p">}</span>
-</code></pre><pre class="highlight objective_c tab-objective_c"><code>
-    <span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">startABTastySdk</span><span class="p">:</span><span class="s">@"YOUR_ACCESS_KEY"</span> <span class="nf">WithCompletionBlock</span><span class="p">:</span><span class="o">^</span><span class="p">{</span>
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="p">}</span>
+</code></pre><pre class="highlight objective_c tab-objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="nf">application</span><span class="p">:(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions</span><span class="p">:(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span> <span class="p">{</span>
 
-        <span class="n">print</span><span class="p">(</span><span class="s">"SDK is Ready"</span><span class="p">)</span>
-    <span class="p">}];</span>
+ <span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">startABTastySdk</span><span class="p">:</span><span class="s">@""</span> <span class="nf">WithCompletionBlock</span><span class="p">:</span><span class="o">^</span><span class="p">{</span>
+
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"SDK is Ready"</span><span class="p">);</span>        
+<span class="p">}];</span>
+
+<span class="k">return</span> <span class="nb">YES</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre>
 <p>To run experiments with ABTasty you&#39;ll need to initialize ABTasty with the AB_TASTY_KEY parameter. ABTasty instance can both activate experiments and track events.</p>
 
