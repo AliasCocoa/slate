@@ -387,8 +387,6 @@ In the <code>Shell</code> field, enter the following script:</p>
 
 <p>To do so, just call the <code>startABTastySdk</code> function in the ABTasty class located in the frameWork ABTastySdk.framework. For each new user, at the very first initialization, the SDK requests a new visitor id to our servers and save it in <code>UserDefaults</code>, and for each initialization the SDK will allocates variations for all camapigns.</p>
 
-<p>As the sdk is asynchronous and run in parallel, this method <code>startABTastySdk:WithCompletionBlock:</code> lets you set a block which is going to be executed when the SDK is ready.</p>
-
 <p><code>(void)startABTastySdk:(NSString*)appId</code></p>
 
 <table><thead>
@@ -402,6 +400,29 @@ In the <code>Shell</code> field, enter the following script:</p>
 <td>appId</td>
 <td>NSString</td>
 <td>Access key provided by AB Tasty</td>
+</tr>
+</tbody></table>
+
+<p>As the sdk is asynchronous and run in parallel, this method <code>startABTastySdk:WithCompletionBlock:</code> lets you set a block which is going to be executed when the SDK is ready.</p>
+
+<p><code>- (void)startABTastySdk:(NSString*)appId WithCompletionBlock:(void (^)(void))pBlock</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>appId</td>
+<td>NSString</td>
+<td>Access key provided by AB Tasty</td>
+</tr>
+<tr>
+<td>pBlock</td>
+<td>block</td>
+<td>The block to be invoked</td>
 </tr>
 </tbody></table>
 
