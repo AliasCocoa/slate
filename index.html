@@ -251,9 +251,6 @@
                   <li>
                     <a href="#activate-campaign" class="toc-h2 toc-link" data-title="activate-campaign">Activate Campaign</a>
                   </li>
-                  <li>
-                    <a href="#block-operation-when-sdk-is-ready" class="toc-h2 toc-link" data-title="block-operation-when-sdk-is-ready">Block Operation When SDK is Ready</a>
-                  </li>
               </ul>
           </li>
           <li>
@@ -612,6 +609,67 @@ You should now be able to use the ABTastySdk :)
 <aside class="notice">
 Replace xxxxxx with the id of your campaign and, aaaaaa and bbbbbb with the different variations id of your campaign.
 </aside>
+<h3 id='block-operation-when-sdk-is-ready'>Block Operation When SDK is Ready</h3>
+<blockquote>
+<p>Execute Block when SDK is ready</p>
+</blockquote>
+<pre class="highlight objective_c tab-objective_c"><code>
+    <span class="p">[</span><span class="n">ABTasty</span><span class="p">.</span><span class="n">sharedInstance</span> <span class="nf">executeWhenSdkReady</span><span class="p">:</span><span class="o">^</span><span class="p">{</span>
+
+        <span class="n">NSString</span> <span class="o">*</span> <span class="n">variationId</span> <span class="o">=</span> <span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">getVariationForCampaignId</span><span class="p">:</span><span class="s">@"xxxxx"</span><span class="p">];</span>
+
+        <span class="k">if</span> <span class="p">([</span><span class="n">variationId</span> <span class="nf">isEqualToString</span><span class="p">:</span><span class="s">@""</span><span class="p">])</span> <span class="p">{</span>
+
+            <span class="c1">// Manage variation aaaaa
+</span>
+        <span class="p">}</span><span class="k">else</span> <span class="k">if</span> <span class="p">([</span><span class="n">variationId</span> <span class="nf">isEqualToString</span><span class="p">:</span><span class="s">@""</span><span class="p">]){</span>
+
+            <span class="c1">// Manage variation bbbbb
+</span>
+        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+
+            <span class="c1">// The default behavior
+</span>        <span class="p">}</span>
+    <span class="p">}];</span>
+
+</code></pre><pre class="highlight swift tab-swift"><code>
+    <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="n">execute</span> <span class="p">{</span>
+
+        <span class="k">let</span> <span class="nv">variation</span> <span class="o">=</span> <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">getVariationForCampaignId</span><span class="p">(</span><span class="s">"xxxxx"</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">variation</span> <span class="o">==</span> <span class="s">"aaaaa"</span> <span class="p">{</span>
+
+            <span class="c1">// Manage your variation aaaaa</span>
+
+
+        <span class="p">}</span><span class="k">else</span> <span class="k">if</span> <span class="n">variation</span> <span class="o">==</span> <span class="s">"bbbbb"</span> <span class="p">{</span>
+
+            <span class="c1">// Manage your variation bbbbb</span>
+
+        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+
+            <span class="c1">// The default behavior</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+</code></pre>
+<p>This function allow user to invoke block when the sdk is ready after fetches campaigns from the server side</p>
+
+<p><code>- (void)executeWhenSdkReady:(void (^)(void))pBlock</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>pBlock</td>
+<td>block</td>
+<td>The block to be invoked</td>
+</tr>
+</tbody></table>
 <h2 id='activate-campaign'>Activate Campaign</h2>
 <blockquote>
 <p>Activate campaign</p>
@@ -692,67 +750,6 @@ always sees the same variation.</p>
 <td>pTracking</td>
 <td>ABTracking</td>
 <td>Object that represents common tracking information</td>
-</tr>
-</tbody></table>
-<h2 id='block-operation-when-sdk-is-ready'>Block Operation When SDK is Ready</h2>
-<blockquote>
-<p>Execute Block when SDK is ready</p>
-</blockquote>
-<pre class="highlight objective_c tab-objective_c"><code>
-    <span class="p">[</span><span class="n">ABTasty</span><span class="p">.</span><span class="n">sharedInstance</span> <span class="nf">executeWhenSdkReady</span><span class="p">:</span><span class="o">^</span><span class="p">{</span>
-
-        <span class="n">NSString</span> <span class="o">*</span> <span class="n">variationId</span> <span class="o">=</span> <span class="p">[[</span><span class="n">ABTasty</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">getVariationForCampaignId</span><span class="p">:</span><span class="s">@"xxxxx"</span><span class="p">];</span>
-
-        <span class="k">if</span> <span class="p">([</span><span class="n">variationId</span> <span class="nf">isEqualToString</span><span class="p">:</span><span class="s">@""</span><span class="p">])</span> <span class="p">{</span>
-
-            <span class="c1">// Manage variation aaaaa
-</span>
-        <span class="p">}</span><span class="k">else</span> <span class="k">if</span> <span class="p">([</span><span class="n">variationId</span> <span class="nf">isEqualToString</span><span class="p">:</span><span class="s">@""</span><span class="p">]){</span>
-
-            <span class="c1">// Manage variation bbbbb
-</span>
-        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
-
-            <span class="c1">// The default behavior
-</span>        <span class="p">}</span>
-    <span class="p">}];</span>
-
-</code></pre><pre class="highlight swift tab-swift"><code>
-    <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="n">execute</span> <span class="p">{</span>
-
-        <span class="k">let</span> <span class="nv">variation</span> <span class="o">=</span> <span class="kt">ABTasty</span><span class="o">.</span><span class="nf">sharedInstance</span><span class="p">()</span><span class="o">.</span><span class="nf">getVariationForCampaignId</span><span class="p">(</span><span class="s">"xxxxx"</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="n">variation</span> <span class="o">==</span> <span class="s">"aaaaa"</span> <span class="p">{</span>
-
-            <span class="c1">// Manage your variation aaaaa</span>
-
-
-        <span class="p">}</span><span class="k">else</span> <span class="k">if</span> <span class="n">variation</span> <span class="o">==</span> <span class="s">"bbbbb"</span> <span class="p">{</span>
-
-            <span class="c1">// Manage your variation bbbbb</span>
-
-        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
-
-            <span class="c1">// The default behavior</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-
-</code></pre>
-<p>This function allow user to invoke block when the sdk is ready after fetches campaigns from the server side</p>
-
-<p><code>- (void)executeWhenSdkReady:(void (^)(void))pBlock</code></p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>pBlock</td>
-<td>block</td>
-<td>The block to be invoked</td>
 </tr>
 </tbody></table>
 <h1 id='sending-events'>Sending events</h1>
